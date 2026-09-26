@@ -102,3 +102,7 @@ Optional, and not needed for a screenshare. Walk the person through it one step 
 ## Git
 
 If the folder is a git repository, write commit messages as imperative sentences in sentence case ("Add the offer list"). If it isn't, don't create one unless asked.
+
+## Maintainers
+
+Building new screens from the Figma designs? Read `.claude/references/maintainer-notes.md` first. Nobody else needs it.
