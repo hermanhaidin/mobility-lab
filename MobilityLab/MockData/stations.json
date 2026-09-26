@@ -1,0 +1,1944 @@
+{
+  "defaultPickUpStationID": "munich-airport",
+  "currentLocationStationID": "munich-central-train-station",
+  "recentStationIDs": [
+    "mallorca-palma-port",
+    "munich-airport"
+  ],
+  "stations": [
+    {
+      "id": "amsterdam-amstel-business-park",
+      "name": "Amsterdam Amstel Business Park",
+      "address": "Joop Geesinkweg 125, Amsterdam, 1114 AB, NL",
+      "city": "Amsterdam",
+      "countryCode": "NL",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "07:00 AM - 07:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "07:00 AM - 02:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 12:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "amsterdam-central-train-station",
+      "name": "Amsterdam Central Train Station",
+      "address": "De Ruijterkade 44b, Amsterdam, 1012 AA, NL",
+      "city": "Amsterdam",
+      "countryCode": "NL",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "amsterdam-schiphol-airport",
+      "name": "Amsterdam Schiphol Airport",
+      "address": "Schiphol Plaza Aankomstpass.22, Schiphol, 1118 AX, NL",
+      "city": "Amsterdam",
+      "countryCode": "NL",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "06:00 AM - 11:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "06:00 AM - 11:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "amsterdam-sloterdijk",
+      "name": "Amsterdam Sloterdijk",
+      "address": "Isolatorweg 31, Amsterdam, 1014 AS, NL",
+      "city": "Amsterdam",
+      "countryCode": "NL",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon",
+          "hours": "08:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Tue - Wed",
+          "hours": "09:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Thu - Fri",
+          "hours": "08:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "08:00 AM - 03:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "Closed"
+        }
+      ]
+    },
+    {
+      "id": "amsterdam-west",
+      "name": "Amsterdam West",
+      "address": "Nassaukade 345-346, Amsterdam, 1053 LW, NL",
+      "city": "Amsterdam",
+      "countryCode": "NL",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "08:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "08:00 AM - 04:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 01:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "athens-int-airport",
+      "name": "Athens Int Airport",
+      "address": "El. Venizelos, Athens, 190 04, GR",
+      "city": "Athens",
+      "countryCode": "GR",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "barcelona-airport",
+      "name": "Barcelona Airport",
+      "address": "Terminal 1 & 2 Llegadas, El Prat de Llobregat, 08820, ES",
+      "city": "Barcelona",
+      "countryCode": "ES",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "barcelona-francesc-macia",
+      "name": "Barcelona Francesc Macia",
+      "address": "Avinguda Pau Casals 16, Barcelona, 08021, ES",
+      "city": "Barcelona",
+      "countryCode": "ES",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "barcelona-passeig-de-gracia",
+      "name": "Barcelona Passeig de Gracia",
+      "address": "Passeig de Gracia 126, Barcelona, 08008, ES",
+      "city": "Barcelona",
+      "countryCode": "ES",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "barcelona-rambla-catalunya",
+      "name": "Barcelona Rambla Catalunya",
+      "address": "Rambla de Catalunya 74, Barcelona, 08007, ES",
+      "city": "Barcelona",
+      "countryCode": "ES",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "07:00 AM - 10:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "07:00 AM - 10:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "barcelona-sants-train-station",
+      "name": "Barcelona Sants Train Station",
+      "address": "Plaça dels Països Catalans s/n, Barcelona, 08014, ES",
+      "city": "Barcelona",
+      "countryCode": "ES",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "berlin-airport",
+      "name": "Berlin Airport",
+      "address": "Melli-Beese-Ring 1, Schönefeld, 12529, DE",
+      "city": "Berlin",
+      "countryCode": "DE",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "06:00 AM - 11:59 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "06:00 AM - 11:30 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "06:00 AM - 11:30 PM"
+        }
+      ]
+    },
+    {
+      "id": "berlin-alexanderplatz",
+      "name": "Berlin Alexanderplatz",
+      "address": "Grunerstr. 5+7, Berlin, 10179, DE",
+      "city": "Berlin",
+      "countryCode": "DE",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "berlin-central-train-station",
+      "name": "Berlin Central Train Station",
+      "address": "Europaplatz 1, Berlin, 10557, DE",
+      "city": "Berlin",
+      "countryCode": "DE",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "06:00 AM - 09:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "08:00 AM - 09:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 09:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "berlin-hardenbergplatz",
+      "name": "Berlin Hardenbergplatz",
+      "address": "Hardenbergstraße 22, Berlin, 10623, DE",
+      "city": "Berlin",
+      "countryCode": "DE",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "berlin-lichtenberg",
+      "name": "Berlin Lichtenberg",
+      "address": "Herzbergstr. 87-99, Berlin, 10365, DE",
+      "city": "Berlin",
+      "countryCode": "DE",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "brussels-airport",
+      "name": "Brussels Airport",
+      "address": "Luchthaven Brussel Nationaal 415, Zaventem, 1930, BE",
+      "city": "Brussels",
+      "countryCode": "BE",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "brussels-south-train-station",
+      "name": "Brussels South Train Station",
+      "address": "Gare du Midi, Pl. Victor Horta, Bruxelles, 1060, BE",
+      "city": "Brussels",
+      "countryCode": "BE",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "07:30 AM - 08:00 PM"
+        },
+        {
+          "days": "Sat",
+          "hours": "08:00 AM - 04:00 PM"
+        },
+        {
+          "days": "Sun",
+          "hours": "07:30 AM - 08:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "07:30 AM - 08:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "brussels-stephanie-louise",
+      "name": "Brussels Stephanie-Louise",
+      "address": "Chaussée de Charleroi 11A, Bruxelles, 1060, BE",
+      "city": "Brussels",
+      "countryCode": "BE",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "08:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sat",
+          "hours": "09:00 AM - 02:00 PM"
+        },
+        {
+          "days": "Sun",
+          "hours": "Closed"
+        },
+        {
+          "days": "Holidays",
+          "hours": "Closed"
+        }
+      ]
+    },
+    {
+      "id": "brussels-woluwe",
+      "name": "Brussels Woluwe",
+      "address": "Leuvensesteenweg 36, Zaventem, 1932, BE",
+      "city": "Brussels",
+      "countryCode": "BE",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "frankfurt-airport",
+      "name": "Frankfurt Airport",
+      "address": "Hugo-Eckener-Ring/Mietwagenz., Frankfurt am Main, 60549, DE",
+      "city": "Frankfurt",
+      "countryCode": "DE",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "05:00 AM - 12:30 AM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "05:00 AM - 12:30 AM"
+        }
+      ]
+    },
+    {
+      "id": "frankfurt-central-train-station",
+      "name": "Frankfurt Central Train Station",
+      "address": "Im Hauptbahnhof/Mietwagenzentr, Frankfurt am Main, 60329, DE",
+      "city": "Frankfurt",
+      "countryCode": "DE",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "06:00 AM - 09:00 PM"
+        },
+        {
+          "days": "Sat",
+          "hours": "09:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Sun",
+          "hours": "10:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "10:00 AM - 06:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "frankfurt-city-center",
+      "name": "Frankfurt City Center",
+      "address": "Konrad-Adenauer-Str. 5-7, Frankfurt am Main, 60313, DE",
+      "city": "Frankfurt",
+      "countryCode": "DE",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "frankfurt-offenbach",
+      "name": "Frankfurt Offenbach",
+      "address": "Spendlinger Landstraße 178, Offenbach, 63069, DE",
+      "city": "Offenbach",
+      "countryCode": "DE",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "houston-downtown",
+      "name": "Houston Downtown",
+      "address": "383 Ruthven Street, Houston, 77002, US",
+      "city": "Houston",
+      "countryCode": "US",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "08:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "08:00 AM - 01:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 01:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "houston-hobby-hou-airport",
+      "name": "Houston Hobby HOU Airport",
+      "address": "7901 Airport Blvd, Houston, 77061-4105, US",
+      "city": "Houston",
+      "countryCode": "US",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "07:00 AM - 11:59 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "07:00 AM - 11:59 PM"
+        }
+      ]
+    },
+    {
+      "id": "houston-iah-int-airport",
+      "name": "Houston IAH Int Airport",
+      "address": "17330 Palmetto Pines, Houston, 77032-6520, US",
+      "city": "Houston",
+      "countryCode": "US",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "05:00 AM - 11:59 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "05:00 AM - 11:59 PM"
+        }
+      ]
+    },
+    {
+      "id": "houston-memorial-city",
+      "name": "Houston Memorial City",
+      "address": "800 W Sam Houston Parkway N, Houston, 77024-3936, US",
+      "city": "Houston",
+      "countryCode": "US",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "09:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "09:00 AM - 01:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 01:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "houston-royal-sonesta",
+      "name": "Houston Royal Sonesta",
+      "address": "2222 W Loop S, Houston, 77027-3502, US",
+      "city": "Houston",
+      "countryCode": "US",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "09:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "09:00 AM - 01:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 01:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "ivano-frankivsk-airport",
+      "name": "Ivano-Frankivsk Airport",
+      "address": "Yevgenii Konovalets 264a, Ivano-Frankivsk, 76000, UA",
+      "city": "Ivano-Frankivsk",
+      "countryCode": "UA",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "12:00 AM - 11:59 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "Closed"
+        }
+      ]
+    },
+    {
+      "id": "ivano-frankivsk-train-station",
+      "name": "Ivano-Frankivsk Train Station",
+      "address": "Pryvokzalna Square, 9, Ivano-Frankivsk, 76000, UA",
+      "city": "Ivano-Frankivsk",
+      "countryCode": "UA",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "09:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "Closed"
+        },
+        {
+          "days": "Holidays",
+          "hours": "Closed"
+        }
+      ]
+    },
+    {
+      "id": "kyiv-boryspil-airport",
+      "name": "Kyiv Boryspil Airport",
+      "address": "Boryspil 7, Kyiv, 08307, UA",
+      "city": "Kyiv",
+      "countryCode": "UA",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "12:00 AM - 11:59 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "Closed"
+        }
+      ]
+    },
+    {
+      "id": "kyiv-central-train-station",
+      "name": "Kyiv Central Train Station",
+      "address": "Vokzalna Square 1, Kyiv, 02000, UA",
+      "city": "Kyiv",
+      "countryCode": "UA",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "09:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "Closed"
+        },
+        {
+          "days": "Holidays",
+          "hours": "Closed"
+        }
+      ]
+    },
+    {
+      "id": "kyiv-hilton-hotel",
+      "name": "Kyiv Hilton Hotel",
+      "address": "Tarasa Shavchenka Av. 30, Kyiv, 01030, UA",
+      "city": "Kyiv",
+      "countryCode": "UA",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "09:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "Closed"
+        },
+        {
+          "days": "Holidays",
+          "hours": "Closed"
+        }
+      ]
+    },
+    {
+      "id": "kyiv-intercontinental-hotel",
+      "name": "Kyiv InterContinental Hotel",
+      "address": "Velyka Zhytomyrska Str. 2a, Kyiv, 01001, UA",
+      "city": "Kyiv",
+      "countryCode": "UA",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "09:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "Closed"
+        },
+        {
+          "days": "Holidays",
+          "hours": "Closed"
+        }
+      ]
+    },
+    {
+      "id": "london-bloomsbury",
+      "name": "London Bloomsbury",
+      "address": "Bloomsbury Square Gardens, London, WC1A 2RJ, GB",
+      "city": "London",
+      "countryCode": "GB",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "london-hammersmith",
+      "name": "London Hammersmith",
+      "address": "144-146 Hammersmith Road, London, W6 7JP, GB",
+      "city": "London",
+      "countryCode": "GB",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "08:00 AM - 04:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "08:00 AM - 01:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 04:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "london-heathrow-airport",
+      "name": "London Heathrow Airport",
+      "address": "Sofitel London Heathrow Terminal 2-5, Hounslow, TW6 2GD, GB",
+      "city": "London",
+      "countryCode": "GB",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "06:00 AM - 11:59 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "06:00 AM - 11:59 PM"
+        }
+      ]
+    },
+    {
+      "id": "london-kings-cross-st-pancras",
+      "name": "London Kings Cross St. Pancras",
+      "address": "Pancras Rd/Eurostar, London, N1C 4QP, GB",
+      "city": "London",
+      "countryCode": "GB",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "08:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "08:00 AM - 04:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 04:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "london-stratford-train-station",
+      "name": "London Stratford Train Station",
+      "address": "International Way, London, E20 1YY, GB",
+      "city": "London",
+      "countryCode": "GB",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Thu",
+          "hours": "08:00 AM - 04:00 PM"
+        },
+        {
+          "days": "Fri",
+          "hours": "08:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "08:00 AM - 02:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 02:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "london-wembley",
+      "name": "London Wembley",
+      "address": "GEC Est. Courtenay Rd.,East Ln, Wembley, London, HA9 7ND, GB",
+      "city": "London",
+      "countryCode": "GB",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon",
+          "hours": "08:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Tue - Thu",
+          "hours": "08:00 AM - 04:00 PM"
+        },
+        {
+          "days": "Fri",
+          "hours": "08:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "08:00 AM - 01:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 04:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "los-angeles-downtown",
+      "name": "Los Angeles Downtown",
+      "address": "990 W 8th St, Los Angeles, 90017-2830, US",
+      "city": "Los Angeles",
+      "countryCode": "US",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "09:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "09:00 AM - 03:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 05:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "los-angeles-int-airport",
+      "name": "Los Angeles Int Airport",
+      "address": "5251 W 98th St, Los Angeles, 90045-5137, US",
+      "city": "Los Angeles",
+      "countryCode": "US",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "06:00 AM - 01:00 AM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "06:00 AM - 01:00 AM"
+        }
+      ]
+    },
+    {
+      "id": "los-angeles-studio-city",
+      "name": "Los Angeles Studio City",
+      "address": "11057 Ventura Boulevard, Studio City, 91604-3548, US",
+      "city": "Los Angeles",
+      "countryCode": "US",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "09:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "09:00 AM - 03:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 05:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "los-angeles-venice-beach",
+      "name": "Los Angeles Venice Beach",
+      "address": "2444 Lincoln Blvd, Venice, 90291-5041, US",
+      "city": "Los Angeles",
+      "countryCode": "US",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "09:00 AM - 04:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "09:00 AM - 03:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 03:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "mallorca-palma-airport",
+      "name": "Mallorca Palma Airport",
+      "address": "Llegadas, Palma de Mallorca, 07610, ES",
+      "city": "Palma de Mallorca",
+      "countryCode": "ES",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "mallorca-palma-port",
+      "name": "Mallorca Palma Port",
+      "address": "Paseo de la Escollera 7, Palma de Mallorca, 07012, ES",
+      "city": "Palma de Mallorca",
+      "countryCode": "ES",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "07:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "07:00 AM - 06:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "manchester-airport",
+      "name": "Manchester Airport",
+      "address": "Ringway Road, Manchester, M22 5WH, GB",
+      "city": "Manchester",
+      "countryCode": "GB",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "manchester-piccadilly-train-station",
+      "name": "Manchester Piccadilly Train Station",
+      "address": "2 Piccadilly Place, Manchester, M1 3BN, GB",
+      "city": "Manchester",
+      "countryCode": "GB",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "08:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sat",
+          "hours": "08:00 AM - 01:00 PM"
+        },
+        {
+          "days": "Sun",
+          "hours": "09:00 AM - 12:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 02:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "manchester-salford",
+      "name": "Manchester Salford",
+      "address": "2 North Phoebe St, Regent Road, Salford, M5 4EA, GB",
+      "city": "Manchester",
+      "countryCode": "GB",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "08:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sat",
+          "hours": "07:00 AM - 01:00 PM"
+        },
+        {
+          "days": "Sun",
+          "hours": "09:00 AM - 12:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 04:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "miami-beach-5th-street",
+      "name": "Miami Beach 5th Street",
+      "address": "701 5th St, Miami Beach, 33139-6517, US",
+      "city": "Miami",
+      "countryCode": "US",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "09:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "09:00 AM - 02:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 02:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "miami-dadeland-mall",
+      "name": "Miami Dadeland Mall",
+      "address": "7535 N Kendall Drive STE 1060A, Miami, 33156-8017, US",
+      "city": "Miami",
+      "countryCode": "US",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "09:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "10:00 AM - 02:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "10:00 AM - 02:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "miami-int-airport",
+      "name": "Miami Int Airport",
+      "address": "3900 NW 25th Street #414, Miami, 33142, US",
+      "city": "Miami",
+      "countryCode": "US",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "miami-intercontinental-hotel",
+      "name": "Miami InterContinental Hotel",
+      "address": "100 Chopin Plaza, Miami, 33131-4342, US",
+      "city": "Miami",
+      "countryCode": "US",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "08:00 AM - 04:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 04:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "milan-airport",
+      "name": "Milan Airport",
+      "address": "Malpensa, Ferno Varese, 21010, IT",
+      "city": "Milan",
+      "countryCode": "IT",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "milan-city-life",
+      "name": "Milan City Life",
+      "address": "Piazza Sei Febbraio 26, Milano, 20145, IT",
+      "city": "Milan",
+      "countryCode": "IT",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "08:00 AM - 06:30 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 06:30 PM"
+        }
+      ]
+    },
+    {
+      "id": "milan-corso-como",
+      "name": "Milan Corso Como",
+      "address": "Viale Pasubio 3, Milano, 20154, IT",
+      "city": "Milan",
+      "countryCode": "IT",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "08:00 AM - 06:30 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 06:30 PM"
+        }
+      ]
+    },
+    {
+      "id": "milan-main-train-station",
+      "name": "Milan Main Train Station",
+      "address": "Piazza Duca d'Aosta 1, Milano, 20125, IT",
+      "city": "Milan",
+      "countryCode": "IT",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "milan-piazza-duomo",
+      "name": "Milan Piazza Duomo",
+      "address": "Via Flavio Baracchini 1, Milano, 20123, IT",
+      "city": "Milan",
+      "countryCode": "IT",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "munich-airport",
+      "name": "Munich Airport",
+      "address": "Terminalstr. Mitte/MWZ, München, 85356, DE",
+      "city": "Munich",
+      "countryCode": "DE",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "05:00 AM - 11:59 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "05:00 AM - 11:59 PM"
+        }
+      ]
+    },
+    {
+      "id": "munich-central-train-station",
+      "name": "Munich Central Train Station",
+      "address": "Arnulfstr. 16/18, München, 80335, DE",
+      "city": "Munich",
+      "countryCode": "DE",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "munich-laim-train-station",
+      "name": "Munich Laim Train Station",
+      "address": "Wotanstr. 9, München, 80639, DE",
+      "city": "Munich",
+      "countryCode": "DE",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "07:00 AM - 07:00 PM"
+        },
+        {
+          "days": "Sat",
+          "hours": "08:00 AM - 12:00 PM"
+        },
+        {
+          "days": "Sun, Holidays",
+          "hours": "Closed"
+        }
+      ]
+    },
+    {
+      "id": "munich-ostbahnhof",
+      "name": "Munich Ostbahnhof",
+      "address": "Haager Str. 3, München, 81671, DE",
+      "city": "Munich",
+      "countryCode": "DE",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "munich-ottobrunn",
+      "name": "Munich Ottobrunn",
+      "address": "Alte Landstr. 17, München-Ottobrunn, 85521, DE",
+      "city": "Munich",
+      "countryCode": "DE",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "07:30 AM - 05:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "08:00 AM - 11:00 AM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "Closed"
+        }
+      ]
+    },
+    {
+      "id": "munich-pasing-station",
+      "name": "Munich Pasing Station",
+      "address": "Josef-Felder-Str. 53, München, 81241, DE",
+      "city": "Munich",
+      "countryCode": "DE",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "07:00 AM - 07:00 PM"
+        },
+        {
+          "days": "Sat",
+          "hours": "08:00 AM - 12:00 PM"
+        },
+        {
+          "days": "Sun, Holidays",
+          "hours": "Closed"
+        }
+      ]
+    },
+    {
+      "id": "munich-schwabing",
+      "name": "Munich Schwabing",
+      "address": "Anni-Albers-Strasse 11, München, 80807, DE",
+      "city": "Munich",
+      "countryCode": "DE",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "munich-sendling",
+      "name": "Munich Sendling",
+      "address": "Luise-Kiesselbach-Platz 35, München, 81377, DE",
+      "city": "Munich",
+      "countryCode": "DE",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "06:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "08:00 AM - 12:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "Closed"
+        }
+      ]
+    },
+    {
+      "id": "new-york-city-brooklyn",
+      "name": "New York City Brooklyn",
+      "address": "585 Dean St, Brooklyn, 11238-6915, US",
+      "city": "New York",
+      "countryCode": "US",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "08:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "09:00 AM - 01:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 01:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "new-york-city-chelsea",
+      "name": "New York City Chelsea",
+      "address": "111 8th Ave, New York, 10011-5201, US",
+      "city": "New York",
+      "countryCode": "US",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "08:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "09:00 AM - 01:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 01:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "new-york-city-times-square",
+      "name": "New York City Times Square",
+      "address": "140-166 West 53rd Street, New York City, 10019-6006, US",
+      "city": "New York",
+      "countryCode": "US",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "08:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "09:00 AM - 01:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 01:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "new-york-jfk-int-airport",
+      "name": "New York JFK Int Airport",
+      "address": "312 Federal Cir, Jamaica, 11430-1514, US",
+      "city": "New York",
+      "countryCode": "US",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "06:00 AM - 01:00 AM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "06:00 AM - 01:00 AM"
+        }
+      ]
+    },
+    {
+      "id": "new-york-lga-airport",
+      "name": "New York LGA Airport",
+      "address": "90-05 25th Avenue, East Elmhurst, 11369-1509, US",
+      "city": "New York",
+      "countryCode": "US",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "07:00 AM - 11:59 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "07:00 AM - 11:59 PM"
+        }
+      ]
+    },
+    {
+      "id": "nice-airport",
+      "name": "Nice Airport",
+      "address": "Boulevard Maryse Bastié, Nice, 06200, FR",
+      "city": "Nice",
+      "countryCode": "FR",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "07:30 AM - 11:59 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "07:30 AM - 11:59 PM"
+        }
+      ]
+    },
+    {
+      "id": "nice-marina-east",
+      "name": "Nice Marina East",
+      "address": "Quai des Docks, Nice, 06300, FR",
+      "city": "Nice",
+      "countryCode": "FR",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sat",
+          "hours": "09:00 AM - 01:00 PM, 03:00 PM - 07:00 PM"
+        },
+        {
+          "days": "Sun",
+          "hours": "10:00 AM - 01:00 PM, 02:00 PM - 06:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "10:00 AM - 01:00 PM, 02:00 PM - 06:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "nice-promenade-des-anglais",
+      "name": "Nice Promenade des Anglais",
+      "address": "3 Avenue Gustave V, Nice, 06000, FR",
+      "city": "Nice",
+      "countryCode": "FR",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sat",
+          "hours": "08:30 AM - 06:00 PM"
+        },
+        {
+          "days": "Sun",
+          "hours": "09:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 05:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "nice-train-station",
+      "name": "Nice Train Station",
+      "address": "12 Avenue Thiers, Nice, 06000, FR",
+      "city": "Nice",
+      "countryCode": "FR",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Sat",
+          "hours": "08:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sun",
+          "hours": "09:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 05:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "oslo-fornebu",
+      "name": "Oslo Fornebu",
+      "address": "Martin Linges vei 14, Fornebu, 1364, NO",
+      "city": "Oslo",
+      "countryCode": "NO",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "08:00 AM - 04:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "Closed"
+        },
+        {
+          "days": "Holidays",
+          "hours": "Closed"
+        }
+      ]
+    },
+    {
+      "id": "oslo-gardermoen-airport",
+      "name": "Oslo Gardermoen Airport",
+      "address": "Postboks 201, Gardermoen, 2061, NO",
+      "city": "Oslo",
+      "countryCode": "NO",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "07:00 AM - 11:59 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "07:00 AM - 11:59 PM"
+        }
+      ]
+    },
+    {
+      "id": "oslo-helsfyr",
+      "name": "Oslo Helsfyr",
+      "address": "Grenseveien 74, Oslo, 0663, NO",
+      "city": "Oslo",
+      "countryCode": "NO",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "08:00 AM - 04:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "Closed"
+        },
+        {
+          "days": "Holidays",
+          "hours": "Closed"
+        }
+      ]
+    },
+    {
+      "id": "paris-cdg-airport",
+      "name": "Paris CDG Airport",
+      "address": "Terminal 1 & 2EF, Paris Roissy, 95711, FR",
+      "city": "Paris",
+      "countryCode": "FR",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "06:00 AM - 11:59 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "06:00 AM - 11:59 PM"
+        }
+      ]
+    },
+    {
+      "id": "paris-exelmans",
+      "name": "Paris Exelmans",
+      "address": "38 Boulevard Exelmans, Paris, 75016, FR",
+      "city": "Paris",
+      "countryCode": "FR",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon",
+          "hours": "08:00 AM - 01:00 PM, 02:00 PM - 06:00 PM"
+        },
+        {
+          "days": "Tue - Thu",
+          "hours": "08:00 AM - 01:00 PM, 02:00 PM - 05:00 PM"
+        },
+        {
+          "days": "Fri",
+          "hours": "08:00 AM - 01:00 PM, 02:00 PM - 06:00 PM"
+        },
+        {
+          "days": "Sat",
+          "hours": "08:00 AM - 03:00 PM"
+        },
+        {
+          "days": "Sun",
+          "hours": "09:00 AM - 03:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 03:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "paris-gambetta",
+      "name": "Paris Gambetta",
+      "address": "229 Avenue Gambetta, Paris, 75020, FR",
+      "city": "Paris",
+      "countryCode": "FR",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "08:00 AM - 01:00 PM, 02:00 PM - 06:00 PM"
+        },
+        {
+          "days": "Sat",
+          "hours": "08:00 AM - 03:00 PM"
+        },
+        {
+          "days": "Sun",
+          "hours": "09:00 AM - 01:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 03:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "paris-gare-de-lyon",
+      "name": "Paris Gare de Lyon",
+      "address": "Place Henri Frenay, Paris, 75012, FR",
+      "city": "Paris",
+      "countryCode": "FR",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "07:00 AM - 10:00 PM"
+        },
+        {
+          "days": "Sat",
+          "hours": "07:00 AM - 08:00 PM"
+        },
+        {
+          "days": "Sun",
+          "hours": "08:00 AM - 10:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 08:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "paris-gare-du-nord",
+      "name": "Paris Gare du Nord",
+      "address": "18 Rue de Dunkerque, Level -1, Paris, 75010, FR",
+      "city": "Paris",
+      "countryCode": "FR",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "paris-neuilly-porte-maillot",
+      "name": "Paris Neuilly Porte Maillot",
+      "address": "28 Avenue Charles de Gaulle, Neuilly Sur Seine, 92200, FR",
+      "city": "Paris",
+      "countryCode": "FR",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "paris-orly-airport",
+      "name": "Paris Orly Airport",
+      "address": "Aeroport Orly P2, Orly, 94390, FR",
+      "city": "Paris",
+      "countryCode": "FR",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "san-francisco-fairmont-hotel",
+      "name": "San Francisco Fairmont Hotel",
+      "address": "801 Powell Street, San Francisco, 94108-6000, US",
+      "city": "San Francisco",
+      "countryCode": "US",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "08:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "08:00 AM - 03:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 03:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "san-francisco-fishermans-wharf",
+      "name": "San Francisco Fishermans Wharf",
+      "address": "1365 Columbus Ave, San Francisco, 94133-1318, US",
+      "city": "San Francisco",
+      "countryCode": "US",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "08:00 AM - 03:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 03:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "san-francisco-int-airport",
+      "name": "San Francisco Int Airport",
+      "address": "780 N McDonnell Rd, San Francisco, 94128-3103, US",
+      "city": "San Francisco",
+      "countryCode": "US",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "06:00 AM - 01:00 AM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "06:00 AM - 01:00 AM"
+        }
+      ]
+    },
+    {
+      "id": "san-francisco-mission-district",
+      "name": "San Francisco Mission District",
+      "address": "475 S Van Ness Ave, San Francisco, 94103-3629, US",
+      "city": "San Francisco",
+      "countryCode": "US",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "08:00 AM - 05:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "08:00 AM - 03:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 03:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "stockholm-arlanda-airport",
+      "name": "Stockholm Arlanda Airport",
+      "address": "Beta car park, Vingvägen 4, Stockholm, 190 60, SE",
+      "city": "Stockholm",
+      "countryCode": "SE",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "07:00 AM - 11:59 PM"
+        },
+        {
+          "days": "Sat",
+          "hours": "07:00 AM - 07:00 PM"
+        },
+        {
+          "days": "Sun",
+          "hours": "07:00 AM - 11:59 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "07:00 AM - 07:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "stockholm-central-train-station",
+      "name": "Stockholm Central Train Station",
+      "address": "Sheraton Hotel, Vasagatan 4, Stockholm, 111 20, SE",
+      "city": "Stockholm",
+      "countryCode": "SE",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Wed",
+          "hours": "07:00 AM - 07:00 PM"
+        },
+        {
+          "days": "Thu - Fri",
+          "hours": "07:00 AM - 08:00 PM"
+        },
+        {
+          "days": "Sat",
+          "hours": "08:00 AM - 04:00 PM"
+        },
+        {
+          "days": "Sun",
+          "hours": "10:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 04:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "stockholm-danderyd",
+      "name": "Stockholm Danderyd",
+      "address": "Ryttarvägen 4, Danderyd, 182 36, SE",
+      "city": "Stockholm",
+      "countryCode": "SE",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "07:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "Closed"
+        },
+        {
+          "days": "Holidays",
+          "hours": "Closed"
+        }
+      ]
+    },
+    {
+      "id": "stockholm-odenplan",
+      "name": "Stockholm Odenplan",
+      "address": "Norrtullsgatan 21, Stockholm, 113 27, SE",
+      "city": "Stockholm",
+      "countryCode": "SE",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "07:00 AM - 06:00 PM"
+        },
+        {
+          "days": "Sat",
+          "hours": "09:00 AM - 01:00 PM"
+        },
+        {
+          "days": "Sun",
+          "hours": "Closed"
+        },
+        {
+          "days": "Holidays",
+          "hours": "09:00 AM - 01:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "vienna-central-train-station",
+      "name": "Vienna Central Train Station",
+      "address": "Am Hauptbahnhof 1, Wien, 1100, AT",
+      "city": "Vienna",
+      "countryCode": "AT",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "vienna-gerasdorf",
+      "name": "Vienna Gerasdorf",
+      "address": "Wilhelm-Hornbach-Straße 2, Gerasdorf bei Wien, 2201, AT",
+      "city": "Vienna",
+      "countryCode": "AT",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "vienna-liesing",
+      "name": "Vienna Liesing",
+      "address": "Liesinger-Flur-Gasse 17, Wien, 1230, AT",
+      "city": "Vienna",
+      "countryCode": "AT",
+      "kind": "downtown",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "Open 24 hours"
+        }
+      ]
+    },
+    {
+      "id": "vienna-west-train-station",
+      "name": "Vienna West Train Station",
+      "address": "Felberstr. 1, Wien, 1150, AT",
+      "city": "Vienna",
+      "countryCode": "AT",
+      "kind": "trainStation",
+      "openingHours": [
+        {
+          "days": "Mon - Fri",
+          "hours": "06:00 AM - 07:00 PM"
+        },
+        {
+          "days": "Sat - Sun",
+          "hours": "08:00 AM - 04:00 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "08:00 AM - 04:00 PM"
+        }
+      ]
+    },
+    {
+      "id": "vienna-schwechat-airport",
+      "name": "Vienna-Schwechat Airport",
+      "address": "Mietwagenzentrum,Objekt 134,P4, Wien-Schwechat, 1300, AT",
+      "city": "Vienna",
+      "countryCode": "AT",
+      "kind": "airport",
+      "openingHours": [
+        {
+          "days": "Mon - Sun",
+          "hours": "06:00 AM - 11:59 PM"
+        },
+        {
+          "days": "Holidays",
+          "hours": "06:00 AM - 11:59 PM"
+        }
+      ]
+    }
+  ]
+}

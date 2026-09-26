@@ -6,14 +6,30 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		4D3CDE3E4ED736C721ED2085 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84F6A27FBD3A887EB2228E91 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D86A373AA17D823EFC458525;
+			remoteInfo = MobilityLab;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		058AD57032506DA37A88CA44 /* MobilityLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobilityLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD372065F1CD81CB58C669A6 /* MobilityLabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobilityLabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C4611AFEEE4DA46034D74B08 /* MobilityLab */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = MobilityLab;
+			sourceTree = "<group>";
+		};
+		BEEB673578FCEDA17DD3ED27 /* MobilityLabTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MobilityLabTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -33,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				C4611AFEEE4DA46034D74B08 /* MobilityLab */,
+				BEEB673578FCEDA17DD3ED27 /* MobilityLabTests */,
 				9AEAC0BA67A2175CE645754E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				058AD57032506DA37A88CA44 /* MobilityLab.app */,
+				DD372065F1CD81CB58C669A6 /* MobilityLabTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +88,27 @@
 			productReference = 058AD57032506DA37A88CA44 /* MobilityLab.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E38F35364F4C7A8B9C55119C /* MobilityLabTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 199E6894315DF2BDC7BC88B5 /* Build configuration list for PBXNativeTarget "MobilityLabTests" */;
+			buildPhases = (
+				95B97D14EAE3241E3BDE0688 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F98D951FB1333259941FFC0 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BEEB673578FCEDA17DD3ED27 /* MobilityLabTests */,
+			);
+			name = MobilityLabTests;
+			packageProductDependencies = (
+			);
+			productName = MobilityLabTests;
+			productReference = DD372065F1CD81CB58C669A6 /* MobilityLabTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +121,10 @@
 				TargetAttributes = {
 					D86A373AA17D823EFC458525 = {
 						CreatedOnToolsVersion = 27.0;
+					};
+					E38F35364F4C7A8B9C55119C = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = D86A373AA17D823EFC458525;
 					};
 				};
 			};
@@ -100,6 +143,7 @@
 			projectRoot = "";
 			targets = (
 				D86A373AA17D823EFC458525 /* MobilityLab */,
+				E38F35364F4C7A8B9C55119C /* MobilityLabTests */,
 			);
 		};
 /* End PBXProject section */
@@ -122,7 +166,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		95B97D14EAE3241E3BDE0688 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5F98D951FB1333259941FFC0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D86A373AA17D823EFC458525 /* MobilityLab */;
+			targetProxy = 4D3CDE3E4ED736C721ED2085 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		23F13BCBA8AC764C81EFE8E1 /* Debug */ = {
@@ -310,6 +369,48 @@
 			};
 			name = Release;
 		};
+		C12C64816C59095163F3F161 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hermanhaidin.mobilitylabTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobilityLab.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MobilityLab";
+			};
+			name = Debug;
+		};
+		322FE2EB44A58E36F6BC8507 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hermanhaidin.mobilitylabTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MobilityLab.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MobilityLab";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -327,6 +428,15 @@
 			buildConfigurations = (
 				7B1EB0069A8A385E6E2EA4AD /* Debug */,
 				391C8629E96FB248C7789E3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		199E6894315DF2BDC7BC88B5 /* Build configuration list for PBXNativeTarget "MobilityLabTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C12C64816C59095163F3F161 /* Debug */,
+				322FE2EB44A58E36F6BC8507 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,0 +1,394 @@
+[
+  {
+    "code": "USD",
+    "rate": 1
+  },
+  {
+    "code": "ALL",
+    "rate": 79.2834
+  },
+  {
+    "code": "DZD",
+    "rate": 133.054
+  },
+  {
+    "code": "AOA",
+    "rate": 926.236
+  },
+  {
+    "code": "ARS",
+    "rate": 1511.53
+  },
+  {
+    "code": "AMD",
+    "rate": 365.147
+  },
+  {
+    "code": "AWG",
+    "rate": 1.79
+  },
+  {
+    "code": "AUD",
+    "rate": 1.39695
+  },
+  {
+    "code": "AZN",
+    "rate": 1.69983
+  },
+  {
+    "code": "BHD",
+    "rate": 0.376
+  },
+  {
+    "code": "BBD",
+    "rate": 2
+  },
+  {
+    "code": "BYN",
+    "rate": 3.01004
+  },
+  {
+    "code": "BOB",
+    "rate": 11.5055
+  },
+  {
+    "code": "BAM",
+    "rate": 1.67597
+  },
+  {
+    "code": "BWP",
+    "rate": 13.6585
+  },
+  {
+    "code": "BRL",
+    "rate": 5.1545
+  },
+  {
+    "code": "GBP",
+    "rate": 0.733061
+  },
+  {
+    "code": "CAD",
+    "rate": 1.38396
+  },
+  {
+    "code": "KYD",
+    "rate": 0.833333
+  },
+  {
+    "code": "XPF",
+    "rate": 102.257
+  },
+  {
+    "code": "CLP",
+    "rate": 913.136
+  },
+  {
+    "code": "CNY",
+    "rate": 6.73701
+  },
+  {
+    "code": "COP",
+    "rate": 3062.96
+  },
+  {
+    "code": "CRC",
+    "rate": 453.27
+  },
+  {
+    "code": "CZK",
+    "rate": 20.6418
+  },
+  {
+    "code": "DKK",
+    "rate": 6.40946
+  },
+  {
+    "code": "DJF",
+    "rate": 177.721
+  },
+  {
+    "code": "DOP",
+    "rate": 58.7068
+  },
+  {
+    "code": "XCD",
+    "rate": 2.7
+  },
+  {
+    "code": "EGP",
+    "rate": 50.4232
+  },
+  {
+    "code": "EUR",
+    "rate": 0.856908
+  },
+  {
+    "code": "GEL",
+    "rate": 2.61169
+  },
+  {
+    "code": "GHS",
+    "rate": 11.182
+  },
+  {
+    "code": "HTG",
+    "rate": 130.746
+  },
+  {
+    "code": "HNL",
+    "rate": 26.8174
+  },
+  {
+    "code": "HKD",
+    "rate": 7.83851
+  },
+  {
+    "code": "HUF",
+    "rate": 309.788
+  },
+  {
+    "code": "ISK",
+    "rate": 120.917
+  },
+  {
+    "code": "INR",
+    "rate": 95.4276
+  },
+  {
+    "code": "IRR",
+    "rate": 1470794
+  },
+  {
+    "code": "IQD",
+    "rate": 1309.85
+  },
+  {
+    "code": "ILS",
+    "rate": 2.97814
+  },
+  {
+    "code": "JMD",
+    "rate": 158.437
+  },
+  {
+    "code": "JPY",
+    "rate": 159.247
+  },
+  {
+    "code": "JOD",
+    "rate": 0.709
+  },
+  {
+    "code": "KZT",
+    "rate": 457.551
+  },
+  {
+    "code": "KES",
+    "rate": 129.456
+  },
+  {
+    "code": "KWD",
+    "rate": 0.308447
+  },
+  {
+    "code": "LAK",
+    "rate": 22278.2
+  },
+  {
+    "code": "LBP",
+    "rate": 89500
+  },
+  {
+    "code": "LRD",
+    "rate": 181.435
+  },
+  {
+    "code": "LYD",
+    "rate": 6.32674
+  },
+  {
+    "code": "MKD",
+    "rate": 52.4733
+  },
+  {
+    "code": "MYR",
+    "rate": 4.04675
+  },
+  {
+    "code": "MUR",
+    "rate": 46.7479
+  },
+  {
+    "code": "MXN",
+    "rate": 16.9467
+  },
+  {
+    "code": "MDL",
+    "rate": 17.2471
+  },
+  {
+    "code": "MNT",
+    "rate": 3631.75
+  },
+  {
+    "code": "MAD",
+    "rate": 9.24868
+  },
+  {
+    "code": "MZN",
+    "rate": 63.7163
+  },
+  {
+    "code": "NAD",
+    "rate": 15.9414
+  },
+  {
+    "code": "NPR",
+    "rate": 152.683
+  },
+  {
+    "code": "ANG",
+    "rate": 1.79
+  },
+  {
+    "code": "TWD",
+    "rate": 31.8477
+  },
+  {
+    "code": "NZD",
+    "rate": 1.67443
+  },
+  {
+    "code": "NIO",
+    "rate": 36.7975
+  },
+  {
+    "code": "NGN",
+    "rate": 1350.75
+  },
+  {
+    "code": "NOK",
+    "rate": 9.31795
+  },
+  {
+    "code": "OMR",
+    "rate": 0.384497
+  },
+  {
+    "code": "PKR",
+    "rate": 277.526
+  },
+  {
+    "code": "PAB",
+    "rate": 1
+  },
+  {
+    "code": "PYG",
+    "rate": 6012.2
+  },
+  {
+    "code": "PEN",
+    "rate": 3.35221
+  },
+  {
+    "code": "PHP",
+    "rate": 61.685
+  },
+  {
+    "code": "PLN",
+    "rate": 3.68754
+  },
+  {
+    "code": "QAR",
+    "rate": 3.64
+  },
+  {
+    "code": "RON",
+    "rate": 4.504
+  },
+  {
+    "code": "SAR",
+    "rate": 3.75
+  },
+  {
+    "code": "RSD",
+    "rate": 100.581
+  },
+  {
+    "code": "SCR",
+    "rate": 14.2116
+  },
+  {
+    "code": "SGD",
+    "rate": 1.26962
+  },
+  {
+    "code": "ZAR",
+    "rate": 15.9415
+  },
+  {
+    "code": "KRW",
+    "rate": 1383.12
+  },
+  {
+    "code": "LKR",
+    "rate": 328.459
+  },
+  {
+    "code": "SEK",
+    "rate": 9.47513
+  },
+  {
+    "code": "CHF",
+    "rate": 0.802198
+  },
+  {
+    "code": "SYP",
+    "rate": 121.695
+  },
+  {
+    "code": "TZS",
+    "rate": 2619.72
+  },
+  {
+    "code": "THB",
+    "rate": 32.7185
+  },
+  {
+    "code": "TTD",
+    "rate": 6.77542
+  },
+  {
+    "code": "TND",
+    "rate": 2.89888
+  },
+  {
+    "code": "TRY",
+    "rate": 48.1083
+  },
+  {
+    "code": "UAH",
+    "rate": 44.676
+  },
+  {
+    "code": "AED",
+    "rate": 3.6725
+  },
+  {
+    "code": "UYU",
+    "rate": 40.1039
+  },
+  {
+    "code": "UZS",
+    "rate": 11802.9
+  },
+  {
+    "code": "VND",
+    "rate": 26059.9
+  },
+  {
+    "code": "XOF",
+    "rate": 562.095
+  }
+]

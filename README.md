@@ -9,7 +9,7 @@ A SIXT product owner describes a change in plain words. Claude builds it into a 
 - **Nothing to install but Xcode.** No dependencies, no packages.
 - **Made for Claude Code.** [CLAUDE.md](CLAUDE.md) tells Claude how to work with someone who has never seen Swift.
 
-**Status:** early. The five-tab shell runs. The Rent funnel is next: search, offers, protection, add-ons, and booking.
+**Status:** early. The Rent tab's home screen works: search, station picker, station details, login, and settings. The rest of the Rent funnel is next: offers, protection, add-ons, and booking.
 
 Mobility Lab is an independent project, not an official SIXT product. See [License](#license).
 
@@ -71,7 +71,8 @@ Open `MobilityLab.xcodeproj` and run the `MobilityLab` scheme. No setup, no pack
 - iOS 26, Swift 6 with MainActor default isolation, iPhone only.
 - SwiftUI and Observation. UIKit only where SwiftUI has no stock equivalent.
 - One folder per tab under `MobilityLab/`. Folders are synced, so new files need no project file changes.
-- No server calls. Data comes from JSON files in the repo; images load from URLs on SIXT's servers.
+- No server calls. Data comes from JSON files in `MobilityLab/MockData`; images load from URLs on SIXT's servers.
+- `MobilityLabTests` checks the JSON files. Run the tests after editing them.
 
 [CLAUDE.md](CLAUDE.md) has the full conventions. Point your own Claude at the folder and it will follow them.
 

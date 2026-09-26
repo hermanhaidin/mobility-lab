@@ -36,19 +36,43 @@ If the person is clearly an engineer (they talk about code or ask for diffs), wo
 - Swift 6, strict concurrency, MainActor by default.
 - SwiftUI with Observation: `@Observable`, `@State`, `@Environment`. No `ObservableObject`. UIKit only where SwiftUI has no stock equivalent.
 - No dependencies, no packages.
-- No network calls, except loading images from URLs. Don't add photos to the project unless the person asks for a custom image.
+- No network calls, except loading photos (see [Fake backend](#fake-backend)).
 - One type per file, named after the type. Every view file ends with a `#Preview`.
+- Name views after what they are, not how they're shown: `LocationPicker`, not `LocationPickerSheet`.
+- A screen or row without a design yet opens `PlaceholderView`.
 - Write the minimum code the request needs, and touch only what the change needs.
 
 ## Project layout
 
 - `MobilityLab.xcodeproj`: folders are synced, so new files are picked up automatically. Don't edit `project.pbxproj` unless there's no other way.
-- `MobilityLab/ContentView.swift`: the five-tab shell (Rent, Trips, Share, Ride, Subscribe).
-- `MobilityLab/<Tab>/`: one folder per tab. A tab's screens go in its folder.
-- `MobilityLab/Assets.xcassets`: the accent color.
+- `MobilityLab/ContentView.swift`: the tab shell (Rent, Trips, Share, Ride, Subscribe).
+- `MobilityLab/Rent/`: the Rent tab: search card, location picker, station details, promotions, offers.
+- `MobilityLab/Account/`: login and settings.
+- `MobilityLab/Trips/`, `Share/`, `Ride/`, `Subscribe/`: placeholder tabs.
+- `MobilityLab/Models/`: the data types, like `Station` and `RentSearch`.
+- `MobilityLab/MockData/`: the fake backend, as JSON files. `Services/MockData.swift` loads them.
+- `MobilityLab/Shared/`: views used across tabs, like `RemoteImage` and `PlaceholderView`.
+- `MobilityLab/Assets.xcassets`: the accent color and the SIXT logo.
 - `MobilityLab/AppIcon.icon`: the app icon, made in Icon Composer.
+- `MobilityLabTests/`: checks that the fake backend is valid.
 
 The current scope lives in the README's **Status** line. Update it when the scope changes.
+
+## Fake backend
+
+- Content lives in JSON files in `MobilityLab/MockData`. To change stations, promotions, or texts, edit the JSON, not the Swift code.
+  - `stations.json`: every station, plus the default pick-up station, the "current location" station, and the starting search history.
+  - `station-details.json`: the directions and return text all stations share.
+  - `rent-home.json`: the Rent tab's hero photos and "Recommended for you" cards. `zoom` and `focusY` frame a hero photo; `imageCrop` (`top`, `center`, `bottom`) picks which part of a card photo stays visible.
+  - `countries.json`, `currencies.json`: codes and exchange rates only.
+- Get anything generic from the system instead of JSON: country and currency names, flags, and formatting for dates, money, and distances. Only SIXT-specific data belongs in JSON.
+- Photos load from URLs on SIXT's servers through `RemoteImage`. Use `null` until there's a URL; the screen shows a placeholder. Only add a photo file to the project if the person asks for a custom image.
+
+## Tests
+
+- After changing anything in `MockData`, run the tests: `xcodebuild test -scheme MobilityLab -destination 'platform=iOS Simulator,name=<simulator>'`.
+- If a test fails, fix the data and tell the person what was wrong in product terms ("Two stations had the same ID").
+- If a test fails because the person deliberately changed a rule, update the test and mention the change in `HANDOFF.md`.
 
 ## Handoff
 

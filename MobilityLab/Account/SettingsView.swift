@@ -1,0 +1,99 @@
+import SwiftUI
+
+/// App settings, opened from the login sheet. Rows without a design yet open a placeholder.
+struct SettingsView: View {
+    @AppStorage(SettingsKey.appearance) private var appearance = Appearance.system
+    @AppStorage(SettingsKey.currencyCode) private var currencyCode = "USD"
+    @AppStorage(SettingsKey.countryCode) private var countryCode = "US"
+    @AppStorage(SettingsKey.showsAllServices) private var showsAllServices = true
+
+    var body: some View {
+        List {
+            Section {
+                NavigationLink {
+                    PlaceholderView(title: "Help center", systemImage: "headphones")
+                } label: {
+                    Label("Help center", systemImage: "headphones")
+                }
+
+                Picker(selection: $appearance) {
+                    ForEach(Appearance.allCases) { appearance in
+                        Text(appearance.title).tag(appearance)
+                    }
+                } label: {
+                    Label("Appearance", systemImage: "paintbrush.fill")
+                }
+
+                Picker(selection: $currencyCode) {
+                    ForEach(currencies, id: \.code) { currency in
+                        Text(currency.name).tag(currency.code)
+                    }
+                } label: {
+                    Label("Preferred currency", systemImage: "creditcard.fill")
+                }
+
+                Picker(selection: $countryCode) {
+                    ForEach(countries, id: \.code) { country in
+                        Text("\(Locale.Region(country.code).flag) \(country.name)").tag(country.code)
+                    }
+                } label: {
+                    Label("Country", systemImage: "globe.europe.africa.fill")
+                }
+
+                NavigationLink {
+                    PlaceholderView(title: "About this App", systemImage: "info.circle")
+                } label: {
+                    Label("About this App", systemImage: "info.circle")
+                }
+
+                NavigationLink {
+                    PlaceholderView(title: "Privacy settings", systemImage: "shield.lefthalf.filled")
+                } label: {
+                    Label("Privacy settings", systemImage: "shield.lefthalf.filled")
+                }
+
+                NavigationLink {
+                    PlaceholderView(title: "Communication preferences", systemImage: "bubble.left")
+                } label: {
+                    Label("Communication preferences", systemImage: "bubble.left")
+                }
+
+                Toggle(isOn: $showsAllServices) {
+                    Label("Show all SIXT services", systemImage: "plus.magnifyingglass")
+                }
+                .tint(Color(.accent))
+            } footer: {
+                Text(versionText)
+            }
+        }
+        .pickerStyle(.navigationLink)
+        .tint(.primary)
+        .navigationTitle("Settings")
+    }
+
+    private var currencies: [(code: String, name: String)] {
+        MockData.currencies
+            .map { (code: $0.code, name: Locale.current.localizedString(forCurrencyCode: $0.code) ?? $0.code) }
+            .sorted { $0.name < $1.name }
+    }
+
+    private var countries: [(code: String, name: String)] {
+        MockData.countryCodes
+            .map { (code: $0, name: Locale.current.localizedString(forRegionCode: $0) ?? $0) }
+            .sorted { $0.name < $1.name }
+    }
+
+    private var versionText: String {
+        let info = Bundle.main.infoDictionary ?? [:]
+        let bundleID = Bundle.main.bundleIdentifier ?? ""
+        let version = info["CFBundleShortVersionString"] as? String ?? ""
+        let build = info["CFBundleVersion"] as? String ?? ""
+        return "App version \(bundleID) | v\(version) (\(build))"
+    }
+}
+
+#Preview {
+    NavigationStack {
+        SettingsView()
+    }
+}

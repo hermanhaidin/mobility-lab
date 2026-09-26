@@ -1,0 +1,21 @@
+{
+  "carsHero": {
+    "url": "https://img.sixt.com/1600/3603235d-9c7d-4ad5-b534-2b83cbab7b4f.png",
+    "zoom": 1.05,
+    "focusY": 0.54
+  },
+  "trucksHero": {
+    "url": "https://img.sixt.com/1600/73b0458b-808f-476b-995d-8fd40465abba.png",
+    "zoom": 1.1,
+    "focusY": 0.47
+  },
+  "promotions": [
+    {
+      "id": "early-bird",
+      "title": "Early bird",
+      "text": "Booking ahead could pay off. Selecting a time further in the future could unlock available early bird promotions. All deals will be clearly labeled.",
+      "imageURL": "https://img.sixt.com/1200/76124da6-3e79-4f50-9733-3f6f79d1c1c6.jpg",
+      "imageCrop": "bottom"
+    }
+  ]
+}
