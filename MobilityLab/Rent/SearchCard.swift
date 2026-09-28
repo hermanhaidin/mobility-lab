@@ -3,6 +3,7 @@ import SwiftUI
 /// The search card on the Rent tab: vehicle type, stations, dates, and driver age.
 struct SearchCard: View {
     @Bindable var search: RentSearch
+    let onSearch: () -> Void
     let onLogin: () -> Void
 
     @State private var editedStation: StationRole?
@@ -18,9 +19,21 @@ struct SearchCard: View {
             .pickerStyle(.segmented)
 
             VStack(spacing: 0) {
-                pickUpRow
+                PickUpStationRow(station: search.pickUpStation) {
+                    editedStation = .pickUp
+                } onShowDetails: {
+                    detailStation = search.pickUpStation
+                }
+                .padding(.horizontal)
+                .frame(minHeight: 52)
                 separator
-                returnRow
+                ReturnStationRow(station: search.returnStation) {
+                    editedStation = .return
+                } onRemove: {
+                    search.returnStation = nil
+                }
+                .padding(.horizontal)
+                .frame(minHeight: 52)
                 separator
                 DatePicker(selection: $search.pickUpDate, in: Date.now...) {
                     Text("Pick-up").fontWeight(.semibold)
@@ -37,9 +50,7 @@ struct SearchCard: View {
             .background(Color(.tertiarySystemBackground), in: .rect(cornerRadius: 26))
 
             VStack(spacing: 8) {
-                NavigationLink {
-                    OfferListView()
-                } label: {
+                Button(action: onSearch) {
                     Text("Search offers")
                         .frame(maxWidth: .infinity)
                 }
@@ -64,85 +75,12 @@ struct SearchCard: View {
         .shadow(color: .black.opacity(0.25), radius: 12, y: 8)
         .sheet(item: $editedStation) { role in
             LocationPicker(title: role.title, recentStations: search.recentStations) { station in
-                search.remember(station)
-                switch role {
-                case .pickUp: search.pickUpStation = station
-                case .return: search.returnStation = station
-                }
+                search.pick(station, as: role)
             }
         }
         .sheet(item: $detailStation) { station in
             StationDetailView(station: station)
         }
-    }
-
-    private var pickUpRow: some View {
-        HStack(spacing: 12) {
-            Button {
-                editedStation = .pickUp
-            } label: {
-                stationLabel(search.pickUpStation)
-            }
-
-            Button("Station details", systemImage: "info.circle") {
-                detailStation = search.pickUpStation
-            }
-            .labelStyle(.iconOnly)
-        }
-        .buttonStyle(.plain)
-        .padding(.horizontal)
-        .frame(minHeight: 52)
-    }
-
-    @ViewBuilder
-    private var returnRow: some View {
-        if let returnStation = search.returnStation {
-            HStack(spacing: 12) {
-                Button {
-                    editedStation = .return
-                } label: {
-                    stationLabel(returnStation)
-                }
-
-                Button("Remove return station", systemImage: "xmark.circle.fill") {
-                    search.returnStation = nil
-                }
-                .labelStyle(.iconOnly)
-                .foregroundStyle(.secondary)
-            }
-            .buttonStyle(.plain)
-            .padding(.horizontal)
-            .frame(minHeight: 52)
-        } else {
-            Button {
-                editedStation = .return
-            } label: {
-                HStack(spacing: 12) {
-                    Image(systemName: "plus")
-                        .frame(width: 24)
-                    Text("Optional different return station")
-                        .lineLimit(1)
-                    Spacer(minLength: 0)
-                }
-                .foregroundStyle(.secondary)
-                .contentShape(.rect)
-            }
-            .buttonStyle(.plain)
-            .padding(.horizontal)
-            .frame(minHeight: 52)
-        }
-    }
-
-    private func stationLabel(_ station: Station) -> some View {
-        HStack(spacing: 12) {
-            Image(systemName: station.kind.symbol)
-                .frame(width: 24)
-            Text(station.name)
-                .fontWeight(.semibold)
-                .lineLimit(1)
-            Spacer(minLength: 0)
-        }
-        .contentShape(.rect)
     }
 
     private var ageMenu: some View {
@@ -170,23 +108,7 @@ struct SearchCard: View {
     }
 }
 
-/// Which station the location picker is choosing.
-private enum StationRole: Identifiable {
-    case pickUp, `return`
-
-    var id: Self { self }
-
-    var title: String {
-        switch self {
-        case .pickUp: "Pickup location"
-        case .return: "Return location"
-        }
-    }
-}
-
 #Preview {
-    NavigationStack {
-        SearchCard(search: RentSearch()) {}
-            .padding()
-    }
+    SearchCard(search: RentSearch()) {} onLogin: {}
+        .padding()
 }

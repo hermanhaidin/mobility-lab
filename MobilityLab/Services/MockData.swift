@@ -8,6 +8,16 @@ enum MockData {
     /// ISO country codes for the country picker in Settings. Names and flags come from the system.
     static let countryCodes: [String] = loadOrCrash("countries")
     static let currencies: [Currency] = loadOrCrash("currencies")
+    static let offers: OfferCatalog = loadOrCrash("offers")
+    static let stationProfiles: [String: StationProfile] = loadOrCrash("station-profiles")
+
+    /// The cars or trucks a station has, picked by the station's profile.
+    static func offers(at station: Station, for vehicleType: VehicleType) -> [Offer] {
+        guard let profile = stationProfiles[station.profileID] else {
+            fatalError("stations.json gives \(station.name) the profile \"\(station.profileID)\", which isn't in station-profiles.json.")
+        }
+        return offers.offers(for: vehicleType, profile: profile)
+    }
 
     /// Decodes `<name>.json` from the app bundle.
     static func load<T: Decodable>(_ name: String) throws -> T {

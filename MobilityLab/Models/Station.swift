@@ -35,5 +35,7 @@ nonisolated struct Station: Codable, Hashable, Identifiable {
     let city: String
     let countryCode: String
     let kind: Kind
+    /// The profile in `station-profiles.json` that picks this station's offers, like "mega-airport".
+    let profileID: String
     let openingHours: [OpeningHours]
 }

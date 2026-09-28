@@ -3,6 +3,7 @@ import SwiftUI
 /// The Rent tab: a hero photo, the search card, and recommendations.
 struct RentView: View {
     @State private var search = RentSearch()
+    @State private var isShowingOffers = false
     @State private var isShowingLogin = false
 
     private let home = MockData.rentHome
@@ -12,6 +13,8 @@ struct RentView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 32) {
                     SearchCard(search: search) {
+                        isShowingOffers = true
+                    } onLogin: {
                         isShowingLogin = true
                     }
 
@@ -50,6 +53,9 @@ struct RentView: View {
             }
             .sheet(isPresented: $isShowingLogin) {
                 LoginView()
+            }
+            .fullScreenCover(isPresented: $isShowingOffers) {
+                OfferListView(search: search)
             }
         }
     }

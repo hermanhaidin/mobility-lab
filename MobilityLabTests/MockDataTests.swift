@@ -4,7 +4,7 @@ import Testing
 
 /// Checks the JSON files in `MockData`. When one of these fails, the message says which file and entry to fix.
 struct MockDataTests {
-    @Test(arguments: ["stations", "station-details", "rent-home", "countries", "currencies"])
+    @Test(arguments: ["stations", "station-details", "rent-home", "countries", "currencies", "offers", "station-profiles"])
     func fileLoads(_ name: String) throws {
         switch name {
         case "stations": let _: StationCatalog = try MockData.load(name)
@@ -12,6 +12,8 @@ struct MockDataTests {
         case "rent-home": let _: RentHome = try MockData.load(name)
         case "countries": let _: [String] = try MockData.load(name)
         case "currencies": let _: [Currency] = try MockData.load(name)
+        case "offers": let _: OfferCatalog = try MockData.load(name)
+        case "station-profiles": let _: [String: StationProfile] = try MockData.load(name)
         default: Issue.record("Add a check for \(name).json")
         }
     }
@@ -49,6 +51,77 @@ struct MockDataTests {
         for currency in currencies {
             #expect(Locale.Currency(currency.code).isISOCurrency, "currencies.json has \"\(currency.code)\", which isn't a currency code")
             #expect(currency.rate > 0, "\(currency.code) in currencies.json needs a rate above zero")
+        }
+    }
+
+    // MARK: - Offers and station profiles
+
+    @Test func offerIDsAreUnique() throws {
+        let catalog: OfferCatalog = try MockData.load("offers")
+        let duplicates = Dictionary(grouping: catalog.cars + catalog.trucks, by: \.id).filter { $0.value.count > 1 }.keys
+        #expect(duplicates.isEmpty, "offers.json has more than one offer with the id \(duplicates.sorted())")
+    }
+
+    @Test(arguments: VehicleType.allCases)
+    func offersHaveTheSpecsTheirCardShows(_ vehicleType: VehicleType) throws {
+        let catalog: OfferCatalog = try MockData.load("offers")
+        for offer in catalog.offers(for: vehicleType) {
+            #expect(offer.vehicleType == vehicleType, "\(offer.name) is under \(vehicleType.rawValue) in offers.json, but its body style \(offer.bodyStyle?.rawValue ?? "is missing")")
+            switch vehicleType {
+            case .cars:
+                #expect(offer.seats != nil && offer.suitcases != nil, "\(offer.name) in offers.json needs seats and suitcases")
+            case .trucks:
+                #expect(offer.grossWeightKg != nil && offer.licenseClass != nil, "\(offer.name) in offers.json needs a gross weight and a license class")
+            }
+        }
+    }
+
+    @Test func offerPricesAndAgesAreValid() throws {
+        let catalog: OfferCatalog = try MockData.load("offers")
+        let ages = RentSearch.driverAges
+        for offer in catalog.cars + catalog.trucks {
+            #expect(offer.pricePerDay > 0, "\(offer.name) in offers.json needs a price above zero")
+            #expect(ages.contains(offer.minDriverAge), "\(offer.name) in offers.json needs a minimum driver age from \(ages.lowerBound) to \(ages.upperBound)")
+            if let includedKilometers = offer.includedKilometers {
+                #expect(includedKilometers > 0, "\(offer.name) in offers.json includes \(includedKilometers) kilometers. Leave it out for unlimited kilometers")
+            }
+        }
+    }
+
+    @Test func everyModelLabelHasADescription() throws {
+        let catalog: OfferCatalog = try MockData.load("offers")
+        for model in Offer.Model.allCases {
+            #expect(catalog.modelDescriptions[model]?.isEmpty == false, "offers.json needs a model description for \(model.rawValue)")
+        }
+    }
+
+    @Test func everyStationHasAKnownProfile() throws {
+        let catalog: StationCatalog = try MockData.load("stations")
+        let profiles: [String: StationProfile] = try MockData.load("station-profiles")
+        for station in catalog.stations {
+            #expect(profiles[station.profileID] != nil, "\(station.name) in stations.json has the profile \"\(station.profileID)\", which isn't in station-profiles.json")
+        }
+    }
+
+    @Test(arguments: VehicleType.allCases)
+    func profileCategoriesHaveOffers(_ vehicleType: VehicleType) throws {
+        let catalog: OfferCatalog = try MockData.load("offers")
+        let profiles: [String: StationProfile] = try MockData.load("station-profiles")
+        let categories = Set(catalog.offers(for: vehicleType).map(\.category))
+        for (id, profile) in profiles {
+            for category in profile.quotas(for: vehicleType).keys {
+                #expect(categories.contains(category), "The \(id) profile in station-profiles.json counts \"\(category)\" \(vehicleType.rawValue), but no offer in offers.json has that category")
+            }
+        }
+    }
+
+    @Test func everyStationHasCars() throws {
+        let stations: StationCatalog = try MockData.load("stations")
+        let catalog: OfferCatalog = try MockData.load("offers")
+        let profiles: [String: StationProfile] = try MockData.load("station-profiles")
+        for station in stations.stations {
+            guard let profile = profiles[station.profileID] else { continue }
+            #expect(!catalog.offers(for: .cars, profile: profile).isEmpty, "\(station.name) shows no cars. Give the \(station.profileID) profile in station-profiles.json some car quotas")
         }
     }
 }

@@ -1,0 +1,181 @@
+{
+  "mega-airport": {
+    "cars": {
+      "economy-sedan": 2,
+      "economy-suv": 1,
+      "economy-convertible": 1,
+      "compact-sedan": 2,
+      "compact-suv": 3,
+      "compact-wagon": 2,
+      "compact-convertible": 2,
+      "compact-van": 1,
+      "midsize-sedan": 2,
+      "midsize-suv": 5,
+      "midsize-wagon": 1,
+      "midsize-van": 1,
+      "standard-suv": 3,
+      "standard-wagon": 1,
+      "standard-van": 1,
+      "full-size-sedan": 1,
+      "full-size-suv": 2,
+      "full-size-wagon": 2,
+      "full-size-coupe": 1,
+      "full-size-convertible": 1,
+      "premium-sedan": 1,
+      "premium-suv": 5,
+      "premium-wagon": 2,
+      "premium-convertible": 1,
+      "premium-van": 1,
+      "premium-mystery": 1,
+      "luxury-suv": 4,
+      "luxury-van": 3,
+      "extraordinary-sedan": 2,
+      "extraordinary-suv": 1,
+      "sports-sedan": 2,
+      "sports-wagon": 1,
+      "sports-suv": 7,
+      "sports-coupe": 4,
+      "sports-convertible": 1
+    },
+    "trucks": {
+      "small-cargo-van": 5,
+      "large-cargo-van": 4,
+      "moving-truck": 2,
+      "heavy-truck": 3
+    }
+  },
+  "large-airport": {
+    "cars": {
+      "economy-sedan": 2,
+      "economy-suv": 1,
+      "economy-convertible": 1,
+      "compact-sedan": 3,
+      "compact-suv": 2,
+      "compact-wagon": 1,
+      "compact-convertible": 1,
+      "compact-van": 1,
+      "midsize-sedan": 2,
+      "midsize-suv": 3,
+      "midsize-wagon": 1,
+      "midsize-van": 1,
+      "standard-suv": 2,
+      "standard-wagon": 1,
+      "standard-van": 1,
+      "full-size-sedan": 1,
+      "full-size-suv": 1,
+      "full-size-wagon": 1,
+      "full-size-coupe": 1,
+      "full-size-convertible": 1,
+      "premium-sedan": 1,
+      "premium-suv": 2,
+      "premium-wagon": 1,
+      "premium-convertible": 1,
+      "luxury-suv": 2,
+      "luxury-van": 1,
+      "sports-suv": 2,
+      "sports-coupe": 2
+    },
+    "trucks": {
+      "small-cargo-van": 3,
+      "large-cargo-van": 3,
+      "moving-truck": 1,
+      "heavy-truck": 1
+    }
+  },
+  "large-train": {
+    "cars": {
+      "economy-sedan": 2,
+      "economy-suv": 1,
+      "compact-sedan": 3,
+      "compact-suv": 2,
+      "compact-wagon": 1,
+      "compact-mystery": 1,
+      "midsize-sedan": 2,
+      "midsize-suv": 3,
+      "midsize-wagon": 1,
+      "midsize-van": 1,
+      "standard-suv": 1,
+      "standard-wagon": 1,
+      "full-size-van": 1,
+      "premium-sedan": 1,
+      "premium-suv": 2,
+      "premium-wagon": 1,
+      "luxury-suv": 2
+    },
+    "trucks": {
+      "small-cargo-van": 2,
+      "large-cargo-van": 2,
+      "moving-truck": 1
+    }
+  },
+  "large-city": {
+    "cars": {
+      "economy-sedan": 1,
+      "economy-suv": 1,
+      "economy-convertible": 1,
+      "compact-sedan": 3,
+      "compact-suv": 2,
+      "compact-convertible": 1,
+      "midsize-sedan": 2,
+      "midsize-suv": 2,
+      "midsize-wagon": 1,
+      "standard-suv": 1,
+      "premium-sedan": 1,
+      "premium-suv": 1,
+      "premium-convertible": 1,
+      "luxury-suv": 3,
+      "sports-coupe": 2
+    },
+    "trucks": {
+      "small-cargo-van": 4,
+      "large-cargo-van": 4,
+      "moving-truck": 2,
+      "heavy-truck": 2
+    }
+  },
+  "small-airport": {
+    "cars": {
+      "economy-sedan": 1,
+      "economy-suv": 1,
+      "compact-sedan": 2,
+      "compact-suv": 1,
+      "compact-wagon": 1,
+      "midsize-sedan": 1,
+      "midsize-suv": 2,
+      "standard-suv": 1,
+      "premium-sedan": 1,
+      "premium-suv": 1,
+      "luxury-suv": 1
+    },
+    "trucks": {
+      "small-cargo-van": 1,
+      "large-cargo-van": 1
+    }
+  },
+  "small-train": {
+    "cars": {
+      "economy-sedan": 1,
+      "compact-sedan": 1,
+      "compact-suv": 1,
+      "midsize-sedan": 1,
+      "midsize-suv": 2,
+      "premium-suv": 1,
+      "luxury-suv": 1
+    },
+    "trucks": {}
+  },
+  "small-city": {
+    "cars": {
+      "economy-sedan": 1,
+      "compact-sedan": 1,
+      "compact-suv": 1,
+      "midsize-sedan": 1,
+      "premium-sedan": 1
+    },
+    "trucks": {
+      "small-cargo-van": 2,
+      "large-cargo-van": 2,
+      "moving-truck": 1
+    }
+  }
+}

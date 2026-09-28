@@ -25,6 +25,11 @@ final class RentSearch {
     var driverAge = driverAges.upperBound
     private(set) var recentStations: [Station]
 
+    /// The days prices are charged for, counted like in the p100 prototype: the rental time rounded to whole days.
+    var rentalDays: Int {
+        max(1, Int((dropOffDate.timeIntervalSince(pickUpDate) / 86_400).rounded()))
+    }
+
     /// Starts tomorrow at 10:00 and ends three days later at 12:00, like the Figma design.
     init(catalog: StationCatalog = MockData.stations, now: Date = .now, calendar: Calendar = .current) {
         pickUpStation = catalog.requiredStation(id: catalog.defaultPickUpStationID)
@@ -42,5 +47,42 @@ final class RentSearch {
         recentStations.removeAll { $0 == station }
         recentStations.insert(station, at: 0)
         recentStations = Array(recentStations.prefix(5))
+    }
+
+    /// Sets the pick-up or return station, and remembers it.
+    func pick(_ station: Station, as role: StationRole) {
+        remember(station)
+        switch role {
+        case .pickUp: pickUpStation = station
+        case .return: returnStation = station
+        }
+    }
+
+    /// A copy to edit in a sheet, so closing the sheet can throw the changes away.
+    func copy() -> RentSearch {
+        let copy = RentSearch()
+        copy.update(from: self)
+        return copy
+    }
+
+    /// Takes over the changes made to a copy.
+    func update(from other: RentSearch) {
+        vehicleType = other.vehicleType
+        pickUpStation = other.pickUpStation
+        returnStation = other.returnStation
+        pickUpDate = other.pickUpDate
+        dropOffDate = other.dropOffDate
+        driverAge = other.driverAge
+        recentStations = other.recentStations
+    }
+
+    /// Whether another search finds the same offers. The search history doesn't count.
+    func isSameSearch(as other: RentSearch) -> Bool {
+        vehicleType == other.vehicleType
+            && pickUpStation == other.pickUpStation
+            && returnStation == other.returnStation
+            && pickUpDate == other.pickUpDate
+            && dropOffDate == other.dropOffDate
+            && driverAge == other.driverAge
     }
 }

@@ -16,7 +16,7 @@ For the people building Mobility Lab from the Figma designs, and their Claude se
 | Stage | Frames (node ID) | Views |
 |---|---|---|
 | 1. Rent tab (done) | Rent Tab - Cars `7:15284`, Rent Tab - Trucks `59:29784`, Location Picker Sheet - Not in Focus `14:20196`, Focus `9:19554`, Typing `9:19926`, No Results `29:21969`, Station Details Sheet `59:29781`, Login Sheet `9:16635`, Settings Sheet `9:18529`, Date and time - Pickers `31:22061`, Age Picker Sheet `19:20835` (replaced by a menu) | `RentView`, `SearchCard`, `LocationPicker`, `StationDetailView`, `PromoCard`, `PromotionDetailView`, `LoginView`, `SettingsView` |
-| 2. Offer list | Offer List View - Cars `79:32084`, Trucks `79:32512`, Offer Card - Car: Similar `77:31681`, Premium `65:31254`, Guaranteed `77:31815`, Offer Card - Truck `77:31919`, Filter Sheet - Cars `79:33528`, Trucks `81:33989`, IBE Sheet - Cars `79:32085`, Trucks `79:32513`, Menu `81:34349` | `OfferListView` (placeholder today) |
+| 2. Offer list (done) | Offer List View - Cars `79:32084`, Trucks `79:32512`, Offer Card - Car: Similar `77:31681`, Premium `65:31254`, Guaranteed `77:31815`, Offer Card - Truck `77:31919`, Filter Sheet - Cars `79:33528`, Trucks `81:33989`, IBE Sheet - Cars `79:32085`, Trucks `79:32513`, Menu `81:34349` | `OfferListView`, `OfferCard`, `OfferFilterView`, `SearchEditor`, `PickUpStationRow`, `ReturnStationRow`, `StationLabel` |
 | 3. Offer details | Offer Detail View - Car `142:38463`, Truck `142:38464`, Price Details Sheet `142:38456`, Payment Option Detail Sheet `142:38455` | |
 | 4. Protection and add-ons | Protection View - No Selection `142:38452`, Selected `142:38453`, Protection Detail Sheet `142:38454`, Addons View - No Selection `172:4743`, With Expanded Details `172:4744`, Selected `172:4745` | |
 | 5. Review and book | Review And Book View - Empty `172:4746`, Value Entered `172:4747`, Booking Overview Sheet `172:4748`, Add Payment Sheet - Credit Card `172:4749`, Apple Pay `172:4750`, PayPal `172:4751`, Edit Invoice Address Sheet `172:4884` | |
@@ -31,9 +31,24 @@ For the people building Mobility Lab from the Figma designs, and their Claude se
   - Driver age is a `Menu` with a `Picker`, because the search card shows the pop-up glyph (⌃⌄). The Age Picker Sheet is gone.
   - Appearance, currency, and country use `.pickerStyle(.navigationLink)`.
 - Naming: views are named after what they are, not how they're shown (`LocationPicker`, not `LocationPickerSheet`). Figma's "IBE" is `SearchCard`.
-- Screens without a design (Help center, About this App, Create account, Offers) open `PlaceholderView`.
+- Screens without a design (Help center, About this App, Create account, offer details) open `PlaceholderView`.
 - Station details: one shared text for every station, in `station-details.json`. Only name, address, and opening hours differ.
-- Dates follow the device's region, so the simulator may show "27 Sep 2026, 10:00" where Figma shows "Sep 10, 2026, 10:00 AM".
+- Dates follow the device's region, so the simulator may show "27 Sep 2026, 10:00" where Figma shows "Sep 10, 2026, 10:00 AM". Prices and distances too: "71,56 US$" and "1 200 kilometers" in a Ukrainian region.
+- Offer list: a full-screen cover, since Figma closes it with ✕ and has no tab bar. Offer details (stage 3) will push onto its stack; for now a card opens `PlaceholderView`.
+- Figma's "IBE Sheet" is `SearchEditor`, laid out like a new event in Calendar: ✕, a Cars/Trucks control across the toolbar, and a checkmark (`Button(role: .confirm)`) instead of Search offers. Below is a `Form` with `.listSectionSpacing(.compact)` and four sections: stations, dates, driver age, and "Login or register" (`.tint(.primary)`, so the row stays a full-width Form button). It has an opaque grouped background, like Figma's IBE sheet, instead of a medium sheet's default glass: `.presentationBackground(Color(.systemGroupedBackground))`.
+- `SearchEditor` edits a copy of the search: the checkmark turns on once something changes and applies it, and ✕ throws it away. It shares the station rows (`PickUpStationRow`, `ReturnStationRow`) with `SearchCard`. Each screen opens the station picker and station details itself.
+- Quick filters are `Toggle`s with `.toggleStyle(.button)` and share their state with the filter sheet. Selected ones turn orange; Figma only shows them off. They scroll away with the offers; only ✕, the search summary, and the filter button stay pinned. Changing a filter scrolls back to the top anyway. No divider after "Sort by": every chip is 8 points apart.
+- Sort is a `Menu` with a `Picker`: Lowest price (the default) and Highest price, like Figma. No "Recommended" order for now.
+- The filter sheet edits a draft; Show N offers applies it. Its driver age is the search's, so it also changes the search card. Clear keeps the age.
+- Trucks list only the minimum ages they need, like "18+", since other ages change nothing. The options come from `minDriverAge` in `offers.json`. Picking the one already shown keeps the search's age.
+- Minimum seats starts at 4 and means 4 or more, like the SIXT app, which has no "any". So the 2-seat Mercedes-AMG GT 63 only shows up if the filter is dropped. Offers without a seat count, like trucks, aren't filtered by seats.
+- Filters combine like in p100: any of the selected body styles, any of Premium brand and Guaranteed model, and all other features.
+- Offer cards are always dark (`.environment(\.colorScheme, .dark)`). The glow is an `EllipticalGradient` from the top-trailing corner: the accent for premium brands, `.brown` for guaranteed models (Figma's #B78A66 is close), and `.blue` for electric trucks.
+- The search summary in the toolbar sizes to its content, with both lines centered and without Figma's chevron. Figma stretches it between the buttons.
+- Spec chips wrap with `FlowLayout`, the one custom layout, since SwiftUI has none.
+  - Cars: model, seats, suitcases, transmission, and range for electric cars.
+  - Trucks: model, range for electric trucks, gross weight, payload, and license, like Figma. Transmission and equipment stay in `offers.json` for the offer details.
+  - Range uses `battery.100percent.bolt`.
 
 ## SwiftUI details that took a try or two
 
@@ -45,6 +60,14 @@ For the people building Mobility Lab from the Figma designs, and their Claude se
 - Lists tint `Label` icons with the accent color. Set `.foregroundStyle(.primary)` on the label, or `.tint(.primary)` on the list and `.tint(Color(.accent))` on any toggle inside it.
 - A list row with two tap targets: the main button uses `.buttonStyle(.plain)` and the secondary one `.buttonStyle(.borderless)`.
 - Button labels center wrapped text. Add `.multilineTextAlignment(.leading)` for multi-line rows.
+- iOS 26 switches are green unless tinted. The filter sheet tints each toggle with the accent, and the form with `.secondary` so its menu pickers show gray values.
+- Sheets opened from a glass sheet inherit its `backgroundMaterial`, so bordered buttons in them lose their fill. An opaque `presentationBackground` avoids it; otherwise reset it with `.environment(\.backgroundMaterial, nil)` on the sheet's content.
+- In a `Form`, compact `DatePicker` rows are 63 points tall and text rows 50. The date and time pills are about 35 points, with the Form's 14 points above and below. Calendar (UIKit) uses the same pills with 9 points, so its date rows are 53. `.listRowInsets(.vertical, 9)` (iOS 26) would match it; not done.
+- Toolbar title items get only the width they ask for. None of these stretch them: `.frame(maxWidth: .infinity)`, `.buttonSizing(.flexible)` on the picker or the whole toolbar, or the `.title` placement. `.containerRelativeFrame` hides them. `SearchEditor` measures the sheet and gives its Cars/Trucks control the space between the buttons.
+- The simulator tool's launch installs the app; `simctl launch` reruns whatever was installed last. After building, launch through the tool, or you'll look at an old build.
+- `.badge()` works on toolbar buttons: the filter button shows how many filters are on.
+- A button inside a `NavigationLink` card works in a `ScrollView`: the model label's info button opens its popover without opening the offer. The popover needs `.presentationCompactAdaptation(.popover)` on iPhone.
+- `.safeAreaBar` holds the filter sheet's Show offers button, so the soft scroll edge runs under it.
 - Known quirk: after Appearance goes from Dark back to System, an open sheet stays dark until it's reopened.
 
 ## Photos
@@ -54,6 +77,10 @@ For the people building Mobility Lab from the Figma designs, and their Claude se
 - `img.sixt.com` rejects curl's default user agent with a 403. Pass a browser user agent (`-A "Mozilla/5.0 …"`) to inspect a photo; the app itself loads fine.
 - Figma's image links expire after 7 days. Never use them in mock data.
 - The Cars hero is a BMW X5 instead of Figma's Z4, by choice. Hero framing is `zoom` and `focusY` in `rent-home.json`; card crops are `imageCrop`.
+- Vehicle photos: transparent PNGs on sixt.com at `/fileadmin2/files/global/.../fleet/png/1050x600/`. Cars are under `sideview/user_upload/`, trucks under `user_upload/`. p100 uses the softer `752x500/` car photos.
+- Offer cards frame a photo like Figma: 752 × 500, filled, so the empty sides of the 1050 × 600 photos are cut off. No vehicle reaches into the cut.
+- The studio backdrop behind every card is `cardBackdropURL` in `offers.json`.
+- Photos show as SIXT serves them. Figma's photos have contrast and highlights adjusted; the app doesn't do that on purpose.
 
 ## Mock data from p100
 
@@ -62,8 +89,11 @@ For the people building Mobility Lab from the Figma designs, and their Claude se
   - Stations: 97 from p100, plus Munich Laim and Munich Pasing from Figma. Each has an English `city` for grouping.
   - Countries: 70 codes.
   - Currencies: 98 codes and rates. XCG was removed because iOS 26.0 can't name it.
+  - Offers: all 75 cars. `badges`, `subtitle`, the offer list banner, and the home carousel aren't ported, since no screen shows them. Neither is `totalPrice`: it's the daily price times the rental days, and days are the rental time rounded to whole days, like in p100.
+  - Trucks: p100 has none. The 14 trucks, their photos, prices, specs, and equipment come from sixt.com, collected by Herman. Equipment: `tachograph`, `trailerHitch`, `tailLift`, and `chargingCable` for "cables included". Tail lift and cables aren't shown or filtered yet.
+  - The trucks filter's Minibus finds nothing, since no truck is a minibus.
+  - Profiles: all 7, with truck quotas added. Small train stations have no trucks. Every station has a `profileID`: p100's, or `small-train` for Munich Laim and Pasing.
 - Next to port:
-  - `offers.js` and `profiles.js`: each station points to a profile whose quotas pick the offer mix.
   - `protection.js`, `add-ons.js`, `payment-methods.js`, `booking-disclosures.js`.
   - The pricing formulas are in `prototype/docs/pricing.md`.
 - Prices stay in USD and are converted for display with the rate of the currency picked in Settings.
@@ -89,3 +119,6 @@ For the people building Mobility Lab from the Figma designs, and their Claude se
 - "Use my current location" picks Munich Central Train Station.
 - Settings row icons were matched by eye.
 - Continue stays disabled until an email is typed. The Figma frame shows it enabled.
+- The model label texts behind the info buttons are placeholders.
+- Each profile's truck quotas are made up.
+- Herman's equipment list calls the Eurocargo "7.49t"; its specs say 7.5 t and 7 500 kg, which the app shows.

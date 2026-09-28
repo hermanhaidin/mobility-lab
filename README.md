@@ -9,7 +9,7 @@ A SIXT product owner describes a change in plain words. Claude builds it into a 
 - **Nothing to install but Xcode.** No dependencies, no packages.
 - **Made for Claude Code.** [CLAUDE.md](CLAUDE.md) tells Claude how to work with someone who has never seen Swift.
 
-**Status:** early. The Rent tab's home screen works: search, station picker, station details, login, and settings. The rest of the Rent funnel is next: offers, protection, add-ons, and booking.
+**Status:** early. The Rent tab works up to the offer list: search, station picker, station details, login, settings, and the cars and trucks each station offers, with sorting and filters. The rest of the Rent funnel is next: offer details, protection, add-ons, and booking.
 
 Mobility Lab is an independent project, not an official SIXT product. See [License](#license).
 
