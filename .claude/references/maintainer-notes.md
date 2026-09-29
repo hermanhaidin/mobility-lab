@@ -112,6 +112,11 @@ For the people building Mobility Lab from the Figma designs, and their Claude se
   - `inspect` may be unavailable, so use screenshots.
   - To reset saved settings, run `xcrun simctl uninstall <device> com.hermanhaidin.mobilitylab`.
 
+## Git and GitHub
+
+- Don't open pull requests: they're turned off on the GitHub repo (`has_pull_requests` is false). `gh pr create` fails with a permissions error, and the pulls API answers 404 even with admin rights.
+- Work on a branch, in atomic commits that each build. To land it, run the tests, fast-forward `main` to the branch with `git merge --ff-only`, and push `main`. History stays linear, with no merge commits.
+
 ## Open questions
 
 - What happens after "Book"? There's no confirmation screen yet.
