@@ -112,7 +112,8 @@ struct SearchEditor: View {
                 LoginView()
             }
         }
-        .presentationDetents([.medium])
+        .presentationDetents([.medium, .large])
+        .presentationDragIndicator(.hidden)
         // Opaque, like Figma's IBE sheet, instead of the glass a medium sheet gets by default.
         .presentationBackground(Color(.systemGroupedBackground))
     }
