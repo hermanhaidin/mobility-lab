@@ -46,7 +46,7 @@ If the person is clearly an engineer (they talk about code or ask for diffs), wo
 
 - `MobilityLab.xcodeproj`: folders are synced, so new files are picked up automatically. Don't edit `project.pbxproj` unless there's no other way.
 - `MobilityLab/ContentView.swift`: the tab shell (Rent, Trips, Share, Ride, Subscribe).
-- `MobilityLab/Rent/`: the Rent tab: search card, location picker, station details, promotions, offers.
+- `MobilityLab/Rent/`: the Rent tab: hero photo, search rows, location picker, station details, promotions, offers.
 - `MobilityLab/Account/`: login and settings.
 - `MobilityLab/Trips/`, `Share/`, `Ride/`, `Subscribe/`: placeholder tabs.
 - `MobilityLab/Models/`: the data types, like `Station` and `RentSearch`.
