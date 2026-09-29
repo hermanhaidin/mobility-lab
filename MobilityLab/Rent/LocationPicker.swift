@@ -174,12 +174,9 @@ struct LocationPicker: View {
             .buttonStyle(.plain)
 
             if showsAddress {
-                Button("Station details", systemImage: "info.circle") {
+                StationDetailsButton {
                     detailStation = station
                 }
-                .labelStyle(.iconOnly)
-                .buttonStyle(.borderless)
-                .tint(.secondary)
             }
         }
     }
