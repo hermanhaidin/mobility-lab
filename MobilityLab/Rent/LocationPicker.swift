@@ -1,9 +1,11 @@
 import SwiftUI
 
 /// Lets the customer pick a station: from their search history, their current location, or by searching.
+/// For a return station, "Same as pickup" takes the place of the current location.
 struct LocationPicker: View {
     let title: String
     let recentStations: [Station]
+    var onSameAsPickUp: (() -> Void)? = nil
     let onSelect: (Station) -> Void
 
     @Environment(\.dismiss) private var dismiss
@@ -16,11 +18,23 @@ struct LocationPicker: View {
         NavigationStack {
             List {
                 if query.isEmpty {
-                    Button {
-                        select(catalog.requiredStation(id: catalog.currentLocationStationID))
-                    } label: {
-                        Label("Use my current location", systemImage: "location.fill")
-                            .foregroundStyle(.primary)
+                    Group {
+                        if let onSameAsPickUp {
+                            Button {
+                                onSameAsPickUp()
+                                dismiss()
+                            } label: {
+                                Label("Same as pickup", systemImage: "arrow.uturn.backward")
+                                    .foregroundStyle(.primary)
+                            }
+                        } else {
+                            Button {
+                                select(catalog.requiredStation(id: catalog.currentLocationStationID))
+                            } label: {
+                                Label("Use my current location", systemImage: "location.fill")
+                                    .foregroundStyle(.primary)
+                            }
+                        }
                     }
                     .listRowSeparator(.hidden)
 

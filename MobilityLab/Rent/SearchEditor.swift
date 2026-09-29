@@ -73,7 +73,11 @@ struct SearchEditor: View {
             }
             .listSectionSpacing(.compact)
             .sheet(item: $editedStation) { role in
-                LocationPicker(title: role.title, recentStations: draft.recentStations) { station in
+                LocationPicker(
+                    title: role.title,
+                    recentStations: draft.recentStations,
+                    onSameAsPickUp: role == .return ? { draft.returnStation = nil } : nil
+                ) { station in
                     draft.pick(station, as: role)
                 }
             }

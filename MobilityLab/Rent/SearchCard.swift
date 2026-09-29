@@ -74,7 +74,11 @@ struct SearchCard: View {
         .background(Color(.secondarySystemBackground), in: .rect(cornerRadius: 32))
         .shadow(color: .black.opacity(0.25), radius: 12, y: 8)
         .sheet(item: $editedStation) { role in
-            LocationPicker(title: role.title, recentStations: search.recentStations) { station in
+            LocationPicker(
+                title: role.title,
+                recentStations: search.recentStations,
+                onSameAsPickUp: role == .return ? { search.returnStation = nil } : nil
+            ) { station in
                 search.pick(station, as: role)
             }
         }
