@@ -1,48 +1,35 @@
 import SwiftUI
 
-/// A promotion card under "Recommended for you": a square photo, a title, a short text, and "More info".
+/// A promotion under "Recommended for you", as a list row: the photo on top, a title, and one line of text.
+/// Tapping it opens the full text.
 struct PromoCard: View {
     let promotion: Promotion
 
     @State private var isShowingDetail = false
 
     var body: some View {
-        HStack(spacing: 0) {
-            RemoteImage(url: promotion.imageURL, crop: promotion.imageCrop ?? .center)
-                .frame(width: 138)
-                .frame(maxHeight: .infinity)
-                .clipped()
+        Button {
+            isShowingDetail = true
+        } label: {
+            VStack(alignment: .leading, spacing: 0) {
+                // Figma's photo frame: 408 × 245.
+                RemoteImage(url: promotion.imageURL, crop: promotion.imageCrop ?? .center)
+                    .aspectRatio(5 / 3, contentMode: .fit)
+                    .clipped()
 
-            VStack(alignment: .leading, spacing: 4) {
-                Text(promotion.title)
-                    .font(.headline)
-                Text(promotion.text)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(2)
-
-                Button {
-                    isShowingDetail = true
-                } label: {
-                    HStack(spacing: 4) {
-                        Text("More info")
-                        Image(systemName: "chevron.right")
-                            .font(.footnote)
-                    }
-                    .frame(minHeight: 44)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(promotion.title)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    Text(promotion.teaser)
+                        .font(.subheadline)
                 }
-                .buttonStyle(.plain)
-                .font(.subheadline)
-                .fontWeight(.semibold)
+                .padding()
             }
-            .padding([.top, .horizontal])
-            .padding(.bottom, 8)
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .fixedSize(horizontal: false, vertical: true)
-        .background(Color(.secondarySystemGroupedBackground))
-        .clipShape(.rect(cornerRadius: 20))
-        .shadow(color: .black.opacity(0.25), radius: 24, y: 8)
+        // On the button, not inside its label: there, `.primary` resolves to the button's tint.
+        .foregroundStyle(.primary)
+        .listRowInsets(EdgeInsets())
         .sheet(isPresented: $isShowingDetail) {
             PromotionDetailView(promotion: promotion)
         }
@@ -50,6 +37,7 @@ struct PromoCard: View {
 }
 
 #Preview {
-    PromoCard(promotion: MockData.rentHome.promotions[0])
-        .padding()
+    List {
+        PromoCard(promotion: MockData.rentHome.promotions[0])
+    }
 }

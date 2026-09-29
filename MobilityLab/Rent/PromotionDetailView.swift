@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// The full text of a promotion, opened from "More info".
+/// The full text of a promotion, opened from its card.
 struct PromotionDetailView: View {
     let promotion: Promotion
 
