@@ -10,6 +10,7 @@ struct SearchEditor: View {
     @State private var editedStation: StationRole?
     @State private var detailStation: Station?
     @State private var isShowingLogin = false
+    @State private var isEditingDates = false
     @State private var sheetWidth = 0.0
 
     init(search: RentSearch) {
@@ -34,8 +35,21 @@ struct SearchEditor: View {
                 }
 
                 Section {
-                    DatePicker("Pick-up", selection: $draft.pickUpDate, in: Date.now...)
-                    DatePicker("Drop-off", selection: $draft.dropOffDate, in: draft.pickUpDate...)
+                    if isEditingDates {
+                        DatePicker("Pick-up", selection: $draft.pickUpDate, in: Date.now...)
+                        DatePicker("Drop-off", selection: $draft.dropOffDate, in: draft.pickUpDate...)
+                    } else {
+                        Button(
+                            (draft.pickUpDate..<draft.dropOffDate)
+                                .formatted(.interval.day().month(.abbreviated).hour().minute()),
+                            systemImage: "calendar"
+                        ) {
+                            withAnimation {
+                                isEditingDates = true
+                            }
+                        }
+                        .foregroundStyle(.primary)
+                    }
                 }
 
                 Section {
