@@ -100,14 +100,14 @@ struct OfferListView: View {
         }
     }
 
-    /// The pick-up station and dates. Tapping it opens the search to change it.
+    /// The stations and dates. Tapping it opens the search to change it.
     private var searchSummary: some View {
         Button {
             isEditingSearch = true
         } label: {
             VStack {
-                Text(search.pickUpStation.name)
-                    .font(.footnote)
+                Text(search.returnStation.map { "\(search.pickUpStation.name) – \($0.name)" } ?? search.pickUpStation.name)
+                    .font(.subheadline)
                     .fontWeight(.semibold)
                 Text((search.pickUpDate..<search.dropOffDate).formatted(.interval.day().month(.abbreviated).hour().minute()))
                     .font(.caption2)
