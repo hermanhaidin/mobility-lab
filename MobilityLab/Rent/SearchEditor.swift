@@ -22,15 +22,14 @@ struct SearchEditor: View {
         NavigationStack {
             Form {
                 Section("Location") {
-                    PickUpStationRow(station: draft.pickUpStation) {
-                        editedStation = .pickUp
-                    } onShowDetails: {
-                        detailStation = draft.pickUpStation
-                    }
-                    ReturnStationRow(station: draft.returnStation) {
-                        editedStation = .return
-                    } onRemove: {
-                        draft.returnStation = nil
+                    stationRow(draft.pickUpStation, as: .pickUp)
+                    if let returnStation = draft.returnStation {
+                        stationRow(returnStation, as: .return)
+                    } else {
+                        Button("Optional different return station", systemImage: "plus") {
+                            editedStation = .return
+                        }
+                        .foregroundStyle(.secondary)
                     }
                 }
 
@@ -120,6 +119,21 @@ struct SearchEditor: View {
         .presentationDragIndicator(.hidden)
         // Opaque, like Figma's IBE sheet, instead of the glass a medium sheet gets by default.
         .presentationBackground(Color(.systemGroupedBackground))
+    }
+
+    /// A picked station, with a button for its station details.
+    private func stationRow(_ station: Station, as role: StationRole) -> some View {
+        HStack {
+            Button(station.name, systemImage: station.kind.symbol) {
+                editedStation = role
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            StationDetailsButton {
+                detailStation = station
+            }
+        }
+        .foregroundStyle(.primary)
     }
 }
 

@@ -1,7 +1,7 @@
 import SwiftUI
 
-/// The pick-up station of a search, with a button for its station details. Used on the search card and in the
-/// search editor, which set its padding and open the station picker and station details.
+/// The pick-up station of a search, with a button for its station details. Used on the search card, which sets its
+/// padding and opens the station picker and station details. The search editor has its own Form rows.
 struct PickUpStationRow: View {
     let station: Station
     let onPick: () -> Void

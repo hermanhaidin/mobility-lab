@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// The return station of a search, if it differs from the pick-up station, with a button to remove it.
-/// Used on the search card and in the search editor, which set its padding and open the station picker.
+/// Used on the search card, which sets its padding and opens the station picker. The search editor has its own Form rows.
 struct ReturnStationRow: View {
     let station: Station?
     let onPick: () -> Void
