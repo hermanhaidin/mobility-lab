@@ -53,20 +53,22 @@ struct SearchEditor: View {
                 }
 
                 Section {
-                    Picker("Driver age", selection: $draft.driverAge) {
+                    Picker(selection: $draft.driverAge) {
                         ForEach(RentSearch.driverAges, id: \.self) { age in
                             Text(RentSearch.ageLabel(age)).tag(age)
                         }
+                    } label: {
+                        Label("Driver age", systemImage: "person.text.rectangle")
+                            .foregroundStyle(.primary)
                     }
                     .pickerStyle(.menu)
                     .tint(.secondary)
                 }
 
                 Section {
-                    Button("Login or register") {
+                    Button("Login or register", systemImage: "person") {
                         isShowingLogin = true
                     }
-                    .tint(.primary)
                 }
             }
             .listSectionSpacing(.compact)
