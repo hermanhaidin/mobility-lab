@@ -21,7 +21,7 @@ struct SearchEditor: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section {
+                Section("Location") {
                     PickUpStationRow(station: draft.pickUpStation) {
                         editedStation = .pickUp
                     } onShowDetails: {
@@ -34,7 +34,7 @@ struct SearchEditor: View {
                     }
                 }
 
-                Section {
+                Section("Dates") {
                     if isEditingDates {
                         DatePicker("Pick-up", selection: $draft.pickUpDate, in: Date.now...)
                         DatePicker("Drop-off", selection: $draft.dropOffDate, in: draft.pickUpDate...)
@@ -52,7 +52,7 @@ struct SearchEditor: View {
                     }
                 }
 
-                Section {
+                Section("Details") {
                     Picker(selection: $draft.driverAge) {
                         ForEach(RentSearch.driverAges, id: \.self) { age in
                             Text(RentSearch.ageLabel(age)).tag(age)
