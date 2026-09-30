@@ -24,21 +24,19 @@ struct SettingsView: View {
                     Label("Appearance", systemImage: "paintbrush.fill")
                 }
 
-                Picker(selection: $currencyCode) {
-                    ForEach(currencies, id: \.code) { currency in
-                        Text(currency.name).tag(currency.code)
-                    }
-                } label: {
-                    Label("Preferred currency", systemImage: "creditcard.fill")
-                }
+                SearchablePicker(
+                    title: "Preferred currency",
+                    systemImage: "creditcard.fill",
+                    options: currencies,
+                    selection: $currencyCode
+                )
 
-                Picker(selection: $countryCode) {
-                    ForEach(countries, id: \.code) { country in
-                        Text("\(Locale.Region(country.code).flag) \(country.name)").tag(country.code)
-                    }
-                } label: {
-                    Label("Country", systemImage: "globe.europe.africa.fill")
-                }
+                SearchablePicker(
+                    title: "Country",
+                    systemImage: "globe.europe.africa.fill",
+                    options: countries,
+                    selection: $countryCode
+                )
 
                 NavigationLink {
                     PlaceholderView(title: "About this App", systemImage: "info.circle")
@@ -71,16 +69,17 @@ struct SettingsView: View {
         .navigationTitle("Settings")
     }
 
-    private var currencies: [(code: String, name: String)] {
+    private var currencies: [SearchablePicker.Option] {
         MockData.currencies
-            .map { (code: $0.code, name: Locale.current.localizedString(forCurrencyCode: $0.code) ?? $0.code) }
-            .sorted { $0.name < $1.name }
+            .map { .init(id: $0.code, title: Locale.current.localizedString(forCurrencyCode: $0.code) ?? $0.code) }
+            .sorted { $0.title < $1.title }
     }
 
-    private var countries: [(code: String, name: String)] {
+    private var countries: [SearchablePicker.Option] {
         MockData.countryCodes
             .map { (code: $0, name: Locale.current.localizedString(forRegionCode: $0) ?? $0) }
             .sorted { $0.name < $1.name }
+            .map { .init(id: $0.code, title: "\(Locale.Region($0.code).flag) \($0.name)") }
     }
 
     private var versionText: String {
