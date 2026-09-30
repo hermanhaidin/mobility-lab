@@ -11,6 +11,7 @@ struct LocationPicker: View {
     @Environment(\.dismiss) private var dismiss
     @State private var query = ""
     @State private var detailStation: Station?
+    @FocusState private var isSearchFocused: Bool
 
     private let catalog = MockData.stations
 
@@ -57,6 +58,13 @@ struct LocationPicker: View {
                 }
             }
             .searchable(text: $query, prompt: "Airport, city, hotel, or address")
+            // The keyboard comes up with the sheet, so searching starts without a tap on the field. The title and
+            // close button stay while it's up; by default, an active search hides them.
+            .searchFocused($isSearchFocused)
+            .searchPresentationToolbarBehavior(.avoidHidingContent)
+            .onAppear {
+                isSearchFocused = true
+            }
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: City.self) { city in
