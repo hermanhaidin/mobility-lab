@@ -52,7 +52,7 @@ If the person is clearly an engineer (they talk about code or ask for diffs), wo
 - `MobilityLab/Models/`: the data types, like `Station` and `RentSearch`.
 - `MobilityLab/MockData/`: the fake backend, as JSON files. `Services/MockData.swift` loads them.
 - `MobilityLab/Shared/`: views used across tabs, like `RemoteImage` and `PlaceholderView`.
-- `MobilityLab/Assets.xcassets`: the accent color and the SIXT logo.
+- `MobilityLab/Assets.xcassets`: the accent color and the SIXT logo, as its wordmark and swoosh.
 - `MobilityLab/AppIcon.icon`: the app icon, made in Icon Composer.
 - `MobilityLabTests/`: checks that the fake backend is valid.
 

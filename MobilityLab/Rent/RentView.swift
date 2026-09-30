@@ -5,6 +5,8 @@ struct RentView: View {
     @State private var search = RentSearch()
     @State private var isShowingOffers = false
     @State private var isShowingLogin = false
+    /// The status bar's height, so the logo can sit on the hero at the toolbar's height.
+    @State private var topInset = 0.0
 
     private let home = MockData.rentHome
 
@@ -20,6 +22,14 @@ struct RentView: View {
                     }
                 }
                 .animation(.default, value: search.vehicleType)
+            } badge: {
+                // The logo scrolls away with the photo instead of sticking in the toolbar. Its row matches the
+                // toolbar's: 44 points under the status bar, 20 from the edge.
+                SixtLogo()
+                    .foregroundStyle(.white)
+                    .frame(height: 44)
+                    .padding(.leading, 20)
+                    .padding(.top, topInset)
             } content: {
                 List {
                     Section {
@@ -65,13 +75,6 @@ struct RentView: View {
                 .listSectionSpacing(.compact)
             }
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Image(.sixtLogo)
-                        .foregroundStyle(.white)
-                        .accessibilityLabel("SIXT")
-                }
-                .sharedBackgroundVisibility(.hidden)
-
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Account", systemImage: "person.fill") {
                         isShowingLogin = true
@@ -85,6 +88,7 @@ struct RentView: View {
                 OfferListView(search: search)
             }
         }
+        .onGeometryChange(for: Double.self) { $0.safeAreaInsets.top } action: { topInset = $0 }
     }
 }
 
