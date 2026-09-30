@@ -10,7 +10,17 @@ struct RentView: View {
 
     var body: some View {
         NavigationStack {
-            HeroBackdrop(photo: home.hero(for: search.vehicleType)) {
+            HeroBackdrop(height: HeroPhoto.height) {
+                // Both photos stay loaded, so Cars/Trucks cross-fades them. One `AsyncImage` with a changing URL
+                // reloads through its placeholder, which flashed gray.
+                ZStack {
+                    ForEach(VehicleType.allCases) { type in
+                        HeroPhoto(photo: home.hero(for: type))
+                            .opacity(type == search.vehicleType ? 1 : 0)
+                    }
+                }
+                .animation(.default, value: search.vehicleType)
+            } content: {
                 List {
                     Section {
                         Picker("Vehicle type", selection: $search.vehicleType) {
