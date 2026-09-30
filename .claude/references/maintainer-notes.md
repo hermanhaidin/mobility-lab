@@ -29,7 +29,7 @@ For the people building Mobility Lab from the Figma designs, and their Claude se
 - Login copies the Health app's inverted look: white sheet, gray text field.
 - Native pickers over designed sheets:
   - Driver age is a `Picker` with `.pickerStyle(.menu)` in a list row (`DriverAgeRow`), which shows the value with the pop-up glyph (⌃⌄) like Figma. The Age Picker Sheet is gone.
-  - Appearance, currency, and country use `.pickerStyle(.navigationLink)`.
+  - Appearance uses `.pickerStyle(.navigationLink)`. Currency and country use `SearchablePicker`: a `NavigationLink` row (`LabeledContent` with the picked title) to a `List` with `.searchable`, since a navigation-link picker can't take a search field. It matches the shown text or the code, so "USD" finds US Dollar, and pops back on a pick. The list is a private view in the same file, so `dismiss` pops it rather than Settings, and the query starts empty each time. Its search field takes focus on appear, like the station picker's.
 - Naming: views are named after what they are, not how they're shown (`LocationPicker`, not `LocationPickerSheet`). Figma's "IBE" is the first section of `RentView`'s list.
 - Screens without a design (Help center, About this App, Create account, offer details) open `PlaceholderView`.
 - Station details: one shared text for every station, in `station-details.json`. Only name, address, and opening hours differ.
@@ -83,6 +83,8 @@ For the people building Mobility Lab from the Figma designs, and their Claude se
 - A button inside a `NavigationLink` card works in a `ScrollView`: the model label's info button opens its popover without opening the offer. The popover needs `.presentationCompactAdaptation(.popover)` on iPhone.
 - `.safeAreaBar` holds the filter sheet's Show offers button, so the soft scroll edge runs under it.
 - Known quirk: after Appearance goes from Dark back to System, an open sheet stays dark until it's reopened.
+- The station picker's search field takes focus with the sheet: `.searchFocused($isSearchFocused)` (iOS 18) and `isSearchFocused = true` in `.onAppear`. `.defaultFocus($isSearchFocused, true)` did nothing. In an iOS 26 sheet the field sits at the bottom, and an active search hides the title and ✕ unless `.searchPresentationToolbarBehavior(.avoidHidingContent)` is set. After a city's station list pops, the keyboard comes back with the query on its own: the system restores the active search, not `onAppear` (it happened with `onAppear` on the `NavigationStack` too).
+- `.tint(.primary)` on the settings list doesn't reach a `NavigationLink` destination: `SearchablePicker`'s rows came out orange, and so did a checkmark with `.foregroundStyle(.tint)`. The stock Appearance picker's pushed list is black. The rows set `.foregroundStyle(.primary)` on the button, and the checkmark inherits it.
 
 ## Photos
 
@@ -119,6 +121,7 @@ For the people building Mobility Lab from the Figma designs, and their Claude se
 - Simulator tool quirks:
   - Instant taps don't flip iOS 26 switches, so drag them with `touch_path`.
   - `inspect` may be unavailable, so use screenshots.
+  - Screenshots of the iPhone 18 Pro Max are 921 × 2000 pixels for 440 × 956 points. Divide pixel positions by 2.09 to tap; dividing by 2 lands about 40 points low at the bottom of the screen.
   - To reset saved settings, run `xcrun simctl uninstall <device> com.hermanhaidin.mobilitylab`.
   - The saved Appearance setting beats `xcrun simctl ui <device> appearance dark`. Check dark mode through the app's Settings › Appearance, or edit `appearance` in the app's container plist (`xcrun simctl get_app_container <device> com.hermanhaidin.mobilitylab data`, then `Library/Preferences/com.hermanhaidin.mobilitylab.plist`) with `plutil -replace` while the app is terminated. `simctl spawn … defaults write` lands in another domain and changes nothing.
 
