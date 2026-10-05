@@ -11,6 +11,7 @@ struct OfferDetailView: View {
     @State private var photoHeight = 0.0
     /// Whether the photo is still behind the toolbar, which then shows a white title and no soft edge.
     @State private var isPhotoUnderToolbar = true
+    @State private var isShowingPriceDetails = false
 
     private let catalog = MockData.offers
 
@@ -49,8 +50,17 @@ struct OfferDetailView: View {
         // standard one, so they don't run into the title.
         .scrollEdgeEffectHidden(isPhotoUnderToolbar, for: .top)
         .navigationTitle(offer.name)
+        // Centered when it fits; a long name moves next to the back button and is cut off before the price.
         .navigationBarTitleDisplayMode(.inline)
         .toolbarColorScheme(isPhotoUnderToolbar ? .dark : nil, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(currency.format(booking.total)) {
+                    isShowingPriceDetails = true
+                }
+                .accessibilityHint("Shows the price details")
+            }
+        }
         .safeAreaBar(edge: .bottom) {
             NavigationLink {
                 PlaceholderView(title: "Protection", systemImage: "shield.lefthalf.filled")
@@ -66,6 +76,9 @@ struct OfferDetailView: View {
             .padding(.horizontal, 36)
             .padding(.top, 8)
             .padding(.bottom, 2)
+        }
+        .sheet(isPresented: $isShowingPriceDetails) {
+            PriceDetailView(booking: booking)
         }
     }
 

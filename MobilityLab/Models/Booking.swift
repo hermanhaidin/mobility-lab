@@ -5,6 +5,15 @@ import Observation
 /// Made on the offer details. Protection and add-ons come next.
 @Observable
 final class Booking {
+    /// One line of the price: the rental, or an option that costs extra.
+    struct Charge: Identifiable {
+        let title: String
+        /// In US dollars, for all rental days.
+        let price: Double
+
+        var id: String { title }
+    }
+
     let offer: Offer
     let rentalDays: Int
     var paymentOption: PaymentOption
@@ -16,5 +25,28 @@ final class Booking {
         self.rentalDays = rentalDays
         paymentOption = catalog.paymentOptions.first { $0.dailySurchargeRate == 0 } ?? catalog.paymentOptions[0]
         mileagePackage = catalog.mileagePackages(for: offer)[0]
+    }
+
+    /// The rental days, then each picked option that costs extra. Surcharges are a share of the daily price.
+    var charges: [Charge] {
+        let days = Double(rentalDays)
+        var charges = [
+            Charge(
+                title: String(AttributedString(localized: "^[\(rentalDays) Rental Day](inflect: true)").characters),
+                price: offer.pricePerDay * days
+            )
+        ]
+        if paymentOption.dailySurchargeRate > 0 {
+            charges.append(Charge(title: paymentOption.title, price: paymentOption.dailySurchargeRate * offer.pricePerDay * days))
+        }
+        if mileagePackage.dailySurchargeRate > 0 {
+            charges.append(Charge(title: "Mileage package: \(mileagePackage.title)", price: mileagePackage.dailySurchargeRate * offer.pricePerDay * days))
+        }
+        return charges
+    }
+
+    /// What the rental costs. With nothing extra picked, it's the total on the offer card.
+    var total: Double {
+        charges.map(\.price).reduce(0, +)
     }
 }
