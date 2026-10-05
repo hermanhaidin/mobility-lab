@@ -52,7 +52,7 @@ struct OfferCard: View {
     // MARK: - Specs
 
     /// Cars: model, seats, suitcases, transmission, and range. Trucks: model, range, gross weight, payload, and license.
-    /// The offer details will show the rest.
+    /// The offer details show the rest.
     private var specs: some View {
         FlowLayout(spacing: 8) {
             ModelLabelButton(model: offer.model)

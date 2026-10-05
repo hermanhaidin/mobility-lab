@@ -3,6 +3,8 @@ import SwiftUI
 /// Places views side by side and wraps them onto a new line when a line is full, like words in a paragraph.
 /// SwiftUI has no stock layout for this.
 struct FlowLayout: Layout {
+    /// Where a line shorter than the widest one sits: at the leading edge, centered, or at the trailing edge.
+    var alignment = HorizontalAlignment.leading
     var spacing = 8.0
 
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
@@ -15,7 +17,7 @@ struct FlowLayout: Layout {
     func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
         var y = bounds.minY
         for line in lines(of: subviews, maxWidth: bounds.width) {
-            var x = bounds.minX
+            var x = bounds.minX + (bounds.width - line.width) * alignmentFraction
             for (subview, size) in zip(line.subviews, line.sizes) {
                 subview.place(
                     at: CGPoint(x: x, y: y + (line.height - size.height) / 2),
@@ -24,6 +26,15 @@ struct FlowLayout: Layout {
                 x += size.width + spacing
             }
             y += line.height + spacing
+        }
+    }
+
+    /// How much of a line's free space goes before it.
+    private var alignmentFraction: Double {
+        switch alignment {
+        case .center: 0.5
+        case .trailing: 1
+        default: 0
         }
     }
 

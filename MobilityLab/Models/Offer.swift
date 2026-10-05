@@ -32,6 +32,24 @@ nonisolated struct Offer: Codable, Hashable, Identifiable {
 
     enum Equipment: String, Codable {
         case tachograph, trailerHitch, tailLift, chargingCable
+
+        var title: String {
+            switch self {
+            case .tachograph: "Tachograph"
+            case .trailerHitch: "Trailer hitch"
+            case .tailLift: "Tail lift"
+            case .chargingCable: "Cables included"
+            }
+        }
+
+        var symbol: String {
+            switch self {
+            case .tachograph: "tachometer"
+            case .trailerHitch: "tow.hitch.fill"
+            case .tailLift: "arrow.up.and.down.square.fill"
+            case .chargingCable: "powerplug.fill"
+            }
+        }
     }
 
     let id: String

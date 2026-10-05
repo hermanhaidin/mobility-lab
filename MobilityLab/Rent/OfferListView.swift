@@ -81,7 +81,7 @@ struct OfferListView: View {
                 }
             }
             .navigationDestination(for: Offer.self) { offer in
-                PlaceholderView(title: offer.name, systemImage: search.vehicleType == .cars ? "car.side" : "truck.box")
+                OfferDetailView(offer: offer, rentalDays: search.rentalDays)
             }
             .sheet(isPresented: $isEditingSearch) {
                 SearchEditor(search: search)
