@@ -66,6 +66,8 @@ nonisolated struct Offer: Codable, Hashable, Identifiable {
     /// Electric range in kilometers.
     let rangeKm: Int?
     let seats: Int?
+    /// Cars only. Leave it out for mystery cars, whose body style isn't known.
+    let doors: Int?
     let suitcases: Int?
     /// Trucks only.
     let grossWeightKg: Int?

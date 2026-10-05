@@ -134,7 +134,7 @@ struct OfferDetailView: View {
         .environment(\.colorScheme, .dark)
     }
 
-    /// Everything the offer data has. Cars: seats, suitcases, transmission, and range. Trucks: payload, gross weight,
+    /// Everything the offer data has. Cars: seats, doors, suitcases, transmission, and range. Trucks: payload, gross weight,
     /// license, transmission, range, and equipment. Both end with the minimum driver age.
     @ViewBuilder
     private var specs: some View {
@@ -142,6 +142,9 @@ struct OfferDetailView: View {
         case .cars:
             if let seats = offer.seats {
                 Label("\(seats) People", systemImage: "person.fill")
+            }
+            if let doors = offer.doors {
+                Label("\(doors) Doors", systemImage: "car.window.right")
             }
             if let suitcases = offer.suitcases {
                 Label("\(suitcases) Large bags", systemImage: "suitcase.rolling.and.suitcase.fill")

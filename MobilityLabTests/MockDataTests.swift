@@ -70,6 +70,10 @@ struct MockDataTests {
             switch vehicleType {
             case .cars:
                 #expect(offer.seats != nil && offer.suitcases != nil, "\(offer.name) in offers.json needs seats and suitcases")
+                // Mystery cars have no body style, so their doors aren't known.
+                if offer.bodyStyle != nil {
+                    #expect(offer.doors != nil, "\(offer.name) in offers.json needs doors")
+                }
             case .trucks:
                 #expect(offer.grossWeightKg != nil && offer.licenseClass != nil, "\(offer.name) in offers.json needs a gross weight and a license class")
             }
