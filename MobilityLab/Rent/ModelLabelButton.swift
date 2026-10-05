@@ -3,11 +3,12 @@ import SwiftUI
 /// An offer's model label, like "Premium brand", tinted for a premium brand or a guaranteed model.
 /// Its info button explains the label in a popover. On the offer cards and the offer details.
 struct ModelLabelButton: View {
-    let model: Offer.Model
+    let offer: Offer
 
     @State private var isShowingInfo = false
 
     var body: some View {
+        let model = offer.model
         let button = Button {
             isShowingInfo = true
         } label: {
@@ -20,7 +21,7 @@ struct ModelLabelButton: View {
         }
         .controlSize(.small)
         .popover(isPresented: $isShowingInfo) {
-            Text(MockData.offers.modelDescriptions[model] ?? "")
+            Text(MockData.offers.modelDescription(for: offer))
                 .font(.subheadline)
                 .frame(width: 260, alignment: .leading)
                 .fixedSize(horizontal: false, vertical: true)
@@ -42,7 +43,7 @@ struct ModelLabelButton: View {
 #Preview {
     VStack {
         ForEach(Offer.Model.allCases, id: \.self) { model in
-            ModelLabelButton(model: model)
+            ModelLabelButton(offer: MockData.offers.cars.first { $0.model == model }!)
         }
     }
     .padding()

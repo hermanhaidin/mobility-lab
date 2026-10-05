@@ -101,7 +101,7 @@ struct OfferDetailView: View {
 
             VStack(spacing: 12) {
                 HStack(spacing: 8) {
-                    ModelLabelButton(model: offer.model)
+                    ModelLabelButton(offer: offer)
                     if offer.fuel == .electric {
                         SpecChip(title: "Electric", systemImage: "bolt.fill")
                     }

@@ -25,7 +25,7 @@ nonisolated struct OfferCatalog: Codable {
 
     /// The studio photo behind every offer card. Until there's a URL, the cards are plain dark gray.
     let cardBackdropURL: URL?
-    /// What each model label means, shown from the info button on an offer card.
+    /// What each model label means, shown from its info button. "{name}" stands for the offer's name.
     let modelDescriptions: [Offer.Model: String]
     /// The payment options on the offer details. The one without a surcharge is picked first.
     let paymentOptions: [PaymentOption]
@@ -53,6 +53,11 @@ nonisolated struct OfferCatalog: Codable {
             quotas[offer.category] = quota - 1
             return true
         }
+    }
+
+    /// What an offer's model label means, like "A Porsche 911 Carrera will be reserved exclusively for you."
+    func modelDescription(for offer: Offer) -> String {
+        (modelDescriptions[offer.model] ?? "").replacing("{name}", with: offer.name)
     }
 
     /// The mileage packages to pick from: the kilometers the offer includes, then one package per upgrade.

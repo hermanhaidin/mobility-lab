@@ -56,7 +56,7 @@ struct OfferCard: View {
     /// The offer details show the rest.
     private var specs: some View {
         FlowLayout(spacing: 8) {
-            ModelLabelButton(model: offer.model)
+            ModelLabelButton(offer: offer)
             switch offer.vehicleType {
             case .cars:
                 if let seats = offer.seats {

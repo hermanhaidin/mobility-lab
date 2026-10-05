@@ -1,9 +1,9 @@
 {
   "cardBackdropURL": "https://img.sixt.com/1600/6f09b0e8-6820-4ac0-bedd-5797e9814c18.jpg",
   "modelDescriptions": {
-    "orSimilar": "The photo shows an example. You get this model or a similar one from the same category.",
-    "premiumBrand": "You get a vehicle from a premium brand, like the one shown, from the same category.",
-    "guaranteed": "You get exactly the model shown."
+    "orSimilar": "You’ll receive this vehicle or a similar model from the same category.",
+    "premiumBrand": "Enjoy this car or a similar premium model from brands like BMW, Volvo, Cadillac, Mercedes-Benz or Lincoln.",
+    "guaranteed": "A {name} will be reserved exclusively for you."
   },
   "paymentOptions": [
     {
