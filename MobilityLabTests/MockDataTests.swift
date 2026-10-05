@@ -95,6 +95,35 @@ struct MockDataTests {
         }
     }
 
+    @Test func paymentOptionsAreValid() throws {
+        let catalog: OfferCatalog = try MockData.load("offers")
+        let included = catalog.paymentOptions.filter { $0.dailySurchargeRate == 0 }
+        #expect(included.count == 1, "offers.json needs exactly one payment option with a dailySurchargeRate of 0, picked first on the offer details. It has \(included.count)")
+        for option in catalog.paymentOptions {
+            #expect(option.dailySurchargeRate >= 0, "The \(option.title) payment option in offers.json needs a dailySurchargeRate of 0 or more")
+        }
+        let duplicates = Dictionary(grouping: catalog.paymentOptions, by: \.id).filter { $0.value.count > 1 }.keys
+        #expect(duplicates.isEmpty, "offers.json has more than one payment option with the id \(duplicates.sorted())")
+    }
+
+    @Test(arguments: VehicleType.allCases)
+    func mileageUpgradesAreValid(_ vehicleType: VehicleType) throws {
+        let catalog: OfferCatalog = try MockData.load("offers")
+        #expect(catalog.extraKilometerRate > 0, "offers.json needs an extraKilometerRate above zero")
+        let upgrades = catalog.mileageUpgrades.upgrades(for: vehicleType)
+        for upgrade in upgrades {
+            #expect(upgrade.dailySurchargeRate > 0, "A \(vehicleType.rawValue) mileage upgrade in offers.json needs a dailySurchargeRate above zero")
+            if let extraKilometers = upgrade.extraKilometers {
+                #expect(extraKilometers > 0, "A \(vehicleType.rawValue) mileage upgrade in offers.json adds \(extraKilometers) kilometers. Leave extraKilometers out for unlimited kilometers")
+            }
+        }
+        // Unlimited counts as the most kilometers.
+        for (smaller, larger) in zip(upgrades, upgrades.dropFirst()) {
+            #expect((smaller.extraKilometers ?? .max) < (larger.extraKilometers ?? .max), "The \(vehicleType.rawValue) mileage upgrades in offers.json need to go from fewest to most kilometers, with unlimited last")
+            #expect(smaller.dailySurchargeRate < larger.dailySurchargeRate, "The \(vehicleType.rawValue) mileage upgrades in offers.json need to cost more as the kilometers go up")
+        }
+    }
+
     @Test func everyStationHasAKnownProfile() throws {
         let catalog: StationCatalog = try MockData.load("stations")
         let profiles: [String: StationProfile] = try MockData.load("station-profiles")

@@ -5,6 +5,39 @@
     "premiumBrand": "You get a vehicle from a premium brand, like the one shown, from the same category.",
     "guaranteed": "You get exactly the model shown."
   },
+  "paymentOptions": [
+    {
+      "id": "bestPrice",
+      "title": "Our best price",
+      "subtitle": "Free cancellation and rebooking within 24h.",
+      "dailySurchargeRate": 0
+    },
+    {
+      "id": "stayFlexible",
+      "title": "Stay flexible",
+      "subtitle": "Free cancellation and rebooking any time before pickup.",
+      "dailySurchargeRate": 0.05
+    }
+  ],
+  "extraKilometerRate": 0.005,
+  "mileageUpgrades": {
+    "cars": [
+      {
+        "dailySurchargeRate": 0.1
+      }
+    ],
+    "trucks": [
+      {
+        "extraKilometers": 200,
+        "dailySurchargeRate": 0.1
+      },
+      {
+        "extraKilometers": 400,
+        "dailySurchargeRate": 0.18
+      }
+    ]
+  },
+  "adBlueNotice": "Vehicles with an AdBlue® tank include a service fee of €0.04 (incl. tax) per kilometer driven for rentals of less than 28 days.",
   "cars": [
     {
       "id": "bmw-3-series-touring",
