@@ -7,9 +7,6 @@ struct OfferCard: View {
     let rentalDays: Int
 
     @AppStorage(SettingsKey.currencyCode) private var currencyCode = "USD"
-    @State private var isShowingModelInfo = false
-
-    private let catalog = MockData.offers
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -37,7 +34,7 @@ struct OfferCard: View {
 
                 HStack(alignment: .firstTextBaseline, spacing: 12) {
                     Text(dailyPrice)
-                    Text("\(price(offer.pricePerDay * Double(rentalDays))) total")
+                    Text("\(currency.format(offer.pricePerDay * Double(rentalDays))) total")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
@@ -46,7 +43,7 @@ struct OfferCard: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .background {
-            backdrop
+            OfferBackdrop(offer: offer)
         }
         .clipShape(.rect(cornerRadius: 20))
         .environment(\.colorScheme, .dark)
@@ -58,7 +55,7 @@ struct OfferCard: View {
     /// The offer details will show the rest.
     private var specs: some View {
         FlowLayout(spacing: 8) {
-            modelButton
+            ModelLabelButton(model: offer.model)
             switch offer.vehicleType {
             case .cars:
                 if let seats = offer.seats {
@@ -103,39 +100,6 @@ struct OfferCard: View {
         }
     }
 
-    /// The model label, tinted for a premium brand or a guaranteed model. Its info button explains the label.
-    @ViewBuilder
-    private var modelButton: some View {
-        let button = Button {
-            isShowingModelInfo = true
-        } label: {
-            HStack(spacing: 4) {
-                Text(offer.model.title)
-                Image(systemName: "info.circle")
-            }
-            .font(.footnote)
-            .fontWeight(.semibold)
-        }
-        .controlSize(.small)
-        .popover(isPresented: $isShowingModelInfo) {
-            Text(catalog.modelDescriptions[offer.model] ?? "")
-                .font(.subheadline)
-                .frame(width: 260, alignment: .leading)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding()
-                .presentationCompactAdaptation(.popover)
-        }
-
-        if let modelTint {
-            button
-                .buttonStyle(.glassProminent)
-                .tint(modelTint)
-        } else {
-            button
-                .buttonStyle(.glass)
-        }
-    }
-
     private func spec(_ text: String, systemImage: String) -> some View {
         Label(text, systemImage: systemImage)
             .font(.footnote)
@@ -143,23 +107,6 @@ struct OfferCard: View {
             .padding(.horizontal, 10)
             .frame(minHeight: 28)
             .glassEffect(in: .capsule)
-    }
-
-    /// The model label's color: the accent for a premium brand, brown for a guaranteed model.
-    private var modelTint: Color? {
-        switch offer.model {
-        case .orSimilar: nil
-        case .premiumBrand: Color(.accent)
-        case .guaranteed: .brown
-        }
-    }
-
-    /// The glow behind the vehicle: the model label's color, or blue for an electric truck.
-    private var glow: Color? {
-        if offer.vehicleType == .trucks && offer.fuel == .electric {
-            return .blue
-        }
-        return modelTint
     }
 
     // MARK: - Text
@@ -181,45 +128,19 @@ struct OfferCard: View {
 
     // MARK: - Price
 
-    /// Units of the picked currency per US dollar.
-    private var rate: Double {
-        MockData.currencies.first { $0.code == currencyCode }?.rate ?? 1
-    }
-
-    private func price(_ usd: Double) -> String {
-        (usd * rate).formatted(.currency(code: currencyCode))
+    private var currency: Currency {
+        MockData.currency(code: currencyCode)
     }
 
     /// The daily price with its whole number drawn larger, like "$123.45 / day" in the Figma design.
     private var dailyPrice: AttributedString {
-        var text = (offer.pricePerDay * rate).formatted(.currency(code: currencyCode).attributed)
+        var text = (offer.pricePerDay * currency.rate).formatted(.currency(code: currency.code).attributed)
         for run in text.runs {
             text[run.range].font = run.numberPart == .integer ? .title3.weight(.semibold) : .footnote.weight(.semibold)
         }
         var suffix = AttributedString(" / day")
         suffix.font = .footnote.weight(.semibold)
         return text + suffix
-    }
-
-    // MARK: - Background
-
-    /// The studio photo, with a glow for premium brands, guaranteed models, and electric trucks.
-    private var backdrop: some View {
-        Color(.secondarySystemBackground)
-            .overlay {
-                AsyncImage(url: catalog.cardBackdropURL) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                } placeholder: {
-                    Color.clear
-                }
-            }
-            .overlay {
-                if let glow {
-                    EllipticalGradient(colors: [glow, .clear], center: .topTrailing, endRadiusFraction: 0.8)
-                }
-            }
     }
 }
 

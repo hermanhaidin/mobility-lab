@@ -7,4 +7,9 @@ nonisolated struct Currency: Codable, Identifiable {
     let rate: Double
 
     var id: String { code }
+
+    /// A price stored in US dollars, converted to this currency and formatted, like "€12.34".
+    func format(_ usd: Double) -> String {
+        (usd * rate).formatted(.currency(code: code))
+    }
 }

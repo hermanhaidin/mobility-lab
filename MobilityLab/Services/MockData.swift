@@ -11,6 +11,11 @@ enum MockData {
     static let offers: OfferCatalog = loadOrCrash("offers")
     static let stationProfiles: [String: StationProfile] = loadOrCrash("station-profiles")
 
+    /// The currency with this code, like the one picked in Settings. US dollars if `currencies.json` doesn't have it.
+    static func currency(code: String) -> Currency {
+        currencies.first { $0.code == code } ?? Currency(code: "USD", rate: 1)
+    }
+
     /// The cars or trucks a station has, picked by the station's profile.
     static func offers(at station: Station, for vehicleType: VehicleType) -> [Offer] {
         guard let profile = stationProfiles[station.profileID] else {
