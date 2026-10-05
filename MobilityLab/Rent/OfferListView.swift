@@ -119,7 +119,7 @@ struct OfferListView: View {
         .accessibilityHint("Changes the search")
     }
 
-    /// Sorting, then the most used filters as toggles. The filter sheet has the same ones. They scroll away with
+    /// Sorting, then the filter sheet's features as toggles. They scroll away with
     /// the offers: changing one scrolls back to the top anyway.
     private var quickFilters: some View {
         ScrollView(.horizontal) {
@@ -135,7 +135,7 @@ struct OfferListView: View {
                 }
                 .foregroundStyle(.primary)
 
-                ForEach(OfferFeature.quickFilters(for: search.vehicleType)) { feature in
+                ForEach(OfferFeature.filters(for: search.vehicleType)) { feature in
                     let isOn = filter.features.contains(feature)
                     Toggle(isOn: Binding($filter.features, contains: feature)) {
                         Label(feature.quickFilterTitle, systemImage: feature.symbol)

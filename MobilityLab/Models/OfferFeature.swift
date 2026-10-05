@@ -4,19 +4,11 @@ import Foundation
 nonisolated enum OfferFeature: String, CaseIterable, Identifiable {
     case premiumBrand, guaranteedModel, electric, automatic, tachograph, trailerHitch
 
-    /// The features in the filter sheet, in order.
+    /// The features in the filter sheet and the quick filters above the offers, in order.
     static func filters(for vehicleType: VehicleType) -> [OfferFeature] {
         switch vehicleType {
         case .cars: [.premiumBrand, .guaranteedModel, .electric, .automatic]
         case .trucks: [.electric, .automatic, .tachograph, .trailerHitch]
-        }
-    }
-
-    /// The features with a quick filter above the offers, in order.
-    static func quickFilters(for vehicleType: VehicleType) -> [OfferFeature] {
-        switch vehicleType {
-        case .cars: [.premiumBrand, .electric, .automatic]
-        case .trucks: [.electric, .automatic, .tachograph]
         }
     }
 
@@ -35,7 +27,11 @@ nonisolated enum OfferFeature: String, CaseIterable, Identifiable {
 
     /// The shorter title on the quick filter.
     var quickFilterTitle: String {
-        self == .premiumBrand ? "Premium" : title
+        switch self {
+        case .premiumBrand: "Premium"
+        case .guaranteedModel: "Guaranteed"
+        default: title
+        }
     }
 
     var symbol: String {
