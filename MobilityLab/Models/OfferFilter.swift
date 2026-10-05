@@ -19,6 +19,16 @@ nonisolated struct OfferFilter: Equatable {
         bodyStyles.count + features.count + (minimumSeats == Self.fewestSeats ? 0 : 1)
     }
 
+    /// Drops the filters none of the offers has, like Electric at a station without electric cars, so a filter that's
+    /// no longer shown doesn't keep offers out of the list.
+    mutating func removeUnavailable(in offers: [Offer]) {
+        bodyStyles.formIntersection(offers.compactMap(\.bodyStyle))
+        features = features.filter { feature in offers.contains(where: feature.matches) }
+        if !offers.contains(where: { ($0.seats ?? 0) >= minimumSeats }) {
+            minimumSeats = Self.fewestSeats
+        }
+    }
+
     /// Combined like in the p100 prototype: an offer matches if it has any of the selected body styles and model labels,
     /// since it has only one of each, and all of the other selected features. The driver's age comes from the search.
     func matches(_ offer: Offer, driverAge: Int) -> Bool {

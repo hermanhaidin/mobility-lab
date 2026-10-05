@@ -24,17 +24,23 @@ struct OfferFilterView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Vehicle type") {
-                    ForEach(BodyStyle.allCases.filter { $0.vehicleType == vehicleType }) { bodyStyle in
-                        Toggle(bodyStyle.title, isOn: Binding($draft.bodyStyles, contains: bodyStyle))
-                            .tint(Color(.accent))
+                // Only what at least one of the station's offers has, so no filter leads to an empty list.
+                if !bodyStyles.isEmpty {
+                    Section("Vehicle type") {
+                        ForEach(bodyStyles) { bodyStyle in
+                            Toggle(bodyStyle.title, isOn: Binding($draft.bodyStyles, contains: bodyStyle))
+                                .tint(Color(.accent))
+                        }
                     }
                 }
 
-                Section("Features") {
-                    ForEach(OfferFeature.filters(for: vehicleType)) { feature in
-                        Toggle(feature.title, isOn: Binding($draft.features, contains: feature))
-                            .tint(Color(.accent))
+                let features = OfferFeature.filters(for: vehicleType, in: offers)
+                if !features.isEmpty {
+                    Section("Features") {
+                        ForEach(features) { feature in
+                            Toggle(feature.title, isOn: Binding($draft.features, contains: feature))
+                                .tint(Color(.accent))
+                        }
                     }
                 }
 
@@ -117,10 +123,15 @@ struct OfferFilterView: View {
         }
     }
 
-    /// 4, then every larger seat count in the catalog.
+    /// The body styles of the station's offers, in the order of `BodyStyle`.
+    private var bodyStyles: [BodyStyle] {
+        BodyStyle.allCases.filter { bodyStyle in offers.contains { $0.bodyStyle == bodyStyle } }
+    }
+
+    /// 4, then every larger seat count among the station's offers.
     private var seatCounts: [Int] {
         let fewest = OfferFilter.fewestSeats
-        return Set(MockData.offers.cars.compactMap(\.seats) + [fewest]).filter { $0 >= fewest }.sorted()
+        return Set(offers.compactMap(\.seats) + [fewest]).filter { $0 >= fewest }.sorted()
     }
 }
 

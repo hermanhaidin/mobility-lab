@@ -20,7 +20,7 @@ struct OfferListView: View {
             ScrollView {
                 LazyVStack(spacing: 16) {
                     if !stationOffers.isEmpty {
-                        quickFilters
+                        quickFilters(for: stationOffers)
                     }
                     ForEach(offers) { offer in
                         NavigationLink(value: offer) {
@@ -97,6 +97,9 @@ struct OfferListView: View {
             .onChange(of: search.vehicleType) {
                 filter = OfferFilter()
             }
+            .onChange(of: stationOffers.map(\.id)) {
+                filter.removeUnavailable(in: stationOffers)
+            }
         }
     }
 
@@ -121,7 +124,7 @@ struct OfferListView: View {
 
     /// Sorting, then the filter sheet's features as toggles. They scroll away with
     /// the offers: changing one scrolls back to the top anyway.
-    private var quickFilters: some View {
+    private func quickFilters(for stationOffers: [Offer]) -> some View {
         ScrollView(.horizontal) {
             HStack(spacing: 8) {
                 Menu {
@@ -135,7 +138,7 @@ struct OfferListView: View {
                 }
                 .foregroundStyle(.primary)
 
-                ForEach(OfferFeature.filters(for: search.vehicleType)) { feature in
+                ForEach(OfferFeature.filters(for: search.vehicleType, in: stationOffers)) { feature in
                     let isOn = filter.features.contains(feature)
                     Toggle(isOn: Binding($filter.features, contains: feature)) {
                         Label(feature.quickFilterTitle, systemImage: feature.symbol)

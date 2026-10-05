@@ -12,6 +12,11 @@ nonisolated enum OfferFeature: String, CaseIterable, Identifiable {
         }
     }
 
+    /// Those of the features that at least one of the offers has, so no filter leads to an empty list.
+    static func filters(for vehicleType: VehicleType, in offers: [Offer]) -> [OfferFeature] {
+        filters(for: vehicleType).filter { feature in offers.contains(where: feature.matches) }
+    }
+
     var id: Self { self }
 
     var title: String {
