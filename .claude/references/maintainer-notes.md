@@ -61,7 +61,7 @@ For the people building Mobility Lab from the Figma designs, and their Claude se
 - The logo is two template SVGs, `SixtWordmark` and `SixtSwoosh`, with the same view box, stacked by `SixtLogo`. The swoosh takes `Color.accentColor`, the letters the surrounding foreground style. One template image can only be one color.
 - Close buttons are `Button(role: .close)` in a `.cancellationAction` toolbar item.
 - Bordered buttons: tinting them changes the fill too. Keep the default fill and set `.foregroundStyle(.primary)` for black text.
-- Lists tint `Label` icons with the accent color. Set `.foregroundStyle(.primary)` on the label, or `.tint(.primary)` on the list and `.tint(Color(.accent))` on any toggle inside it.
+- Lists tint `Label` icons with the accent color. Set `.foregroundStyle(.primary)` on the label, or `.listItemTint(.primary)` on the section. It's a row trait: on the list itself it does nothing. Settings first used `.tint(.primary)` on the list, which also reached the Appearance picker's pushed list and turned its checkmark black; iOS pickers keep the tint for the checkmark. Toggles need `.tint(Color(.accent))` either way, or they're green.
 - A list row with two tap targets: the main button keeps the default style, so the whole row taps and highlights, and the secondary one uses `.buttonStyle(.borderless)`. A `.plain` main button taps only on its label; `.contentShape` outside the button doesn't widen it.
 - In a Form, a button's `.tint` colors its text but not its `Label` icon, and `.tint(.secondary)` left the text black. `.listItemTint` colors the icon; `.foregroundStyle` colors both.
 - `.foregroundStyle(.primary)` goes on the button, not inside its label: inside, `.primary` resolves against the button's tint and stays orange. `PromoCard` learned it.
@@ -84,7 +84,7 @@ For the people building Mobility Lab from the Figma designs, and their Claude se
 - `.safeAreaBar` holds the filter sheet's Show offers button, so the soft scroll edge runs under it.
 - Known quirk: after Appearance goes from Dark back to System, an open sheet stays dark until it's reopened.
 - The station picker's search field takes focus with the sheet: `.searchFocused($isSearchFocused)` (iOS 18) and `isSearchFocused = true` in `.onAppear`. `.defaultFocus($isSearchFocused, true)` did nothing. In an iOS 26 sheet the field sits at the bottom, and an active search hides the title and ✕ unless `.searchPresentationToolbarBehavior(.avoidHidingContent)` is set. After a city's station list pops, the keyboard comes back with the query on its own: the system restores the active search, not `onAppear` (it happened with `onAppear` on the `NavigationStack` too).
-- `.tint(.primary)` on the settings list doesn't reach a `NavigationLink` destination: `SearchablePicker`'s rows came out orange, and so did a checkmark with `.foregroundStyle(.tint)`. The stock Appearance picker's pushed list is black. The rows set `.foregroundStyle(.primary)` on the button, and the checkmark inherits it.
+- A `List` button shows its label in the tint, so `SearchablePicker`'s rows set `.foregroundStyle(.primary)` on the button. The checkmark is `.foregroundStyle(.tint)` in `.semibold`, which matches the stock picker's.
 
 ## Photos
 

@@ -63,9 +63,11 @@ struct SettingsView: View {
             } footer: {
                 Text(versionText)
             }
+            // Black icons. `.tint(.primary)` on the list did it too, but reached the Appearance picker's list and
+            // turned its checkmark black. A row trait, so it goes on the section, not the list.
+            .listItemTint(.primary)
         }
         .pickerStyle(.navigationLink)
-        .tint(.primary)
         .navigationTitle("Settings")
     }
 

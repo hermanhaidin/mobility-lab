@@ -48,11 +48,12 @@ private struct OptionList: View {
                     Spacer()
                     if option.id == selection {
                         Image(systemName: "checkmark")
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.tint)
                     }
                 }
             }
-            // The settings list's `.tint(.primary)` doesn't reach a pushed view: rows came out orange, and so did
-            // a checkmark in `.tint`. Black, like the checkmark of the stock Appearance picker next door.
+            // A list button shows its label in the tint. Black text, and the checkmark in the accent like a stock picker's.
             .foregroundStyle(.primary)
         }
         .overlay {
