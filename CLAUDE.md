@@ -64,7 +64,7 @@ The current scope lives in the README's **Status** line. Update it when the scop
   - `stations.json`: every station, plus the default pick-up station, the "current location" station, and the starting search history.
   - `station-details.json`: the directions and return text all stations share.
   - `rent-home.json`: the Rent tab's hero photos and "Recommended for you" cards. `zoom` and `focusY` frame a hero photo; `imageCrop` (`top`, `center`, `bottom`) picks which part of a card photo stays visible.
-  - `offers.json`: every car and truck, with its daily price in US dollars, plus the studio photo behind the offer cards and what each model label ("Guaranteed model") means. Prices show in the currency picked in Settings.
+  - `offers.json`: every car and truck, with its daily price in US dollars, plus the studio photo behind the offer cards and what each model label ("Guaranteed model") means, where `{name}` stands for the vehicle's name. It also holds what the offer details offer: the payment options ("Stay flexible") with their help text, the mileage upgrades for cars and trucks, and the price of an extra kilometer. Surcharges are a share of the daily price. Prices show in the currency picked in Settings.
   - `station-profiles.json`: how many offers of each category a kind of station shows. Each station in `stations.json` points to one with `profileID`. To change what a station offers, change its profile's numbers or point it to another profile.
   - `countries.json`, `currencies.json`: codes and exchange rates only.
 - Get anything generic from the system instead of JSON: country and currency names, flags, and formatting for dates, money, and distances. Only SIXT-specific data belongs in JSON.
