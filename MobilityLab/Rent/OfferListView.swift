@@ -49,7 +49,7 @@ struct OfferListView: View {
                     }
                 } else if offers.isEmpty {
                     ContentUnavailableView {
-                        Label("No matching offers", systemImage: "line.3.horizontal.decrease.circle")
+                        Label("No matching offers", systemImage: "line.3.horizontal.decrease")
                     } description: {
                         Text("Change or clear the filters to see more offers.")
                     } actions: {
@@ -57,6 +57,8 @@ struct OfferListView: View {
                             Button("Clear filters") {
                                 filter = OfferFilter()
                             }
+                            .buttonStyle(.glass)
+                            .controlSize(.large)
                         }
                     }
                 }
