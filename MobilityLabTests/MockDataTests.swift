@@ -92,6 +92,13 @@ struct MockDataTests {
         }
     }
 
+    @Test func electricOffersComeWithCables() throws {
+        let catalog: OfferCatalog = try MockData.load("offers")
+        for offer in catalog.cars + catalog.trucks where offer.fuel == .electric {
+            #expect(offer.equipment?.contains(.chargingCable) == true, "\(offer.name) in offers.json is electric, so its equipment needs \"chargingCable\"")
+        }
+    }
+
     @Test func everyModelLabelHasADescription() throws {
         let catalog: OfferCatalog = try MockData.load("offers")
         for model in Offer.Model.allCases {

@@ -135,7 +135,7 @@ struct OfferDetailView: View {
     }
 
     /// Everything the offer data has. Cars: seats, doors, suitcases, transmission, and range. Trucks: payload, gross weight,
-    /// license, transmission, range, and equipment. Both end with the minimum driver age.
+    /// license, transmission, range, and equipment. Both end with the cables of electric vehicles and the minimum driver age.
     @ViewBuilder
     private var specs: some View {
         switch offer.vehicleType {
@@ -165,9 +165,13 @@ struct OfferDetailView: View {
             }
             Label(offer.transmission.title, systemImage: "gearshift.layout.sixspeed")
             fuel
-            ForEach(offer.equipment ?? [], id: \.self) { equipment in
+            ForEach((offer.equipment ?? []).filter { $0 != .chargingCable }, id: \.self) { equipment in
                 Label(equipment.title, systemImage: equipment.symbol)
             }
+        }
+        // Every electric vehicle comes with cables.
+        if offer.equipment?.contains(.chargingCable) == true {
+            Label(Offer.Equipment.chargingCable.title, systemImage: Offer.Equipment.chargingCable.symbol)
         }
         Label("Age of the youngest driver: \(offer.minDriverAge)", systemImage: "person.text.rectangle.fill")
     }

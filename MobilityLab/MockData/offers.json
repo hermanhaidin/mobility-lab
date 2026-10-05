@@ -101,6 +101,9 @@
       "transmission": "automatic",
       "fuel": "electric",
       "rangeKm": 310,
+      "equipment": [
+        "chargingCable"
+      ],
       "pricePerDay": 75.4,
       "minDriverAge": 18
     },
@@ -228,6 +231,9 @@
       "transmission": "automatic",
       "fuel": "electric",
       "rangeKm": 306,
+      "equipment": [
+        "chargingCable"
+      ],
       "pricePerDay": 81.02,
       "minDriverAge": 18
     },
@@ -286,6 +292,9 @@
       "transmission": "automatic",
       "fuel": "electric",
       "rangeKm": 513,
+      "equipment": [
+        "chargingCable"
+      ],
       "pricePerDay": 85.75,
       "minDriverAge": 21
     },
@@ -316,6 +325,9 @@
       "transmission": "automatic",
       "fuel": "electric",
       "rangeKm": 496,
+      "equipment": [
+        "chargingCable"
+      ],
       "pricePerDay": 88.11,
       "minDriverAge": 21
     },
@@ -360,6 +372,9 @@
       "transmission": "automatic",
       "fuel": "electric",
       "rangeKm": 606,
+      "equipment": [
+        "chargingCable"
+      ],
       "pricePerDay": 90.08,
       "minDriverAge": 21
     },
@@ -390,6 +405,9 @@
       "transmission": "automatic",
       "fuel": "electric",
       "rangeKm": 456,
+      "equipment": [
+        "chargingCable"
+      ],
       "pricePerDay": 94.36,
       "minDriverAge": 21
     },
@@ -448,6 +466,9 @@
       "transmission": "automatic",
       "fuel": "electric",
       "rangeKm": 792,
+      "equipment": [
+        "chargingCable"
+      ],
       "pricePerDay": 97.96,
       "minDriverAge": 21
     },
@@ -492,6 +513,9 @@
       "transmission": "automatic",
       "fuel": "electric",
       "rangeKm": 471,
+      "equipment": [
+        "chargingCable"
+      ],
       "pricePerDay": 98.42,
       "includedKilometers": 1200,
       "minDriverAge": 18
@@ -595,6 +619,9 @@
       "transmission": "automatic",
       "fuel": "electric",
       "rangeKm": 439,
+      "equipment": [
+        "chargingCable"
+      ],
       "pricePerDay": 112.85,
       "minDriverAge": 21
     },
@@ -794,6 +821,9 @@
       "transmission": "automatic",
       "fuel": "electric",
       "rangeKm": 641,
+      "equipment": [
+        "chargingCable"
+      ],
       "pricePerDay": 154.79,
       "minDriverAge": 21
     },
@@ -824,6 +854,9 @@
       "transmission": "automatic",
       "fuel": "electric",
       "rangeKm": 516,
+      "equipment": [
+        "chargingCable"
+      ],
       "pricePerDay": 172.09,
       "includedKilometers": 1200,
       "minDriverAge": 25
@@ -841,6 +874,9 @@
       "transmission": "automatic",
       "fuel": "electric",
       "rangeKm": 598,
+      "equipment": [
+        "chargingCable"
+      ],
       "pricePerDay": 181.36,
       "includedKilometers": 1200,
       "minDriverAge": 25

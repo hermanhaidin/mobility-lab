@@ -47,7 +47,7 @@ nonisolated struct Offer: Codable, Hashable, Identifiable {
             case .tachograph: "tachometer"
             case .trailerHitch: "tow.hitch.fill"
             case .tailLift: "arrow.up.and.down.square.fill"
-            case .chargingCable: "powerplug.fill"
+            case .chargingCable: "powercord.fill"
             }
         }
     }
