@@ -18,7 +18,8 @@ struct OfferCard: View {
             }
             .padding([.top, .horizontal])
 
-            // Figma's photo frame. The 1050 × 600 photos are wider, so their empty sides are cut off, like in Figma.
+            // Figma's photo frame. Car photos are 752 × 500, so they fit it. Truck photos are 1050 × 600, so their empty
+            // sides are cut off, like in Figma.
             RemoteImage(url: offer.imageURL)
                 .aspectRatio(752 / 500, contentMode: .fit)
                 .clipped()

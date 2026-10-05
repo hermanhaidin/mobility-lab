@@ -91,7 +91,8 @@ struct OfferDetailView: View {
     /// The photo on the studio backdrop, the model label, and the specs. The backdrop runs up under the toolbar.
     private var hero: some View {
         VStack(spacing: 0) {
-            // The offer cards' photo frame, which cuts off the empty sides of the 1050 × 600 photos.
+            // The offer cards' photo frame: car photos are 752 × 500, and the empty sides of 1050 × 600 truck photos
+            // are cut off.
             RemoteImage(url: offer.imageURL)
                 .aspectRatio(752 / 500, contentMode: .fit)
                 .clipped()
