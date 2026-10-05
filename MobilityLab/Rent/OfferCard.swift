@@ -60,27 +60,27 @@ struct OfferCard: View {
             switch offer.vehicleType {
             case .cars:
                 if let seats = offer.seats {
-                    spec("\(seats)", systemImage: "person.fill")
+                    SpecChip(title: "\(seats)", systemImage: "person.fill")
                         .accessibilityLabel("\(seats) seats")
                 }
                 if let suitcases = offer.suitcases {
-                    spec("\(suitcases)", systemImage: "suitcase.rolling.and.suitcase.fill")
+                    SpecChip(title: "\(suitcases)", systemImage: "suitcase.rolling.and.suitcase.fill")
                         .accessibilityLabel("\(suitcases) suitcases")
                 }
-                spec(offer.transmission.title, systemImage: "gearshift.layout.sixspeed")
+                SpecChip(title: offer.transmission.title, systemImage: "gearshift.layout.sixspeed")
                 fuel
             case .trucks:
                 fuel
                 if let grossWeightKg = offer.grossWeightKg {
-                    spec(weight(grossWeightKg), systemImage: "scalemass.fill")
+                    SpecChip(title: weight(grossWeightKg), systemImage: "scalemass.fill")
                         .accessibilityLabel("Gross weight \(weight(grossWeightKg))")
                 }
                 if let payloadKg = offer.payloadKg {
-                    spec(weight(payloadKg), systemImage: "truck.box.fill")
+                    SpecChip(title: weight(payloadKg), systemImage: "truck.box.fill")
                         .accessibilityLabel("Payload \(weight(payloadKg))")
                 }
                 if let licenseClass = offer.licenseClass {
-                    spec(licenseClass, systemImage: "person.text.rectangle.fill")
+                    SpecChip(title: licenseClass, systemImage: "person.text.rectangle.fill")
                         .accessibilityLabel("Driver's license class \(licenseClass)")
                 }
             }
@@ -92,22 +92,13 @@ struct OfferCard: View {
     private var fuel: some View {
         switch offer.fuel {
         case .electric:
-            spec(offer.rangeKm.map { distance($0, width: .abbreviated) } ?? "Electric", systemImage: "battery.100percent.bolt")
+            SpecChip(title: offer.rangeKm.map { distance($0, width: .abbreviated) } ?? "Electric", systemImage: "battery.100percent.bolt")
                 .accessibilityLabel(offer.rangeKm.map { "Electric, \(distance($0, width: .wide)) range" } ?? "Electric")
         case .hybrid:
-            spec("Hybrid", systemImage: "leaf.fill")
+            SpecChip(title: "Hybrid", systemImage: "leaf.fill")
         case nil:
             EmptyView()
         }
-    }
-
-    private func spec(_ text: String, systemImage: String) -> some View {
-        Label(text, systemImage: systemImage)
-            .font(.footnote)
-            .fontWeight(.semibold)
-            .padding(.horizontal, 10)
-            .frame(minHeight: 28)
-            .glassEffect(in: .capsule)
     }
 
     // MARK: - Text

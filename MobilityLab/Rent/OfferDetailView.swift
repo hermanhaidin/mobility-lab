@@ -100,7 +100,12 @@ struct OfferDetailView: View {
                 .padding(.top, topInset)
 
             VStack(spacing: 12) {
-                ModelLabelButton(model: offer.model)
+                HStack(spacing: 8) {
+                    ModelLabelButton(model: offer.model)
+                    if offer.fuel == .electric {
+                        SpecChip(title: "Electric", systemImage: "bolt.fill")
+                    }
+                }
 
                 FlowLayout(alignment: .center, spacing: 12) {
                     specs
@@ -176,15 +181,13 @@ struct OfferDetailView: View {
         Label("Age of the youngest driver: \(offer.minDriverAge)", systemImage: "person.text.rectangle.fill")
     }
 
-    /// The range of an electric vehicle, or "Hybrid".
+    /// The range of an electric vehicle, or "Hybrid". "Electric" itself sits next to the model label.
     @ViewBuilder
     private var fuel: some View {
         switch offer.fuel {
         case .electric:
             if let rangeKm = offer.rangeKm {
                 Label("\(distance(rangeKm)) range", systemImage: "battery.100percent.bolt")
-            } else {
-                Label("Electric", systemImage: "battery.100percent.bolt")
             }
         case .hybrid:
             Label("Hybrid", systemImage: "leaf.fill")
