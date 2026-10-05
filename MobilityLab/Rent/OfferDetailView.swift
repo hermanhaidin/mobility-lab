@@ -56,8 +56,13 @@ struct OfferDetailView: View {
         .toolbarColorScheme(isPhotoUnderToolbar ? .dark : nil, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button(currency.format(booking.total)) {
+                Button {
                     isShowingPriceDetails = true
+                } label: {
+                    // The digits roll to the new total when an option changes it.
+                    Text(currency.format(booking.total))
+                        .contentTransition(.numericText(value: booking.total))
+                        .animation(.default, value: booking.total)
                 }
                 .accessibilityHint("Shows the price details")
             }
