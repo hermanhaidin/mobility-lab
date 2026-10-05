@@ -29,7 +29,7 @@ For the people building Mobility Lab from the Figma designs, and their Claude se
 - Login copies the Health app's inverted look: white sheet, gray text field.
 - Native pickers over designed sheets:
   - Driver age is a `Picker` with `.pickerStyle(.menu)` in a list row (`DriverAgeRow`), which shows the value with the pop-up glyph (⌃⌄) like Figma. The Age Picker Sheet is gone.
-  - Appearance uses `.pickerStyle(.navigationLink)`. Currency and country use `SearchablePicker`: a `NavigationLink` row (`LabeledContent` with the picked title) to a `List` with `.searchable`, since a navigation-link picker can't take a search field. It matches the shown text or the code, so "USD" finds US Dollar, and pops back on a pick. The list is a private view in the same file, so `dismiss` pops it rather than Settings, and the query starts empty each time. Its search field takes focus on appear, like the station picker's.
+  - Appearance uses `.pickerStyle(.navigationLink)`. Currency and country use `SearchablePicker`: a `NavigationLink` row (`LabeledContent` with the picked title) to a `List` with `.searchable`, since a navigation-link picker can't take a search field. It matches the shown text or the code, so "USD" finds US Dollar, and pops back on a pick. An option can carry an emoji icon, like a country's flag; the settings row shows it in front of the title ("🇺🇦 Ukraine"). The list is a private view in the same file, so `dismiss` pops it rather than Settings, and the query starts empty each time. Its search field takes focus on appear, like the station picker's.
 - Naming: views are named after what they are, not how they're shown (`LocationPicker`, not `LocationPickerSheet`). Figma's "IBE" is the first section of `RentView`'s list.
 - Screens without a design (Help center, About this App, Create account, offer details) open `PlaceholderView`.
 - Station details: one shared text for every station, in `station-details.json`. Only name, address, and opening hours differ.
@@ -84,7 +84,7 @@ For the people building Mobility Lab from the Figma designs, and their Claude se
 - `.safeAreaBar` holds the filter sheet's Show offers button, so the soft scroll edge runs under it.
 - Known quirk: after Appearance goes from Dark back to System, an open sheet stays dark until it's reopened.
 - The station picker's search field takes focus with the sheet: `.searchFocused($isSearchFocused)` (iOS 18) and `isSearchFocused = true` in `.onAppear`. `.defaultFocus($isSearchFocused, true)` did nothing. In an iOS 26 sheet the field sits at the bottom, and an active search hides the title and ✕ unless `.searchPresentationToolbarBehavior(.avoidHidingContent)` is set. After a city's station list pops, the keyboard comes back with the query on its own: the system restores the active search, not `onAppear` (it happened with `onAppear` on the `NavigationStack` too).
-- A `List` button shows its label in the tint, so `SearchablePicker`'s rows set `.foregroundStyle(.primary)` on the button. The checkmark is `.foregroundStyle(.tint)` in `.semibold`, which matches the stock picker's.
+- A `List` button shows its label in the tint, so `SearchablePicker`'s rows set `.foregroundStyle(.primary)` on the button. The checkmark is `.foregroundStyle(.tint)` in `.semibold`, which matches the stock picker's. Country rows are `Label`s with the flag as a `Text` icon, so the separators start at the name like rows with symbol icons; one `Text` with the flag in front ran them to the edge.
 
 ## Photos
 

@@ -81,7 +81,7 @@ struct SettingsView: View {
         MockData.countryCodes
             .map { (code: $0, name: Locale.current.localizedString(forRegionCode: $0) ?? $0) }
             .sorted { $0.name < $1.name }
-            .map { .init(id: $0.code, title: "\(Locale.Region($0.code).flag) \($0.name)") }
+            .map { .init(id: $0.code, title: $0.name, icon: Locale.Region($0.code).flag) }
     }
 
     private var versionText: String {

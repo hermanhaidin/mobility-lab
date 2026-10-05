@@ -13,17 +13,23 @@ struct SearchablePicker: View {
             OptionList(title: title, options: options, selection: $selection)
         } label: {
             LabeledContent {
-                Text(options.first { $0.id == selection }?.title ?? selection)
+                Text(options.first { $0.id == selection }?.pickedTitle ?? selection)
             } label: {
                 Label(title, systemImage: systemImage)
             }
         }
     }
 
-    /// One option: the code it's saved as, and the text it shows.
+    /// One option: the code it's saved as, the text it shows, and an emoji for its icon, like a country's flag.
     struct Option: Identifiable {
         let id: String
         let title: String
+        var icon: String? = nil
+
+        /// What the settings row shows once picked: "🇺🇦 Ukraine".
+        var pickedTitle: String {
+            [icon, title].compactMap(\.self).joined(separator: " ")
+        }
     }
 }
 
@@ -44,7 +50,16 @@ private struct OptionList: View {
                 dismiss()
             } label: {
                 HStack {
-                    Text(option.title)
+                    // A label, so the separator starts at the title and leaves the icon column clear.
+                    if let icon = option.icon {
+                        Label {
+                            Text(option.title)
+                        } icon: {
+                            Text(icon)
+                        }
+                    } else {
+                        Text(option.title)
+                    }
                     Spacer()
                     if option.id == selection {
                         Image(systemName: "checkmark")
