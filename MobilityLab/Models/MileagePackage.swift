@@ -7,4 +7,11 @@ nonisolated struct MileagePackage: Hashable {
     let kilometers: Int?
     /// What the package adds to the daily price, as a share of it. 0 for the kilometers the offer includes.
     let dailySurchargeRate: Double
+
+    /// "1,200 km" or "Unlimited km".
+    var title: String {
+        guard let kilometers else { return "Unlimited km" }
+        return Measurement(value: Double(kilometers), unit: UnitLength.kilometers)
+            .formatted(.measurement(width: .abbreviated, usage: .asProvided))
+    }
 }

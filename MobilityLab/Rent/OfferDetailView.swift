@@ -1,10 +1,10 @@
 import SwiftUI
 
-/// An offer's vehicle and specs, opened from its card in the offer list. The top is always dark, like the offer
-/// cards. Continue goes on to protection.
+/// An offer's vehicle and specs, with a payment option and a mileage package to pick. Opened from its card in the
+/// offer list. The top is always dark, like the offer cards. Continue goes on to protection.
 struct OfferDetailView: View {
-    let offer: Offer
-    let rentalDays: Int
+    @State private var booking: Booking
+    @AppStorage(SettingsKey.currencyCode) private var currencyCode = "USD"
 
     /// The status bar and toolbar, which the hero runs under.
     @State private var topInset = 0.0
@@ -14,6 +14,14 @@ struct OfferDetailView: View {
 
     private let catalog = MockData.offers
 
+    init(offer: Offer, rentalDays: Int) {
+        _booking = State(initialValue: Booking(offer: offer, rentalDays: rentalDays))
+    }
+
+    private var offer: Offer {
+        booking.offer
+    }
+
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
@@ -21,6 +29,11 @@ struct OfferDetailView: View {
                 if canUpgradeToUnlimited {
                     unlimitedNudge
                 }
+                VStack(alignment: .leading, spacing: 16) {
+                    paymentOptions
+                    mileagePackages
+                }
+                .padding()
             }
         }
         // The hero starts at the top of the screen, so its backdrop runs under the toolbar. A background inside
@@ -155,6 +168,62 @@ struct OfferDetailView: View {
         }
     }
 
+    // MARK: - Options
+
+    private var paymentOptions: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            sectionHeader("Payment option")
+            VStack(spacing: 12) {
+                ForEach(catalog.paymentOptions) { option in
+                    ChoiceCard(
+                        title: option.title,
+                        subtitle: option.subtitle,
+                        price: surcharge(option.dailySurchargeRate),
+                        isSelected: booking.paymentOption == option
+                    ) {
+                        booking.paymentOption = option
+                    }
+                }
+            }
+        }
+    }
+
+    private var mileagePackages: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            sectionHeader("Mileage package")
+            VStack(spacing: 12) {
+                ForEach(catalog.mileagePackages(for: offer), id: \.self) { package in
+                    ChoiceCard(
+                        title: package.title,
+                        subtitle: package.kilometers == nil
+                            ? "All kilometers are included in the price."
+                            : "+\(currency.format(catalog.extraKilometerRate * offer.pricePerDay)) for every additional km.",
+                        price: surcharge(package.dailySurchargeRate),
+                        isSelected: booking.mileagePackage == package
+                    ) {
+                        booking.mileagePackage = package
+                    }
+                }
+            }
+            // Electric trucks have no AdBlue tank.
+            if offer.vehicleType == .trucks && offer.fuel != .electric {
+                Text(catalog.adBlueNotice)
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal)
+            }
+        }
+    }
+
+    /// Like a prominent list header: bold, in sentence case, lined up with the text in the cards.
+    private func sectionHeader(_ title: String) -> some View {
+        Text(title)
+            .font(.title3)
+            .fontWeight(.semibold)
+            .padding(.horizontal)
+            .padding(.top, 14)
+    }
+
     // MARK: - Mileage
 
     /// Whether the offer has a kilometer limit that an upgrade lifts.
@@ -173,6 +242,16 @@ struct OfferDetailView: View {
     }
 
     // MARK: - Text
+
+    private var currency: Currency {
+        MockData.currency(code: currencyCode)
+    }
+
+    /// "Included", or what an option adds per day, like "+$5.38 / day".
+    private func surcharge(_ dailySurchargeRate: Double) -> String {
+        guard dailySurchargeRate > 0 else { return "Included" }
+        return "+\(currency.format(dailySurchargeRate * offer.pricePerDay)) / day"
+    }
 
     private func distance(_ kilometers: Int) -> String {
         Measurement(value: Double(kilometers), unit: UnitLength.kilometers)
