@@ -10,13 +10,20 @@
       "id": "bestPrice",
       "title": "Our best price",
       "subtitle": "Free cancellation and rebooking within 24h.",
-      "dailySurchargeRate": 0
+      "dailySurchargeRate": 0,
+      "details": "You will be asked to provide a valid payment instrument, in order to complete the booking.",
+      "detailBullets": [
+        "Book with confidence: change or cancel free within 24 hours of booking when your pickup is more than 48 hours away. After 24 hours, adjust or cancel anytime before pickup for a fee.",
+        "Cancellation fees are based on your final selection and will be displayed on the page where you finalize your booking.",
+        "If you cancel after the scheduled pickup time, no refund will be given."
+      ]
     },
     {
       "id": "stayFlexible",
       "title": "Stay flexible",
       "subtitle": "Free cancellation and rebooking any time before pickup.",
-      "dailySurchargeRate": 0.05
+      "dailySurchargeRate": 0.05,
+      "details": "You’ll pay for the vehicle when you pick it up."
     }
   ],
   "extraKilometerRate": 0.005,

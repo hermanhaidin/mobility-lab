@@ -101,6 +101,7 @@ struct MockDataTests {
         #expect(included.count == 1, "offers.json needs exactly one payment option with a dailySurchargeRate of 0, picked first on the offer details. It has \(included.count)")
         for option in catalog.paymentOptions {
             #expect(option.dailySurchargeRate >= 0, "The \(option.title) payment option in offers.json needs a dailySurchargeRate of 0 or more")
+            #expect(!option.details.isEmpty, "The \(option.title) payment option in offers.json needs details, shown from Need help? on the offer details")
         }
         let duplicates = Dictionary(grouping: catalog.paymentOptions, by: \.id).filter { $0.value.count > 1 }.keys
         #expect(duplicates.isEmpty, "offers.json has more than one payment option with the id \(duplicates.sorted())")

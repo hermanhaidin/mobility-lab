@@ -8,4 +8,8 @@ nonisolated struct PaymentOption: Codable, Hashable, Identifiable {
     let subtitle: String
     /// What the option adds to the daily price, as a share of it: 0.05 adds 5%. 0 means it's included.
     let dailySurchargeRate: Double
+    /// The explanation behind "Need help?" on the offer details.
+    let details: String
+    /// Bullet points under the explanation. Leave it out for none.
+    let detailBullets: [String]?
 }

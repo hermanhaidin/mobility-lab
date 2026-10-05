@@ -12,6 +12,7 @@ struct OfferDetailView: View {
     /// Whether the photo is still behind the toolbar, which then shows a white title and no soft edge.
     @State private var isPhotoUnderToolbar = true
     @State private var isShowingPriceDetails = false
+    @State private var isShowingPaymentHelp = false
 
     private let catalog = MockData.offers
 
@@ -79,6 +80,9 @@ struct OfferDetailView: View {
         }
         .sheet(isPresented: $isShowingPriceDetails) {
             PriceDetailView(booking: booking)
+        }
+        .sheet(isPresented: $isShowingPaymentHelp) {
+            PaymentOptionDetailView()
         }
     }
 
@@ -185,7 +189,17 @@ struct OfferDetailView: View {
 
     private var paymentOptions: some View {
         VStack(alignment: .leading, spacing: 8) {
-            sectionHeader("Payment option")
+            sectionHeader("Payment option") {
+                Button {
+                    isShowingPaymentHelp = true
+                } label: {
+                    Text("Need help?")
+                        .underline()
+                }
+                .font(.subheadline)
+                .fontWeight(.medium)
+                .foregroundStyle(.primary)
+            }
             VStack(spacing: 12) {
                 ForEach(catalog.paymentOptions) { option in
                     ChoiceCard(
@@ -228,13 +242,21 @@ struct OfferDetailView: View {
         }
     }
 
-    /// Like a prominent list header: bold, in sentence case, lined up with the text in the cards.
-    private func sectionHeader(_ title: String) -> some View {
-        Text(title)
-            .font(.title3)
-            .fontWeight(.semibold)
-            .padding(.horizontal)
-            .padding(.top, 14)
+    /// Like a prominent list header: bold, in sentence case, lined up with the text in the cards, with an optional
+    /// button at the trailing edge.
+    private func sectionHeader<Accessory: View>(
+        _ title: String,
+        @ViewBuilder accessory: () -> Accessory = { EmptyView() }
+    ) -> some View {
+        HStack(alignment: .firstTextBaseline) {
+            Text(title)
+                .font(.title3)
+                .fontWeight(.semibold)
+            Spacer()
+            accessory()
+        }
+        .padding(.horizontal)
+        .padding(.top, 14)
     }
 
     // MARK: - Mileage
