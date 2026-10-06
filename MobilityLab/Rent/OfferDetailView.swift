@@ -11,7 +11,6 @@ struct OfferDetailView: View {
     @State private var photoHeight = 0.0
     /// Whether the photo is still behind the toolbar, which then shows a white title and no soft edge.
     @State private var isPhotoUnderToolbar = true
-    @State private var isShowingPriceDetails = false
     @State private var isShowingPaymentHelp = false
 
     private let catalog = MockData.offers
@@ -56,35 +55,13 @@ struct OfferDetailView: View {
         .toolbarColorScheme(isPhotoUnderToolbar ? .dark : nil, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    isShowingPriceDetails = true
-                } label: {
-                    // The digits roll to the new total when an option changes it.
-                    Text(currency.format(booking.total))
-                        .contentTransition(.numericText(value: booking.total))
-                        .animation(.default, value: booking.total)
-                }
-                .accessibilityHint("Shows the price details")
+                TotalPriceButton(booking: booking)
             }
         }
         .safeAreaBar(edge: .bottom) {
-            NavigationLink {
+            ContinueButton {
                 PlaceholderView(title: "Protection", systemImage: "shield.lefthalf.filled")
-            } label: {
-                Text("Continue")
             }
-            .buttonStyle(.glassProminent)
-            .buttonSizing(.flexible)
-            .controlSize(.large)
-            .fontWeight(.medium)
-            // 36 points in from the screen's edges, so the capsule's ends follow the curve of the display corners.
-            // Below it, the 34-point home indicator inset and 2 more make 36 too.
-            .padding(.horizontal, 36)
-            .padding(.top, 8)
-            .padding(.bottom, 2)
-        }
-        .sheet(isPresented: $isShowingPriceDetails) {
-            PriceDetailView(booking: booking)
         }
         .sheet(isPresented: $isShowingPaymentHelp) {
             HelpArticleView(article: MockData.paymentOptionHelp)
