@@ -28,7 +28,7 @@ struct OfferDetailView: View {
         ScrollView {
             VStack(spacing: 0) {
                 hero
-                if canUpgradeToUnlimited {
+                if catalog.canUpgradeToUnlimited(offer) {
                     unlimitedNudge
                 }
                 VStack(alignment: .leading, spacing: 16) {
@@ -276,11 +276,6 @@ struct OfferDetailView: View {
     }
 
     // MARK: - Mileage
-
-    /// Whether the offer has a kilometer limit that an upgrade lifts.
-    private var canUpgradeToUnlimited: Bool {
-        catalog.mileagePackages(for: offer).contains { $0.kilometers == nil && $0.dailySurchargeRate > 0 }
-    }
 
     private var unlimitedNudge: some View {
         Label("Unlimited kilometers available", systemImage: "checkmark")

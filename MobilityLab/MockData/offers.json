@@ -60,6 +60,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 107.64,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -74,6 +75,7 @@
       "suitcases": 3,
       "transmission": "automatic",
       "pricePerDay": 76.48,
+      "includedKilometers": 600,
       "minDriverAge": 18
     },
     {
@@ -88,6 +90,7 @@
       "suitcases": 2,
       "transmission": "automatic",
       "pricePerDay": 74.65,
+      "includedKilometers": 600,
       "minDriverAge": 18
     },
     {
@@ -107,6 +110,7 @@
         "chargingCable"
       ],
       "pricePerDay": 75.4,
+      "includedKilometers": 600,
       "minDriverAge": 18
     },
     {
@@ -121,6 +125,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 81.02,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -135,6 +140,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 89.89,
+      "includedKilometers": 600,
       "minDriverAge": 18
     },
     {
@@ -149,6 +155,7 @@
       "suitcases": 3,
       "transmission": "manual",
       "pricePerDay": 71.56,
+      "includedKilometers": 600,
       "minDriverAge": 18
     },
     {
@@ -163,6 +170,7 @@
       "suitcases": 2,
       "transmission": "manual",
       "pricePerDay": 71.92,
+      "includedKilometers": 600,
       "minDriverAge": 18
     },
     {
@@ -175,7 +183,7 @@
       "suitcases": 3,
       "transmission": "manual",
       "pricePerDay": 72.85,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -190,6 +198,7 @@
       "suitcases": 3,
       "transmission": "manual",
       "pricePerDay": 73.18,
+      "includedKilometers": 600,
       "minDriverAge": 18
     },
     {
@@ -204,6 +213,7 @@
       "suitcases": 4,
       "transmission": "manual",
       "pricePerDay": 75.7,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -218,6 +228,7 @@
       "suitcases": 4,
       "transmission": "manual",
       "pricePerDay": 77.28,
+      "includedKilometers": 600,
       "minDriverAge": 18
     },
     {
@@ -237,6 +248,7 @@
         "chargingCable"
       ],
       "pricePerDay": 81.02,
+      "includedKilometers": 600,
       "minDriverAge": 18
     },
     {
@@ -251,6 +263,7 @@
       "suitcases": 2,
       "transmission": "manual",
       "pricePerDay": 80.83,
+      "includedKilometers": 600,
       "minDriverAge": 18
     },
     {
@@ -265,6 +278,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 82.6,
+      "includedKilometers": 600,
       "minDriverAge": 18
     },
     {
@@ -279,6 +293,7 @@
       "suitcases": 4,
       "transmission": "manual",
       "pricePerDay": 84.17,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -298,6 +313,7 @@
         "chargingCable"
       ],
       "pricePerDay": 85.75,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -312,6 +328,7 @@
       "suitcases": 2,
       "transmission": "automatic",
       "pricePerDay": 86.35,
+      "includedKilometers": 600,
       "minDriverAge": 18
     },
     {
@@ -331,6 +348,7 @@
         "chargingCable"
       ],
       "pricePerDay": 88.11,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -345,6 +363,7 @@
       "suitcases": 3,
       "transmission": "automatic",
       "pricePerDay": 87.92,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -359,6 +378,7 @@
       "suitcases": 5,
       "transmission": "automatic",
       "pricePerDay": 88.32,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -378,6 +398,7 @@
         "chargingCable"
       ],
       "pricePerDay": 90.08,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -392,6 +413,7 @@
       "suitcases": 3,
       "transmission": "automatic",
       "pricePerDay": 93.25,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -411,6 +433,7 @@
         "chargingCable"
       ],
       "pricePerDay": 94.36,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -425,6 +448,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 95.02,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -439,6 +463,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 95.41,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -453,6 +478,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 96,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -472,6 +498,7 @@
         "chargingCable"
       ],
       "pricePerDay": 97.96,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -486,6 +513,7 @@
       "suitcases": 2,
       "transmission": "automatic",
       "pricePerDay": 97.38,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -500,6 +528,7 @@
       "suitcases": 6,
       "transmission": "automatic",
       "pricePerDay": 98.17,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -519,7 +548,7 @@
         "chargingCable"
       ],
       "pricePerDay": 98.42,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 18
     },
     {
@@ -534,6 +563,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 103.27,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -548,7 +578,7 @@
       "suitcases": 3,
       "transmission": "automatic",
       "pricePerDay": 103.69,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -563,6 +593,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 104.48,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -577,6 +608,7 @@
       "suitcases": 3,
       "transmission": "automatic",
       "pricePerDay": 105.07,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -592,6 +624,7 @@
       "transmission": "automatic",
       "fuel": "hybrid",
       "pricePerDay": 107.24,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -606,6 +639,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 109.81,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -625,6 +659,7 @@
         "chargingCable"
       ],
       "pricePerDay": 112.85,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -639,7 +674,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 117.49,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -654,6 +689,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 121.64,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -668,7 +704,7 @@
       "suitcases": 3,
       "transmission": "automatic",
       "pricePerDay": 122.18,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -681,6 +717,7 @@
       "suitcases": 3,
       "transmission": "automatic",
       "pricePerDay": 123.47,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -695,6 +732,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 124.5,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -709,6 +747,7 @@
       "suitcases": 5,
       "transmission": "automatic",
       "pricePerDay": 127.54,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -723,6 +762,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 127.54,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -737,6 +777,7 @@
       "suitcases": 2,
       "transmission": "automatic",
       "pricePerDay": 130.7,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -751,6 +792,7 @@
       "suitcases": 2,
       "transmission": "automatic",
       "pricePerDay": 131.65,
+      "includedKilometers": 600,
       "minDriverAge": 18
     },
     {
@@ -765,6 +807,7 @@
       "suitcases": 2,
       "transmission": "automatic",
       "pricePerDay": 137.6,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -779,6 +822,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 141.15,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -793,7 +837,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 150.81,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -808,6 +852,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 151.4,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -827,6 +872,7 @@
         "chargingCable"
       ],
       "pricePerDay": 154.79,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -841,6 +887,7 @@
       "suitcases": 6,
       "transmission": "automatic",
       "pricePerDay": 165.4,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -860,7 +907,7 @@
         "chargingCable"
       ],
       "pricePerDay": 172.09,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -880,7 +927,7 @@
         "chargingCable"
       ],
       "pricePerDay": 181.36,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -895,7 +942,7 @@
       "suitcases": 6,
       "transmission": "automatic",
       "pricePerDay": 187.34,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -910,6 +957,7 @@
       "suitcases": 8,
       "transmission": "manual",
       "pricePerDay": 192.21,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -924,6 +972,7 @@
       "suitcases": 6,
       "transmission": "automatic",
       "pricePerDay": 195.36,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -938,7 +987,7 @@
       "suitcases": 3,
       "transmission": "automatic",
       "pricePerDay": 200.29,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -953,6 +1002,7 @@
       "suitcases": 6,
       "transmission": "automatic",
       "pricePerDay": 205.84,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -967,6 +1017,7 @@
       "suitcases": 8,
       "transmission": "automatic",
       "pricePerDay": 211.33,
+      "includedKilometers": 600,
       "minDriverAge": 21
     },
     {
@@ -981,7 +1032,7 @@
       "suitcases": 6,
       "transmission": "automatic",
       "pricePerDay": 213.5,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -996,6 +1047,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 231.3,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -1010,7 +1062,7 @@
       "suitcases": 2,
       "transmission": "automatic",
       "pricePerDay": 215.27,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -1025,7 +1077,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 217.44,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -1040,7 +1092,7 @@
       "suitcases": 6,
       "transmission": "automatic",
       "pricePerDay": 217.69,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -1055,6 +1107,7 @@
       "suitcases": 8,
       "transmission": "automatic",
       "pricePerDay": 223.95,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -1069,7 +1122,7 @@
       "suitcases": 8,
       "transmission": "automatic",
       "pricePerDay": 239.52,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -1084,7 +1137,7 @@
       "suitcases": 6,
       "transmission": "automatic",
       "pricePerDay": 253.13,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -1099,7 +1152,7 @@
       "suitcases": 3,
       "transmission": "automatic",
       "pricePerDay": 262.39,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -1115,7 +1168,7 @@
       "transmission": "automatic",
       "fuel": "hybrid",
       "pricePerDay": 267.91,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -1130,7 +1183,7 @@
       "suitcases": 4,
       "transmission": "automatic",
       "pricePerDay": 269.09,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -1145,7 +1198,7 @@
       "suitcases": 2,
       "transmission": "automatic",
       "pricePerDay": 278.43,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -1160,7 +1213,7 @@
       "suitcases": 2,
       "transmission": "automatic",
       "pricePerDay": 344.2,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     },
     {
@@ -1175,7 +1228,7 @@
       "suitcases": 3,
       "transmission": "automatic",
       "pricePerDay": 354.25,
-      "includedKilometers": 1200,
+      "includedKilometers": 600,
       "minDriverAge": 25
     }
   ],

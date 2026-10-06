@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// An offer in the offer list: the vehicle, its specs, the included kilometers, and the price in the currency
+/// An offer in the offer list: the vehicle, its specs, the kilometers, and the price in the currency
 /// picked in Settings. The card is always dark, like the studio photo behind it.
 struct OfferCard: View {
     let offer: Offer
@@ -103,7 +103,9 @@ struct OfferCard: View {
 
     // MARK: - Text
 
+    /// "Unlimited kilometers available" on offers that can upgrade to them, else the kilometers included.
     private var mileage: String {
+        if MockData.offers.canUpgradeToUnlimited(offer) { return "Unlimited kilometers available" }
         guard let includedKilometers = offer.includedKilometers else { return "Unlimited kilometers" }
         return "\(distance(includedKilometers, width: .wide)) included"
     }

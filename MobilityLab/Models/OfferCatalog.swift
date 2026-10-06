@@ -72,4 +72,9 @@ nonisolated struct OfferCatalog: Codable {
             )
         }
     }
+
+    /// Whether an offer has a kilometer limit that an upgrade lifts, like the 600 km of every car.
+    func canUpgradeToUnlimited(_ offer: Offer) -> Bool {
+        mileagePackages(for: offer).contains { $0.kilometers == nil && $0.dailySurchargeRate > 0 }
+    }
 }
