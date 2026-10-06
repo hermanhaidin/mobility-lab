@@ -10,6 +10,7 @@ enum MockData {
     static let currencies: [Currency] = loadOrCrash("currencies")
     static let offers: OfferCatalog = loadOrCrash("offers")
     static let stationProfiles: [String: StationProfile] = loadOrCrash("station-profiles")
+    static let protection: ProtectionCatalog = loadOrCrash("protection")
     static let paymentOptionHelp: HelpArticle = loadOrCrash("payment-option-help")
     static let protectionHelp: HelpArticle = loadOrCrash("protection-help")
 

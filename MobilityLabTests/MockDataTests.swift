@@ -4,7 +4,7 @@ import Testing
 
 /// Checks the JSON files in `MockData`. When one of these fails, the message says which file and entry to fix.
 struct MockDataTests {
-    @Test(arguments: ["stations", "station-details", "rent-home", "countries", "currencies", "offers", "station-profiles", "payment-option-help", "protection-help"])
+    @Test(arguments: ["stations", "station-details", "rent-home", "countries", "currencies", "offers", "station-profiles", "protection", "payment-option-help", "protection-help"])
     func fileLoads(_ name: String) throws {
         switch name {
         case "stations": let _: StationCatalog = try MockData.load(name)
@@ -14,6 +14,7 @@ struct MockDataTests {
         case "currencies": let _: [Currency] = try MockData.load(name)
         case "offers": let _: OfferCatalog = try MockData.load(name)
         case "station-profiles": let _: [String: StationProfile] = try MockData.load(name)
+        case "protection": let _: ProtectionCatalog = try MockData.load(name)
         case "payment-option-help", "protection-help": let _: HelpArticle = try MockData.load(name)
         default: Issue.record("Add a check for \(name).json")
         }
@@ -65,7 +66,7 @@ struct MockDataTests {
         }
     }
 
-    // MARK: - Offers and station profiles
+    // MARK: - Offers
 
     @Test func offerIDsAreUnique() throws {
         let catalog: OfferCatalog = try MockData.load("offers")
@@ -159,6 +160,32 @@ struct MockDataTests {
         let duplicates = Dictionary(grouping: catalog.fees, by: \.title).filter { $0.value.count > 1 }.keys
         #expect(duplicates.isEmpty, "offers.json has more than one fee titled \(duplicates.sorted())")
     }
+
+    // MARK: - Protection
+
+    @Test func protectionPackagesAreValid() throws {
+        let catalog: ProtectionCatalog = try MockData.load("protection")
+        let withoutSurcharge = catalog.packages.filter { $0.dailySurchargeRate == 0 }
+        #expect(withoutSurcharge.count == 1, "protection.json needs exactly one package with a dailySurchargeRate of 0, \"No extra protection\". It has \(withoutSurcharge.count)")
+        for package in catalog.packages {
+            #expect(package.dailySurchargeRate >= 0, "\(package.title) in protection.json needs a dailySurchargeRate of 0 or more")
+            #expect((0...3).contains(package.stars), "\(package.title) in protection.json needs from 0 to 3 stars")
+            #expect((package.deductible ?? 0) >= 0, "\(package.title) in protection.json needs a deductible of 0 or more. Leave it out for the full vehicle value")
+            // Only a package that covers something is charged and shows in the booking overview.
+            #expect(package.coverage.isEmpty == (package.dailySurchargeRate == 0), "\(package.title) in protection.json needs coverage if it costs extra, and none if it doesn't")
+        }
+        let duplicates = Dictionary(grouping: catalog.packages, by: \.id).filter { $0.value.count > 1 }.keys
+        #expect(duplicates.isEmpty, "protection.json has more than one package with the id \(duplicates.sorted())")
+    }
+
+    @Test func includedProtectionHasDetails() throws {
+        let catalog: ProtectionCatalog = try MockData.load("protection")
+        for item in catalog.included {
+            #expect(!item.title.isEmpty && !item.details.isEmpty, "Every included protection in protection.json needs a title and details")
+        }
+    }
+
+    // MARK: - Station profiles
 
     @Test func everyStationHasAKnownProfile() throws {
         let catalog: StationCatalog = try MockData.load("stations")

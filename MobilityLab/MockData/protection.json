@@ -1,0 +1,55 @@
+{
+  "included": [
+    {
+      "title": "Third Party Insurance",
+      "details": "Rest assured that if you accidentally injure someone or damage an object with the rental vehicle, such as another vehicle, SIXT will cover the cost."
+    },
+    {
+      "title": "24/7 Breakdown Assistance",
+      "details": "Roadside assistance for accidents and technical or mechanical rental malfunctions when you were not at fault."
+    }
+  ],
+  "packages": [
+    {
+      "id": "allInclusive",
+      "title": "All-Inclusive Protection",
+      "stars": 3,
+      "deductible": 0,
+      "dailySurchargeRate": 0.255,
+      "coverage": [
+        "Collision damages, scratches, bumps, and theft",
+        "Tire, windshield and windows",
+        "Interior damage (e.g. spills)",
+        "Roadside help for common mobility issues (e.g. loss of keys)"
+      ]
+    },
+    {
+      "id": "smart",
+      "title": "Smart Protection",
+      "stars": 2,
+      "deductible": 0,
+      "dailySurchargeRate": 0.225,
+      "coverage": [
+        "Collision damages, scratches, bumps, and theft",
+        "Tire, windshield and windows"
+      ]
+    },
+    {
+      "id": "basic",
+      "title": "Basic Protection",
+      "stars": 1,
+      "deductible": 2000,
+      "dailySurchargeRate": 0.15,
+      "coverage": [
+        "Collision damages, scratches, bumps, and theft"
+      ]
+    },
+    {
+      "id": "none",
+      "title": "No extra protection",
+      "stars": 0,
+      "dailySurchargeRate": 0,
+      "coverage": []
+    }
+  ]
+}

@@ -2,7 +2,7 @@ import Foundation
 import Observation
 
 /// What the customer is booking: an offer for some rental days at a station, with a payment option and a mileage
-/// package. Made on the offer details. Protection and add-ons come next.
+/// package, picked on the offer details, and a protection package, picked on the protection screen. Add-ons come next.
 @Observable
 final class Booking {
     /// One line of the price: the rental, an option that costs extra, or a tax or fee. Titles are in title case.
@@ -20,6 +20,8 @@ final class Booking {
     let fees: [Fee]
     var paymentOption: PaymentOption
     var mileagePackage: MileagePackage
+    /// `nil` until the customer picks a package or "No extra protection", which nothing is picked for first.
+    var protection: ProtectionPackage?
 
     /// Starts with the payment option and mileage package that cost nothing extra, so the total matches the offer card's.
     init(offer: Offer, rentalDays: Int, station: Station, catalog: OfferCatalog = MockData.offers) {
@@ -44,6 +46,9 @@ final class Booking {
         }
         if mileagePackage.dailySurchargeRate > 0 {
             charges.append(Charge(title: "Mileage Package: \(mileagePackage.title)", price: mileagePackage.dailySurchargeRate * offer.pricePerDay * days))
+        }
+        if let protection, protection.dailySurchargeRate > 0 {
+            charges.append(Charge(title: protection.title, price: protection.dailySurchargeRate * offer.pricePerDay * days))
         }
         return charges
     }
