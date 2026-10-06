@@ -197,7 +197,7 @@ struct OfferDetailView: View {
                 ForEach(catalog.paymentOptions) { option in
                     ChoiceCard(
                         title: option.title,
-                        subtitle: option.subtitle,
+                        subtitle: Text(option.subtitle),
                         price: surcharge(option.dailySurchargeRate),
                         isSelected: booking.paymentOption == option
                     ) {
@@ -215,9 +215,9 @@ struct OfferDetailView: View {
                 ForEach(catalog.mileagePackages(for: offer), id: \.self) { package in
                     ChoiceCard(
                         title: package.title,
-                        subtitle: package.kilometers == nil
+                        subtitle: Text(package.kilometers == nil
                             ? "All kilometers are included in the price."
-                            : "+\(currency.format(catalog.extraKilometerRate * offer.pricePerDay)) for every additional km.",
+                            : "+\(currency.format(catalog.extraKilometerRate * offer.pricePerDay)) for every additional km."),
                         price: surcharge(package.dailySurchargeRate),
                         isSelected: booking.mileagePackage == package
                     ) {
