@@ -11,7 +11,7 @@ struct BookingOverviewRow<Details: View>: View {
     var body: some View {
         // One button the whole time, so the title stays put while the details slide in under it.
         Button {
-            withAnimation {
+            withAnimation(.snappy(duration: 0.3)) {
                 isExpanded = true
             }
         } label: {
@@ -33,9 +33,16 @@ struct BookingOverviewRow<Details: View>: View {
                         .foregroundStyle(.tertiary)
                 }
             }
+            // Inside the label, so the whole row takes the tap. 16 points from the sides like Figma, and a 52-point
+            // row for one line, like the kit's Row.
+            .padding(.horizontal, 16)
+            .padding(.vertical, 15)
+            .contentShape(.rect)
         }
-        .buttonStyle(RowButtonStyle())
-        // An open row takes no taps, so it doesn't highlight either.
+        // The system's press effect, which only dims the text. A gray overlay on the whole row made the dividers
+        // next to it look lighter while scrolling.
+        .buttonStyle(.plain)
+        // An open row takes no taps, so it doesn't dim either.
         .allowsHitTesting(!isExpanded)
         .accessibilityHint(isExpanded ? "" : "Shows the details")
     }
