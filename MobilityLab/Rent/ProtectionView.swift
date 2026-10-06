@@ -7,66 +7,20 @@ struct ProtectionView: View {
 
     @AppStorage(SettingsKey.currencyCode) private var currencyCode = "USD"
     @State private var isShowingHelp = false
-    /// The booking overview's open rows: included protection by title, then "payment", "mileage", and "protection",
-    /// which stays open when the package changes.
-    @State private var expandedRows: Set<String> = []
 
     private let catalog = MockData.protection
 
     var body: some View {
-        List {
-            Section {
-                ForEach(catalog.packages) { package in
-                    card(for: package)
-                        // Half the 12 points between cards above and below each one. The cell clips its first and
-                        // last rows to its own corners, which would cut into the cards' smaller ones without it.
-                        .listRowInsets(EdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 0))
-                        .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
-                }
-            } header: {
-                HStack(alignment: .firstTextBaseline) {
-                    Text("Choose your package")
-                    Spacer()
-                    Button {
-                        isShowingHelp = true
-                    } label: {
-                        Text("Need help?")
-                            .underline()
-                    }
-                    .font(.subheadline)
-                    .fontWeight(.medium)
-                    .foregroundStyle(.primary)
-                }
+        // A scroll view like the offer details, not a list: the cards are the offer details' cards, and a list
+        // clipped their corners, faded their picks, and snapped the overview's rows open.
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                packages
+                overview
             }
-            .headerProminence(.increased)
-
-            Section("Your booking overview") {
-                ForEach(catalog.included, id: \.self) { item in
-                    BookingOverviewRow(title: item.title, isExpanded: isExpanded(item.title)) {
-                        Text(item.details)
-                    }
-                }
-                BookingOverviewRow(title: "Payment Option: \(booking.paymentOption.chargeTitle)", isExpanded: isExpanded("payment")) {
-                    Text(booking.paymentOption.subtitle)
-                }
-                BookingOverviewRow(title: "Mileage Package: \(booking.mileagePackage.title)", isExpanded: isExpanded("mileage")) {
-                    Text(MockData.offers.mileageDescription(of: booking.mileagePackage, for: booking.offer, in: currency))
-                }
-                // One row for whichever package is picked, so switching packages updates it in place.
-                if let protection = booking.protection, protection.dailySurchargeRate > 0 {
-                    BookingOverviewRow(title: protection.title, isExpanded: isExpanded("protection")) {
-                        BulletList(items: protection.coverage, spacing: 0)
-                    }
-                }
-            }
-            .headerProminence(.increased)
-            // Gray rows on a white page, like Figma: the grouped look inverted.
-            .listRowBackground(Color(.secondarySystemBackground))
+            // The first header's own top padding is enough under the large title, like Figma.
+            .padding([.horizontal, .bottom])
         }
-        .listSectionSpacing(.compact)
-        .scrollContentBackground(.hidden)
-        .background(Color(.systemBackground))
         .navigationTitle("Protection")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
@@ -85,6 +39,48 @@ struct ProtectionView: View {
         }
     }
 
+    private var packages: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            SectionHeader("Choose your package") {
+                isShowingHelp = true
+            }
+            VStack(spacing: 12) {
+                ForEach(catalog.packages) { package in
+                    card(for: package)
+                }
+            }
+        }
+    }
+
+    /// What the booking includes so far. Each row opens to its details.
+    private var overview: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            SectionHeader("Your booking overview")
+            RowGroup {
+                ForEach(catalog.included, id: \.self) { item in
+                    BookingOverviewRow(title: item.title) {
+                        Text(item.details)
+                    }
+                }
+                BookingOverviewRow(title: "Payment Option: \(booking.paymentOption.chargeTitle)") {
+                    Text(booking.paymentOption.subtitle)
+                }
+                BookingOverviewRow(title: "Mileage Package: \(booking.mileagePackage.title)") {
+                    Text(MockData.offers.mileageDescription(of: booking.mileagePackage, for: booking.offer, in: currency))
+                }
+                // One row for whichever package is picked, so it stays open when the package changes.
+                if let protection = booking.protection, protection.dailySurchargeRate > 0 {
+                    BookingOverviewRow(title: protection.title) {
+                        BulletList(items: protection.coverage, spacing: 0)
+                    }
+                }
+            }
+            // The picked package's row slides in and out. Only here: an animated pick would fade the unpicked card's
+            // fill to gray while its checkmark draws off, where it should turn gray at once.
+            .animation(.default, value: booking.protection)
+        }
+    }
+
     // MARK: - Packages
 
     private func card(for package: ProtectionPackage) -> some View {
@@ -96,20 +92,18 @@ struct ProtectionView: View {
                 : "Included",
             isSelected: booking.protection == package
         ) {
-            // Not in `withAnimation`: the list would animate its whole update, so an unpicked card's fill would fade
-            // to gray while its checkmark draws off. The overview's row just appears.
             booking.protection = package
         } accessory: {
             stars(package.stars)
         } details: {
             if !package.coverage.isEmpty {
                 Divider()
-                // Not a Label: in a list, its icon takes the tint and sits in a wide column.
                 ForEach(package.coverage, id: \.self) { line in
-                    HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    Label {
+                        Text(line)
+                    } icon: {
                         Image(systemName: "checkmark")
                             .fontWeight(.semibold)
-                        Text(line)
                     }
                     .font(.footnote)
                 }
@@ -145,10 +139,6 @@ struct ProtectionView: View {
             .accessibilityElement(children: .ignore)
             .accessibilityLabel("\(count) of 3 stars")
         }
-    }
-
-    private func isExpanded(_ row: String) -> Binding<Bool> {
-        Binding($expandedRows, contains: row)
     }
 
     private var currency: Currency {
