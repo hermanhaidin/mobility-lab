@@ -1,7 +1,8 @@
 import SwiftUI
 
 /// The dates of a search: one summary row, like a new event in Calendar, until it's tapped. Then the Pick-up and
-/// Drop-off pickers take its place. Shared by the Rent tab and the search editor.
+/// Drop-off pickers take its place, with times in 30-minute steps (set in `MobilityLabApp`). Shared by the Rent tab
+/// and the search editor.
 struct DateRows: View {
     @Bindable var search: RentSearch
 
