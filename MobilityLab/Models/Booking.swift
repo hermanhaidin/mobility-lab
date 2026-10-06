@@ -5,7 +5,7 @@ import Observation
 /// Made on the offer details. Protection and add-ons come next.
 @Observable
 final class Booking {
-    /// One line of the price: the rental, or an option that costs extra.
+    /// One line of the price: the rental, or an option that costs extra. Titles are in title case.
     struct Charge: Identifiable {
         let title: String
         /// In US dollars, for all rental days.
@@ -37,10 +37,10 @@ final class Booking {
             )
         ]
         if paymentOption.dailySurchargeRate > 0 {
-            charges.append(Charge(title: paymentOption.title, price: paymentOption.dailySurchargeRate * offer.pricePerDay * days))
+            charges.append(Charge(title: paymentOption.chargeTitle, price: paymentOption.dailySurchargeRate * offer.pricePerDay * days))
         }
         if mileagePackage.dailySurchargeRate > 0 {
-            charges.append(Charge(title: "Mileage package: \(mileagePackage.title)", price: mileagePackage.dailySurchargeRate * offer.pricePerDay * days))
+            charges.append(Charge(title: "Mileage Package: \(mileagePackage.title)", price: mileagePackage.dailySurchargeRate * offer.pricePerDay * days))
         }
         return charges
     }

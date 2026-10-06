@@ -9,6 +9,7 @@
     {
       "id": "bestPrice",
       "title": "Our best price",
+      "chargeTitle": "Our Best Price",
       "subtitle": "Free cancellation and rebooking within 24h.",
       "dailySurchargeRate": 0,
       "details": "You will be asked to provide a valid payment instrument, in order to complete the booking.",
@@ -21,6 +22,7 @@
     {
       "id": "stayFlexible",
       "title": "Stay flexible",
+      "chargeTitle": "Stay Flexible",
       "subtitle": "Free cancellation and rebooking any time before pickup.",
       "dailySurchargeRate": 0.05,
       "details": "You’ll pay for the vehicle when you pick it up."
