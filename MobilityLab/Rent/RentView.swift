@@ -54,6 +54,7 @@ struct RentView: View {
                         }
                         .buttonStyle(.glassProminent)
                         .controlSize(.large)
+                        .fontWeight(.medium)
                         // The button is the row.
                         .listRowInsets(EdgeInsets())
                         .listRowBackground(Color.clear)

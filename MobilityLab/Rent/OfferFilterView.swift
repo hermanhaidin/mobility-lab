@@ -94,6 +94,7 @@ struct OfferFilterView: View {
                 }
                 .buttonStyle(.glassProminent)
                 .controlSize(.large)
+                .fontWeight(.medium)
                 .disabled(matchCount == 0)
                 .padding(.horizontal, 36)
                 .padding(.vertical, 8)
