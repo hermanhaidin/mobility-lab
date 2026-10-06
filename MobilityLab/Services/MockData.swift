@@ -1,6 +1,6 @@
 import Foundation
 
-/// The prototype's fake backend: the JSON files in the `MockData` folder, each loaded once.
+/// The prototype's fake backend: the JSON files in the `MockData` folder, each loaded once, the first time it's needed.
 enum MockData {
     static let stations: StationCatalog = loadOrCrash("stations")
     static let stationGuide: StationGuide = loadOrCrash("station-details")
@@ -10,6 +10,8 @@ enum MockData {
     static let currencies: [Currency] = loadOrCrash("currencies")
     static let offers: OfferCatalog = loadOrCrash("offers")
     static let stationProfiles: [String: StationProfile] = loadOrCrash("station-profiles")
+    static let paymentOptionHelp: HelpArticle = loadOrCrash("payment-option-help")
+    static let protectionHelp: HelpArticle = loadOrCrash("protection-help")
 
     /// The currency with this code, like the one picked in Settings. US dollars if `currencies.json` doesn't have it.
     static func currency(code: String) -> Currency {

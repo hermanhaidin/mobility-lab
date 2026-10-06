@@ -4,7 +4,7 @@ import Testing
 
 /// Checks the JSON files in `MockData`. When one of these fails, the message says which file and entry to fix.
 struct MockDataTests {
-    @Test(arguments: ["stations", "station-details", "rent-home", "countries", "currencies", "offers", "station-profiles"])
+    @Test(arguments: ["stations", "station-details", "rent-home", "countries", "currencies", "offers", "station-profiles", "payment-option-help", "protection-help"])
     func fileLoads(_ name: String) throws {
         switch name {
         case "stations": let _: StationCatalog = try MockData.load(name)
@@ -14,6 +14,7 @@ struct MockDataTests {
         case "currencies": let _: [Currency] = try MockData.load(name)
         case "offers": let _: OfferCatalog = try MockData.load(name)
         case "station-profiles": let _: [String: StationProfile] = try MockData.load(name)
+        case "payment-option-help", "protection-help": let _: HelpArticle = try MockData.load(name)
         default: Issue.record("Add a check for \(name).json")
         }
     }
@@ -51,6 +52,16 @@ struct MockDataTests {
         for currency in currencies {
             #expect(Locale.Currency(currency.code).isISOCurrency, "currencies.json has \"\(currency.code)\", which isn't a currency code")
             #expect(currency.rate > 0, "\(currency.code) in currencies.json needs a rate above zero")
+        }
+    }
+
+    @Test(arguments: ["payment-option-help", "protection-help"])
+    func helpArticlesHaveText(_ name: String) throws {
+        let article: HelpArticle = try MockData.load(name)
+        #expect(!article.title.isEmpty, "\(name).json needs a title")
+        #expect(!article.sections.isEmpty, "\(name).json needs at least one section")
+        for section in article.sections {
+            #expect(!section.title.isEmpty && !section.text.isEmpty, "Every section in \(name).json needs a title and a text")
         }
     }
 
@@ -112,7 +123,6 @@ struct MockDataTests {
         #expect(included.count == 1, "offers.json needs exactly one payment option with a dailySurchargeRate of 0, picked first on the offer details. It has \(included.count)")
         for option in catalog.paymentOptions {
             #expect(option.dailySurchargeRate >= 0, "The \(option.title) payment option in offers.json needs a dailySurchargeRate of 0 or more")
-            #expect(!option.details.isEmpty, "The \(option.title) payment option in offers.json needs details, shown from Need help? on the offer details")
             #expect(!option.chargeTitle.isEmpty, "The \(option.title) payment option in offers.json needs a chargeTitle, its line in the price details")
         }
         let duplicates = Dictionary(grouping: catalog.paymentOptions, by: \.id).filter { $0.value.count > 1 }.keys

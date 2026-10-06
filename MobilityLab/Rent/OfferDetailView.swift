@@ -87,7 +87,7 @@ struct OfferDetailView: View {
             PriceDetailView(booking: booking)
         }
         .sheet(isPresented: $isShowingPaymentHelp) {
-            PaymentOptionDetailView()
+            HelpArticleView(article: MockData.paymentOptionHelp)
         }
     }
 

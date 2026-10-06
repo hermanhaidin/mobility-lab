@@ -1,31 +1,28 @@
 import SwiftUI
 
-/// What each payment option means, opened from "Need help?" on the offer details.
-struct PaymentOptionDetailView: View {
-    @Environment(\.dismiss) private var dismiss
+/// The help behind a "Need help?" button, like what each payment option means. A sheet with ✕ and no title.
+struct HelpArticleView: View {
+    let article: HelpArticle
 
-    private let options = MockData.offers.paymentOptions
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    Text("Choose the payment option that’s right for you.")
+                    Text(article.title)
                         .font(.title2)
                         .bold()
 
-                    ForEach(options) { option in
+                    ForEach(article.sections, id: \.self) { section in
                         VStack(alignment: .leading, spacing: 8) {
-                            Text(option.title)
+                            Text(section.title)
                                 .font(.headline)
                             VStack(alignment: .leading, spacing: 16) {
-                                Text(option.details)
-                                ForEach(option.detailBullets ?? [], id: \.self) { bullet in
-                                    HStack(alignment: .firstTextBaseline, spacing: 10) {
-                                        Text("•")
-                                        Text(bullet)
-                                    }
-                                    .padding(.leading, 8)
+                                Text(section.text)
+                                if let bullets = section.bullets {
+                                    BulletList(items: bullets)
+                                        .padding(.leading, 8)
                                 }
                             }
                         }
@@ -46,6 +43,10 @@ struct PaymentOptionDetailView: View {
     }
 }
 
-#Preview {
-    PaymentOptionDetailView()
+#Preview("Payment options") {
+    HelpArticleView(article: MockData.paymentOptionHelp)
+}
+
+#Preview("Protection") {
+    HelpArticleView(article: MockData.protectionHelp)
 }
