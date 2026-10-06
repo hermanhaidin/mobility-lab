@@ -16,8 +16,8 @@ struct OfferDetailView: View {
 
     private let catalog = MockData.offers
 
-    init(offer: Offer, rentalDays: Int) {
-        _booking = State(initialValue: Booking(offer: offer, rentalDays: rentalDays))
+    init(offer: Offer, rentalDays: Int, station: Station) {
+        _booking = State(initialValue: Booking(offer: offer, rentalDays: rentalDays, station: station))
     }
 
     private var offer: Offer {
@@ -312,12 +312,12 @@ struct OfferDetailView: View {
 
 #Preview("Car") {
     NavigationStack {
-        OfferDetailView(offer: MockData.offers.cars.first { $0.id == "bmw-m340-touring" }!, rentalDays: 3)
+        OfferDetailView(offer: MockData.offers.cars.first { $0.id == "bmw-m340-touring" }!, rentalDays: 3, station: RentSearch().pickUpStation)
     }
 }
 
 #Preview("Truck") {
     NavigationStack {
-        OfferDetailView(offer: MockData.offers.trucks.first { $0.id == "vw-crafter-long" }!, rentalDays: 3)
+        OfferDetailView(offer: MockData.offers.trucks.first { $0.id == "vw-crafter-long" }!, rentalDays: 3, station: RentSearch().pickUpStation)
     }
 }

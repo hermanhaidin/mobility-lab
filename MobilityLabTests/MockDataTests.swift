@@ -137,6 +137,19 @@ struct MockDataTests {
         }
     }
 
+    @Test func feesAreValid() throws {
+        let catalog: OfferCatalog = try MockData.load("offers")
+        let profiles: [String: StationProfile] = try MockData.load("station-profiles")
+        for fee in catalog.fees {
+            #expect(fee.rate > 0, "The \(fee.title) fee in offers.json needs a rate above zero")
+            for id in fee.stationProfileIDs ?? [] {
+                #expect(profiles[id] != nil, "The \(fee.title) fee in offers.json is charged at \"\(id)\" stations, but station-profiles.json has no such profile")
+            }
+        }
+        let duplicates = Dictionary(grouping: catalog.fees, by: \.title).filter { $0.value.count > 1 }.keys
+        #expect(duplicates.isEmpty, "offers.json has more than one fee titled \(duplicates.sorted())")
+    }
+
     @Test func everyStationHasAKnownProfile() throws {
         let catalog: StationCatalog = try MockData.load("stations")
         let profiles: [String: StationProfile] = try MockData.load("station-profiles")

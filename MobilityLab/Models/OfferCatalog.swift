@@ -32,6 +32,8 @@ nonisolated struct OfferCatalog: Codable {
     /// The price of each kilometer driven beyond a mileage package, as a share of the daily price.
     let extraKilometerRate: Double
     let mileageUpgrades: MileageUpgrades
+    /// The taxes and fees on top of the rental, in the order the price details list them.
+    let fees: [Fee]
     /// The note under the mileage packages of trucks with a combustion engine.
     let adBlueNotice: String
     let cars: [Offer]
@@ -76,5 +78,10 @@ nonisolated struct OfferCatalog: Codable {
     /// Whether an offer has a kilometer limit that an upgrade lifts, like the 600 km of every car.
     func canUpgradeToUnlimited(_ offer: Offer) -> Bool {
         mileagePackages(for: offer).contains { $0.kilometers == nil && $0.dailySurchargeRate > 0 }
+    }
+
+    /// The taxes and fees a station charges.
+    func fees(at station: Station) -> [Fee] {
+        fees.filter { $0.stationProfileIDs?.contains(station.profileID) ?? true }
     }
 }

@@ -46,6 +46,22 @@
       }
     ]
   },
+  "fees": [
+    {
+      "title": "Premium Location Fee",
+      "rate": 0.2,
+      "stationProfileIDs": [
+        "mega-airport",
+        "large-airport",
+        "large-train",
+        "small-airport"
+      ]
+    },
+    {
+      "title": "Registration Fee (WLTP)",
+      "rate": 0.01
+    }
+  ],
   "adBlueNotice": "Vehicles with an AdBlue® tank include a service fee of €0.04 (incl. tax) per kilometer driven for rentals of less than 28 days.",
   "cars": [
     {

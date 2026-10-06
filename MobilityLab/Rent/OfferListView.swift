@@ -83,7 +83,7 @@ struct OfferListView: View {
                 }
             }
             .navigationDestination(for: Offer.self) { offer in
-                OfferDetailView(offer: offer, rentalDays: search.rentalDays)
+                OfferDetailView(offer: offer, rentalDays: search.rentalDays, station: search.pickUpStation)
             }
             .sheet(isPresented: $isEditingSearch) {
                 SearchEditor(search: search)

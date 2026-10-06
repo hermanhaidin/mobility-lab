@@ -1,7 +1,7 @@
 import SwiftUI
 
-/// What a booking costs, line by line. Opened from the price in the offer details' footer.
-/// Taxes and fees aren't part of the prototype yet.
+/// What a booking costs, line by line: the rental charges, the pick-up station's taxes and fees, and the total.
+/// Opened from the total in the offer details' toolbar.
 struct PriceDetailView: View {
     let booking: Booking
 
@@ -16,6 +16,14 @@ struct PriceDetailView: View {
                 Section("Rental charges") {
                     ForEach(booking.charges) { charge in
                         LabeledContent(charge.title, value: currency.format(charge.price))
+                    }
+                }
+
+                if !booking.taxesAndFees.isEmpty {
+                    Section("Taxes and fees") {
+                        ForEach(booking.taxesAndFees) { charge in
+                            LabeledContent(charge.title, value: currency.format(charge.price))
+                        }
                     }
                 }
 
@@ -43,7 +51,7 @@ struct PriceDetailView: View {
 }
 
 #Preview {
-    let booking = Booking(offer: MockData.offers.cars.first { $0.id == "bmw-m340-touring" }!, rentalDays: 3)
+    let booking = Booking(offer: MockData.offers.cars.first { $0.id == "bmw-m340-touring" }!, rentalDays: 3, station: RentSearch().pickUpStation)
     booking.paymentOption = MockData.offers.paymentOptions.last!
     booking.mileagePackage = MockData.offers.mileagePackages(for: booking.offer).last!
     return PriceDetailView(booking: booking)
