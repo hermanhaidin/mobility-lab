@@ -75,6 +75,13 @@ nonisolated struct OfferCatalog: Codable {
         }
     }
 
+    /// What a mileage package means for an offer: "All kilometers are included in the price." or what each kilometer
+    /// beyond it costs, like "+$0.54 for every additional km." On the offer details and in the protection's overview.
+    func mileageDescription(of package: MileagePackage, for offer: Offer, in currency: Currency) -> String {
+        guard package.kilometers != nil else { return "All kilometers are included in the price." }
+        return "+\(currency.format(extraKilometerRate * offer.pricePerDay)) for every additional km."
+    }
+
     /// Whether an offer has a kilometer limit that an upgrade lifts, like the 600 km of every car.
     func canUpgradeToUnlimited(_ offer: Offer) -> Bool {
         mileagePackages(for: offer).contains { $0.kilometers == nil && $0.dailySurchargeRate > 0 }

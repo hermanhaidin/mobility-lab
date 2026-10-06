@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// An offer's vehicle and specs, with a payment option and a mileage package to pick. Opened from its card in the
-/// offer list. The top is always dark, like the offer cards. Continue goes on to protection.
+/// offer list. The top is always dark, like the offer cards. Continue goes on to protection with the same booking.
 struct OfferDetailView: View {
     @State private var booking: Booking
     @AppStorage(SettingsKey.currencyCode) private var currencyCode = "USD"
@@ -60,7 +60,7 @@ struct OfferDetailView: View {
         }
         .safeAreaBar(edge: .bottom) {
             ContinueButton {
-                PlaceholderView(title: "Protection", systemImage: "shield.lefthalf.filled")
+                ProtectionView(booking: booking)
             }
         }
         .sheet(isPresented: $isShowingPaymentHelp) {
@@ -215,9 +215,7 @@ struct OfferDetailView: View {
                 ForEach(catalog.mileagePackages(for: offer), id: \.self) { package in
                     ChoiceCard(
                         title: package.title,
-                        subtitle: Text(package.kilometers == nil
-                            ? "All kilometers are included in the price."
-                            : "+\(currency.format(catalog.extraKilometerRate * offer.pricePerDay)) for every additional km."),
+                        subtitle: Text(catalog.mileageDescription(of: package, for: offer, in: currency)),
                         price: surcharge(package.dailySurchargeRate),
                         isSelected: booking.mileagePackage == package
                     ) {
