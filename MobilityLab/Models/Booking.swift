@@ -21,7 +21,7 @@ final class Booking {
     var paymentOption: PaymentOption
     var mileagePackage: MileagePackage
 
-    /// Starts with the payment option and mileage package that cost nothing extra.
+    /// Starts with the payment option and mileage package that cost nothing extra, so the total matches the offer card's.
     init(offer: Offer, rentalDays: Int, station: Station, catalog: OfferCatalog = MockData.offers) {
         self.offer = offer
         self.rentalDays = rentalDays
@@ -53,8 +53,7 @@ final class Booking {
         fees.map { Charge(title: $0.title, price: $0.rate * rentalPrice) }
     }
 
-    /// What the rental costs, with taxes and fees. With nothing extra picked, it's the total on the offer card plus
-    /// taxes and fees.
+    /// What the rental costs, with taxes and fees. With nothing extra picked, it's the total on the offer card.
     var total: Double {
         (charges + taxesAndFees).map(\.price).reduce(0, +)
     }

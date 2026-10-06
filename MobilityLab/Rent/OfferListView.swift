@@ -24,7 +24,7 @@ struct OfferListView: View {
                     }
                     ForEach(offers) { offer in
                         NavigationLink(value: offer) {
-                            OfferCard(offer: offer, rentalDays: search.rentalDays)
+                            OfferCard(offer: offer, rentalDays: search.rentalDays, station: search.pickUpStation)
                         }
                         .buttonStyle(.plain)
                         .padding(.horizontal)

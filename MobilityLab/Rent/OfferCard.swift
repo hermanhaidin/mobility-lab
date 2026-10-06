@@ -1,10 +1,13 @@
 import SwiftUI
 
 /// An offer in the offer list: the vehicle, its specs, the kilometers, and the price in the currency
-/// picked in Settings. The card is always dark, like the studio photo behind it.
+/// picked in Settings. The total includes the station's taxes and fees, like the offer details'. The card is always dark,
+/// like the studio photo behind it.
 struct OfferCard: View {
     let offer: Offer
     let rentalDays: Int
+    /// The pick-up station, which decides the taxes and fees.
+    let station: Station
 
     @AppStorage(SettingsKey.currencyCode) private var currencyCode = "USD"
 
@@ -35,7 +38,7 @@ struct OfferCard: View {
 
                 HStack(alignment: .firstTextBaseline, spacing: 12) {
                     Text(dailyPrice)
-                    Text("\(currency.format(offer.pricePerDay * Double(rentalDays))) total")
+                    Text("\(currency.format(total)) total")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
@@ -126,6 +129,11 @@ struct OfferCard: View {
         MockData.currency(code: currencyCode)
     }
 
+    /// The offer details' total before any option is picked, with taxes and fees.
+    private var total: Double {
+        Booking(offer: offer, rentalDays: rentalDays, station: station).total
+    }
+
     /// The daily price with its whole number drawn larger, like "$123.45 / day" in the Figma design.
     private var dailyPrice: AttributedString {
         var text = (offer.pricePerDay * currency.rate).formatted(.currency(code: currency.code).attributed)
@@ -142,10 +150,10 @@ struct OfferCard: View {
     ScrollView {
         VStack(spacing: 16) {
             ForEach(["bmw-3-series-touring", "vw-golf-automatic", "porsche-taycan"], id: \.self) { id in
-                OfferCard(offer: MockData.offers.cars.first { $0.id == id }!, rentalDays: 3)
+                OfferCard(offer: MockData.offers.cars.first { $0.id == id }!, rentalDays: 3, station: RentSearch().pickUpStation)
             }
             ForEach(["maxus-edeliver-3", "citroen-berlingo"], id: \.self) { id in
-                OfferCard(offer: MockData.offers.trucks.first { $0.id == id }!, rentalDays: 3)
+                OfferCard(offer: MockData.offers.trucks.first { $0.id == id }!, rentalDays: 3, station: RentSearch().pickUpStation)
             }
         }
         .padding()
