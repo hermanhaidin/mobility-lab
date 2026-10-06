@@ -182,16 +182,8 @@ struct OfferDetailView: View {
 
     private var paymentOptions: some View {
         VStack(alignment: .leading, spacing: 8) {
-            sectionHeader("Payment option") {
-                Button {
-                    isShowingPaymentHelp = true
-                } label: {
-                    Text("Need help?")
-                        .underline()
-                }
-                .font(.subheadline)
-                .fontWeight(.medium)
-                .foregroundStyle(.primary)
+            SectionHeader("Payment option") {
+                isShowingPaymentHelp = true
             }
             VStack(spacing: 12) {
                 ForEach(catalog.paymentOptions) { option in
@@ -210,7 +202,7 @@ struct OfferDetailView: View {
 
     private var mileagePackages: some View {
         VStack(alignment: .leading, spacing: 8) {
-            sectionHeader("Mileage package")
+            SectionHeader("Mileage package")
             VStack(spacing: 12) {
                 ForEach(catalog.mileagePackages(for: offer), id: \.self) { package in
                     ChoiceCard(
@@ -231,23 +223,6 @@ struct OfferDetailView: View {
                     .padding(.horizontal)
             }
         }
-    }
-
-    /// Like a prominent list header: bold, in sentence case, lined up with the text in the cards, with an optional
-    /// button at the trailing edge.
-    private func sectionHeader<Accessory: View>(
-        _ title: String,
-        @ViewBuilder accessory: () -> Accessory = { EmptyView() }
-    ) -> some View {
-        HStack(alignment: .firstTextBaseline) {
-            Text(title)
-                .font(.title3)
-                .fontWeight(.semibold)
-            Spacer()
-            accessory()
-        }
-        .padding(.horizontal)
-        .padding(.top, 14)
     }
 
     // MARK: - Mileage
