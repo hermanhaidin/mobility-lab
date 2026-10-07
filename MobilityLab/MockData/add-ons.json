@@ -14,6 +14,7 @@
     "systemImage": "location.fill",
     "price": 10.91,
     "billing": "perDay",
+    "vehicleType": "cars",
     "details": "Navigate like a local wherever your journey takes you. Enjoy a guaranteed GPS navigation system for stress-free routes, or connect your smartphone via Apple CarPlay or Android Auto to access maps, music, messages, and more. With hands-free control, you can enjoy all these features safely."
   },
   {
@@ -116,6 +117,7 @@
     "systemImage": "axle.2",
     "price": 9.90,
     "billing": "perDay",
+    "vehicleType": "cars",
     "details": "Enhanced grip and control. All-wheel drive delivers superior traction and stability, whether navigating snowy conditions, steep inclines, or mountain roads. Stay safe with better handling in changing conditions throughout your journey."
   },
   {
@@ -142,6 +144,7 @@
     "systemImage": "figure.seated.side.right",
     "price": 5.94,
     "billing": "perDay",
+    "vehicleType": "cars",
     "details": "Driver-assist features like parking support and Bluetooth connectivity help you maneuver more safely and easily. This reduces driving pressure and creates a smoother, more relaxed ride."
   }
 ]
