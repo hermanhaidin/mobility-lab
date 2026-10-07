@@ -1,7 +1,8 @@
 import SwiftUI
 
 /// The protection packages to pick from, and what the booking includes so far. Nothing is picked first, so Continue
-/// stays off until the customer picks a package or "No extra protection". Pushed from the offer details.
+/// stays off until the customer picks a package or "No extra protection", then goes on to the add-ons. Pushed from the
+/// offer details.
 struct ProtectionView: View {
     let booking: Booking
 
@@ -30,7 +31,7 @@ struct ProtectionView: View {
         }
         .safeAreaBar(edge: .bottom) {
             ContinueButton {
-                PlaceholderView(title: "Add-ons", systemImage: "plus.square.on.square")
+                AddOnsView(booking: booking)
             }
             .disabled(booking.protection == nil)
         }

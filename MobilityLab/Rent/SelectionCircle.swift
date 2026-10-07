@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// The circle on a card that can be picked, like the kit's Edit Button: empty, or an accent-filled checkmark once
-/// picked. On `ChoiceCard`.
+/// picked. On `ChoiceCard` and `AddOnCard`.
 struct SelectionCircle: View {
     let isSelected: Bool
 

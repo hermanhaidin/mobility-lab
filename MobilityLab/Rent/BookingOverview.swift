@@ -1,6 +1,7 @@
 import SwiftUI
 
-/// What the booking includes so far, under the cards on the protection screen. Each row opens to its details.
+/// What the booking includes so far, under the cards on the protection and add-ons screens. Each row opens to its
+/// details.
 struct BookingOverview: View {
     let booking: Booking
 
@@ -27,10 +28,17 @@ struct BookingOverview: View {
                         BulletList(items: protection.coverage, spacing: 0)
                     }
                 }
+                // By ID, so a row stays open when its count changes.
+                ForEach(booking.pickedAddOns, id: \.addOn.id) { addOn, quantity in
+                    BookingOverviewRow(title: addOn.title(quantity: quantity)) {
+                        Text(addOn.details)
+                    }
+                }
             }
-            // The picked package's row slides in and out. Only here: an animated pick would fade the unpicked card's
-            // fill to gray while its checkmark draws off, where it should turn gray at once.
+            // The picked package's and add-ons' rows slide in and out. Only here: an animated pick would fade the
+            // unpicked card's fill to gray while its checkmark draws off, where it should turn gray at once.
             .animation(.default, value: booking.protection)
+            .animation(.default, value: booking.addOnQuantities)
         }
     }
 }
