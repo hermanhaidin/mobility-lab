@@ -16,7 +16,7 @@ struct ProtectionView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 packages
-                overview
+                BookingOverview(booking: booking)
             }
             // The first header's own top padding is enough under the large title, like Figma.
             .padding([.horizontal, .bottom])
@@ -49,35 +49,6 @@ struct ProtectionView: View {
                     card(for: package)
                 }
             }
-        }
-    }
-
-    /// What the booking includes so far. Each row opens to its details.
-    private var overview: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            SectionHeader("Your booking overview")
-            RowGroup {
-                ForEach(catalog.included, id: \.self) { item in
-                    BookingOverviewRow(title: item.title) {
-                        Text(item.details)
-                    }
-                }
-                BookingOverviewRow(title: "Payment Option: \(booking.paymentOption.chargeTitle)") {
-                    Text(booking.paymentOption.subtitle)
-                }
-                BookingOverviewRow(title: "Mileage Package: \(booking.mileagePackage.title)") {
-                    Text(MockData.offers.mileageDescription(of: booking.mileagePackage, for: booking.offer, in: currency))
-                }
-                // One row for whichever package is picked, so it stays open when the package changes.
-                if let protection = booking.protection, protection.dailySurchargeRate > 0 {
-                    BookingOverviewRow(title: protection.title) {
-                        BulletList(items: protection.coverage, spacing: 0)
-                    }
-                }
-            }
-            // The picked package's row slides in and out. Only here: an animated pick would fade the unpicked card's
-            // fill to gray while its checkmark draws off, where it should turn gray at once.
-            .animation(.default, value: booking.protection)
         }
     }
 
