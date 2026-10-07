@@ -86,7 +86,7 @@
   {
     "id": "sackBarrow",
     "title": "Sack Barrow",
-    "systemImage": "suitcase.cart.fill",
+    "systemImage": "suitcase.rolling.fill",
     "price": 22.53,
     "billing": "perDay",
     "maxQuantity": 3,
