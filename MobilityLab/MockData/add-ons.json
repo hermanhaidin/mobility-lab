@@ -66,7 +66,7 @@
   {
     "id": "loadSecuringStrap",
     "title": "Load Securing Strap (2.5\u00a0cm × 5\u00a0m)",
-    "systemImage": "rectangle.compress.vertical",
+    "systemImage": "point.forward.to.point.capsulepath.fill",
     "price": 8.44,
     "billing": "perUnit",
     "maxQuantity": 3,
@@ -76,7 +76,7 @@
   {
     "id": "ratchetStrap",
     "title": "Load Securing Strap with Ratchet (2.5\u00a0cm × 6\u00a0m)",
-    "systemImage": "lock.rotation",
+    "systemImage": "point.forward.to.point.capsulepath.fill",
     "price": 14.64,
     "billing": "perUnit",
     "maxQuantity": 3,
@@ -96,7 +96,7 @@
   {
     "id": "dollyTrolley",
     "title": "Dolly Trolley (60\u00a0cm × 35\u00a0cm, 300\u00a0kg Load Capacity)",
-    "systemImage": "cart.fill",
+    "systemImage": "suitcase.cart.fill",
     "price": 10.13,
     "billing": "perDay",
     "maxQuantity": 3,
@@ -109,6 +109,7 @@
     "systemImage": "suit.diamond.fill",
     "price": 34.71,
     "billing": "oneTime",
+    "vehicleType": "cars",
     "details": "Collect your keys and vehicle through dedicated priority counters and parking instead of waiting in standard pickup lines. This speeds up your arrival and lets you start your trip with less hassle."
   },
   {
@@ -126,7 +127,7 @@
     "systemImage": "tow.hitch.fill",
     "price": 15.87,
     "billing": "perDay",
-    "notWithEquipment": "trailerHitch",
+    "vehicleType": "cars",
     "details": "Carry more: attach trailers or bike racks for road trips, outdoor adventures, or moving larger items."
   },
   {

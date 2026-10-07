@@ -32,17 +32,12 @@ nonisolated struct AddOn: Codable, Hashable, Identifiable {
     let vehicleType: VehicleType?
     /// Vehicles with this fuel don't offer it, like a diesel engine on an electric car.
     let notForFuel: Offer.Fuel?
-    /// Vehicles that come with this equipment don't offer it, like a trailer coupling on a truck with a trailer hitch.
-    let notWithEquipment: Offer.Equipment?
 
     func isOffered(with offer: Offer) -> Bool {
         if let vehicleType, offer.vehicleType != vehicleType {
             return false
         }
         if let notForFuel, offer.fuel == notForFuel {
-            return false
-        }
-        if let notWithEquipment, offer.equipment?.contains(notWithEquipment) == true {
             return false
         }
         return true
