@@ -14,10 +14,6 @@ struct ChoiceCard<Accessory: View, Details: View>: View {
     let accessory: Accessory
     let details: Details
 
-    /// Follows `isSelected`, a moment late when the card is unpicked: the circle turns gray first, so the checkmark
-    /// draws off in the unpicked color rather than the accent.
-    @State private var showsCheckmark: Bool
-
     init(
         title: String,
         subtitle: Text,
@@ -34,7 +30,6 @@ struct ChoiceCard<Accessory: View, Details: View>: View {
         self.action = action
         self.accessory = accessory()
         self.details = details()
-        _showsCheckmark = State(initialValue: isSelected)
     }
 
     var body: some View {
@@ -58,24 +53,7 @@ struct ChoiceCard<Accessory: View, Details: View>: View {
                             .fontWeight(.semibold)
                     }
 
-                    // One image, so picking the card replaces the circle and draws the checkmark on, like the
-                    // Light and Dark choices in Settings › Display & Brightness. The replace keeps the outgoing symbol's
-                    // colors, so the fill goes gray before the checkmark draws off.
-                    Image(systemName: showsCheckmark ? "checkmark.circle.fill" : "circle")
-                        .foregroundStyle(
-                            showsCheckmark ? AnyShapeStyle(.white) : AnyShapeStyle(.tertiary),
-                            isSelected ? AnyShapeStyle(Color(.accent)) : AnyShapeStyle(.tertiary)
-                        )
-                        .contentTransition(.symbolEffect(.replace))
-                        .font(.title2)
-                        .onChange(of: isSelected) { _, isSelected in
-                            if isSelected {
-                                showsCheckmark = true
-                            } else {
-                                // After the gray fill is on screen.
-                                Task { showsCheckmark = false }
-                            }
-                        }
+                    SelectionCircle(isSelected: isSelected)
                 }
 
                 // Under the circle too, across the whole card.
