@@ -26,7 +26,7 @@
   },
   {
     "id": "crossBorder",
-    "title": "Cross-border Driving",
+    "title": "Cross-Border Driving",
     "systemImage": "globe.europe.africa.fill",
     "price": 29.51,
     "billing": "oneTime",
@@ -69,7 +69,7 @@
   },
   {
     "id": "allWheelDrive",
-    "title": "All-wheel Drive",
+    "title": "All-Wheel Drive",
     "systemImage": "axle.2",
     "price": 9.90,
     "billing": "perDay",
