@@ -63,6 +63,46 @@
     "details": "Ideal for children 8-12 years old (53-59 in / 135-150 cm tall), this booster positions the seatbelt correctly across the body. It enhances protection and comfort so older kids ride safer on every journey."
   },
   {
+    "id": "loadSecuringStrap",
+    "title": "Load Securing Strap (2.5 cm × 5 m)",
+    "systemImage": "rectangle.compress.vertical",
+    "price": 8.44,
+    "billing": "perUnit",
+    "maxQuantity": 3,
+    "vehicleType": "trucks",
+    "details": "Be prepared for a safe transport. You purchase a 2.5 cm wide × 5 m long strap with clamp lock that helps you protect your load throughout your rental period."
+  },
+  {
+    "id": "ratchetStrap",
+    "title": "Load Securing Strap with Ratchet (2.5 cm × 6 m)",
+    "systemImage": "lock.rotation",
+    "price": 14.64,
+    "billing": "perUnit",
+    "maxQuantity": 3,
+    "vehicleType": "trucks",
+    "details": "Secure your cargo during transport. You purchase a 2.5 cm wide × 6 m long ratchet strap that helps you protect your load from shifting or damage."
+  },
+  {
+    "id": "sackBarrow",
+    "title": "Sack Barrow",
+    "systemImage": "suitcase.cart.fill",
+    "price": 22.53,
+    "billing": "perDay",
+    "maxQuantity": 3,
+    "vehicleType": "trucks",
+    "details": "Transport heavy or bulky items with ease. You rent a sack barrow — a two-wheeled hand truck that lets you move loads without carrying them, even up and down stairs, throughout your rental period."
+  },
+  {
+    "id": "dollyTrolley",
+    "title": "Dolly Trolley (60 cm × 35 cm, 300 kg Load Capacity)",
+    "systemImage": "cart.fill",
+    "price": 10.13,
+    "billing": "perDay",
+    "maxQuantity": 3,
+    "vehicleType": "trucks",
+    "details": "Transport heavy or bulky items safely with a rented dolly trolley — a wheeled platform that makes moving heavy loads effortless throughout your rental period."
+  },
+  {
     "id": "priorityService",
     "title": "Priority Service",
     "systemImage": "suit.diamond.fill",

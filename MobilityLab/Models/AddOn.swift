@@ -3,15 +3,16 @@ import Foundation
 /// An optional extra for the rental, like an additional driver or a child seat. Picked on the add-ons screen.
 /// Loaded from `add-ons.json`.
 nonisolated struct AddOn: Codable, Hashable, Identifiable {
-    /// Whether the price is charged for every rental day or once.
+    /// Whether the price is charged for every rental day, once, or once for each one bought, like a strap.
     enum Billing: String, Codable {
-        case perDay, oneTime
+        case perDay, oneTime, perUnit
 
         /// Follows the price: "$10.91 / day".
         var suffix: String {
             switch self {
             case .perDay: "/ day"
             case .oneTime: "/ one-time"
+            case .perUnit: "/ unit"
             }
         }
     }
@@ -48,9 +49,12 @@ nonisolated struct AddOn: Codable, Hashable, Identifiable {
     }
 
     /// "1 Additional Driver" or "2 Additional Drivers" for an add-on with a stepper once one is picked, otherwise the
-    /// title.
+    /// title. A size in parentheses stays as it is: "2 Load Securing Straps (2.5 cm × 5 m)".
     func title(quantity: Int) -> String {
         guard maxQuantity != nil, quantity > 0 else { return title }
-        return String(AttributedString(localized: "^[\(quantity) \(title)](inflect: true)").characters)
+        // Inflecting the whole title pluralized the last noun in the parentheses instead.
+        let name = title.prefix { $0 != "(" }.trimmingCharacters(in: .whitespaces)
+        let size = title.dropFirst(name.count)
+        return String(AttributedString(localized: "^[\(quantity) \(name)](inflect: true)").characters) + size
     }
 }
