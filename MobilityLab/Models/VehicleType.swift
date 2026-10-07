@@ -1,7 +1,7 @@
 import Foundation
 
 /// The two things the Rent tab can search for.
-nonisolated enum VehicleType: String, CaseIterable, Identifiable {
+nonisolated enum VehicleType: String, Codable, CaseIterable, Identifiable {
     case cars, trucks
 
     var id: Self { self }

@@ -39,6 +39,7 @@
     "price": 13.39,
     "billing": "perDay",
     "maxQuantity": 3,
+    "vehicleType": "cars",
     "details": "Designed for infants and toddlers up to 4 years old (24-41 in / 61-105 cm tall), this rear-facing seat delivers essential early-stage protection. It ensures proper positioning so your baby rides safer and you travel with greater peace of mind."
   },
   {
@@ -48,6 +49,7 @@
     "price": 13.39,
     "billing": "perDay",
     "maxQuantity": 3,
+    "vehicleType": "cars",
     "details": "Built for children approximately 15 months to 12 years old (30-59 in / 76-150 cm tall), this seat provides size-appropriate restraint and support. It improves safety and comfort as your child grows, making every trip more secure and worry-free."
   },
   {
@@ -57,6 +59,7 @@
     "price": 12.40,
     "billing": "perDay",
     "maxQuantity": 3,
+    "vehicleType": "cars",
     "details": "Ideal for children 8-12 years old (53-59 in / 135-150 cm tall), this booster positions the seatbelt correctly across the body. It enhances protection and comfort so older kids ride safer on every journey."
   },
   {
