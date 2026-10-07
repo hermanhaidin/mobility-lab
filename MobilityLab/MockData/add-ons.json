@@ -64,23 +64,23 @@
   },
   {
     "id": "loadSecuringStrap",
-    "title": "Load Securing Strap (2.5 cm × 5 m)",
+    "title": "Load Securing Strap (2.5\u00a0cm × 5\u00a0m)",
     "systemImage": "rectangle.compress.vertical",
     "price": 8.44,
     "billing": "perUnit",
     "maxQuantity": 3,
     "vehicleType": "trucks",
-    "details": "Be prepared for a safe transport. You purchase a 2.5 cm wide × 5 m long strap with clamp lock that helps you protect your load throughout your rental period."
+    "details": "Be prepared for a safe transport. You purchase a 2.5\u00a0cm wide × 5\u00a0m long strap with clamp lock that helps you protect your load throughout your rental period."
   },
   {
     "id": "ratchetStrap",
-    "title": "Load Securing Strap with Ratchet (2.5 cm × 6 m)",
+    "title": "Load Securing Strap with Ratchet (2.5\u00a0cm × 6\u00a0m)",
     "systemImage": "lock.rotation",
     "price": 14.64,
     "billing": "perUnit",
     "maxQuantity": 3,
     "vehicleType": "trucks",
-    "details": "Secure your cargo during transport. You purchase a 2.5 cm wide × 6 m long ratchet strap that helps you protect your load from shifting or damage."
+    "details": "Secure your cargo during transport. You purchase a 2.5\u00a0cm wide × 6\u00a0m long ratchet strap that helps you protect your load from shifting or damage."
   },
   {
     "id": "sackBarrow",
@@ -94,7 +94,7 @@
   },
   {
     "id": "dollyTrolley",
-    "title": "Dolly Trolley (60 cm × 35 cm, 300 kg Load Capacity)",
+    "title": "Dolly Trolley (60\u00a0cm × 35\u00a0cm, 300\u00a0kg Load Capacity)",
     "systemImage": "cart.fill",
     "price": 10.13,
     "billing": "perDay",
