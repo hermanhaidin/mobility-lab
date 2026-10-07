@@ -49,23 +49,24 @@ struct AddOnCard: View {
                 .background(.black, in: .rect(cornerRadius: 8))
 
             VStack(alignment: .leading, spacing: 8) {
-                if let maxQuantity = addOn.maxQuantity {
-                    HStack(alignment: .top, spacing: 16) {
-                        VStack(alignment: .leading, spacing: 8) {
-                            title
-                            priceLine
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                // The circle or stepper sits beside the title and price, not in the title's row, so the circle, taller
+                // than the title's line, doesn't push the price down: every card has the same space between them.
+                HStack(alignment: .top, spacing: addOn.maxQuantity == nil ? 12 : 16) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(addOn.title(quantity: quantity))
+                            .font(.headline)
+                        Text("\(price) \(addOn.billing.suffix)")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                    if let maxQuantity = addOn.maxQuantity {
                         Stepper(addOn.title, value: $quantity, in: 0...maxQuantity)
                             .labelsHidden()
-                    }
-                } else {
-                    HStack(spacing: 12) {
-                        title
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                    } else {
                         SelectionCircle(isSelected: isSelected)
                     }
-                    priceLine
                 }
 
                 Divider()
@@ -96,17 +97,6 @@ struct AddOnCard: View {
         // ChoiceCard's background.
         .background(Color(.secondarySystemGroupedBackground), in: .rect(cornerRadius: 20))
         .contentShape(.rect(cornerRadius: 20))
-    }
-
-    private var title: some View {
-        Text(addOn.title(quantity: quantity))
-            .font(.headline)
-    }
-
-    private var priceLine: some View {
-        Text("\(price) \(addOn.billing.suffix)")
-            .font(.footnote)
-            .fontWeight(.semibold)
     }
 }
 
