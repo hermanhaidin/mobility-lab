@@ -1,10 +1,11 @@
 import Foundation
 import Testing
+import UIKit
 @testable import MobilityLab
 
 /// Checks the JSON files in `MockData`. When one of these fails, the message says which file and entry to fix.
 struct MockDataTests {
-    @Test(arguments: ["stations", "station-details", "rent-home", "countries", "currencies", "offers", "station-profiles", "protection", "payment-option-help", "protection-help"])
+    @Test(arguments: ["stations", "station-details", "rent-home", "countries", "currencies", "offers", "station-profiles", "protection", "add-ons", "payment-option-help", "protection-help"])
     func fileLoads(_ name: String) throws {
         switch name {
         case "stations": let _: StationCatalog = try MockData.load(name)
@@ -15,6 +16,7 @@ struct MockDataTests {
         case "offers": let _: OfferCatalog = try MockData.load(name)
         case "station-profiles": let _: [String: StationProfile] = try MockData.load(name)
         case "protection": let _: ProtectionCatalog = try MockData.load(name)
+        case "add-ons": let _: [AddOn] = try MockData.load(name)
         case "payment-option-help", "protection-help": let _: HelpArticle = try MockData.load(name)
         default: Issue.record("Add a check for \(name).json")
         }
@@ -183,6 +185,22 @@ struct MockDataTests {
         for item in catalog.included {
             #expect(!item.title.isEmpty && !item.details.isEmpty, "Every included protection in protection.json needs a title and details")
         }
+    }
+
+    // MARK: - Add-ons
+
+    @Test func addOnsAreValid() throws {
+        let addOns: [AddOn] = try MockData.load("add-ons")
+        for addOn in addOns {
+            #expect(!addOn.title.isEmpty && !addOn.details.isEmpty, "Every add-on in add-ons.json needs a title and details")
+            #expect(addOn.price > 0, "\(addOn.title) in add-ons.json needs a price above zero")
+            #expect(UIImage(systemName: addOn.systemImage) != nil, "\(addOn.title) in add-ons.json has the symbol \"\(addOn.systemImage)\", which isn't an SF Symbol")
+            if let maxQuantity = addOn.maxQuantity {
+                #expect(maxQuantity >= 2, "\(addOn.title) in add-ons.json has a maxQuantity of \(maxQuantity). Leave it out for an add-on that's picked or not")
+            }
+        }
+        let duplicates = Dictionary(grouping: addOns, by: \.id).filter { $0.value.count > 1 }.keys
+        #expect(duplicates.isEmpty, "add-ons.json has more than one add-on with the id \(duplicates.sorted())")
     }
 
     // MARK: - Station profiles

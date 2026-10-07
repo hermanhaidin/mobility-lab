@@ -11,6 +11,7 @@ enum MockData {
     static let offers: OfferCatalog = loadOrCrash("offers")
     static let stationProfiles: [String: StationProfile] = loadOrCrash("station-profiles")
     static let protection: ProtectionCatalog = loadOrCrash("protection")
+    static let addOns: [AddOn] = loadOrCrash("add-ons")
     static let paymentOptionHelp: HelpArticle = loadOrCrash("payment-option-help")
     static let protectionHelp: HelpArticle = loadOrCrash("protection-help")
 

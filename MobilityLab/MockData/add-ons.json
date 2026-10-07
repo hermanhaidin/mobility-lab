@@ -1,0 +1,104 @@
+[
+  {
+    "id": "additionalDriver",
+    "title": "Additional Driver",
+    "systemImage": "person.fill",
+    "price": 10.91,
+    "billing": "perDay",
+    "maxQuantity": 5,
+    "details": "Enjoy a more comfortable and flexible journey — especially on longer trips. With extra drivers, you can take turns behind the wheel and share the fun. Simply make sure every driver brings their valid driver’s ID, and you’re all set for a smooth experience."
+  },
+  {
+    "id": "carPlay",
+    "title": "Apple CarPlay & Android Auto",
+    "systemImage": "location.fill",
+    "price": 10.91,
+    "billing": "perDay",
+    "details": "Navigate like a local wherever your journey takes you. Enjoy a guaranteed GPS navigation system for stress-free routes, or connect your smartphone via Apple CarPlay or Android Auto to access maps, music, messages, and more. With hands-free control, you can enjoy all these features safely."
+  },
+  {
+    "id": "refueling",
+    "title": "Refueling & Recharging Service",
+    "systemImage": "fuelpump.fill",
+    "price": 24.79,
+    "billing": "oneTime",
+    "details": "Save time on your return and skip the last gas stop. Bring the car back with any amount of fuel, and we’ll refill it for you at the normal pump price — with no refueling penalties or surprise fees. Of course, this service also applies to electric vehicles."
+  },
+  {
+    "id": "crossBorder",
+    "title": "Cross-border Driving",
+    "systemImage": "globe.europe.africa.fill",
+    "price": 29.51,
+    "billing": "oneTime",
+    "details": "Drive with authorization and selected protection in approved countries such as Austria, France, Italy, the Netherlands, and Switzerland. This ensures continuous protection and prevents rental violations so you can explore internationally with confidence and peace of mind. For a complete list of approved countries, please refer to the rental agreement."
+  },
+  {
+    "id": "babySeat",
+    "title": "Baby Seat",
+    "systemImage": "carseat.right.fill",
+    "price": 13.39,
+    "billing": "perDay",
+    "maxQuantity": 3,
+    "details": "Designed for infants and toddlers up to 4 years old (24-41 in / 61-105 cm tall), this rear-facing seat delivers essential early-stage protection. It ensures proper positioning so your baby rides safer and you travel with greater peace of mind."
+  },
+  {
+    "id": "childSeat",
+    "title": "Child Seat",
+    "systemImage": "carseat.right.fill",
+    "price": 13.39,
+    "billing": "perDay",
+    "maxQuantity": 3,
+    "details": "Built for children approximately 15 months to 12 years old (30-59 in / 76-150 cm tall), this seat provides size-appropriate restraint and support. It improves safety and comfort as your child grows, making every trip more secure and worry-free."
+  },
+  {
+    "id": "boosterSeat",
+    "title": "Booster Seat",
+    "systemImage": "carseat.right.fill",
+    "price": 12.40,
+    "billing": "perDay",
+    "maxQuantity": 3,
+    "details": "Ideal for children 8-12 years old (53-59 in / 135-150 cm tall), this booster positions the seatbelt correctly across the body. It enhances protection and comfort so older kids ride safer on every journey."
+  },
+  {
+    "id": "priorityService",
+    "title": "Priority Service",
+    "systemImage": "suit.diamond.fill",
+    "price": 34.71,
+    "billing": "oneTime",
+    "details": "Collect your keys and vehicle through dedicated priority counters and parking instead of waiting in standard pickup lines. This speeds up your arrival and lets you start your trip with less hassle."
+  },
+  {
+    "id": "allWheelDrive",
+    "title": "All-wheel Drive",
+    "systemImage": "axle.2",
+    "price": 9.90,
+    "billing": "perDay",
+    "details": "Enhanced grip and control. All-wheel drive delivers superior traction and stability, whether navigating snowy conditions, steep inclines, or mountain roads. Stay safe with better handling in changing conditions throughout your journey."
+  },
+  {
+    "id": "trailerCoupling",
+    "title": "Trailer Coupling",
+    "systemImage": "tow.hitch.fill",
+    "price": 15.87,
+    "billing": "perDay",
+    "notWithEquipment": "trailerHitch",
+    "details": "Carry more: attach trailers or bike racks for road trips, outdoor adventures, or moving larger items."
+  },
+  {
+    "id": "dieselEngine",
+    "title": "Diesel Engine",
+    "systemImage": "engine.combustion.fill",
+    "price": 7.92,
+    "billing": "perDay",
+    "notForFuel": "electric",
+    "details": "Travel smarter: outstanding performance, fewer fuel stops. With a diesel vehicle, you reach your destination without any unnecessary stops at the petrol station."
+  },
+  {
+    "id": "comfortFeatures",
+    "title": "Comfort Features",
+    "systemImage": "figure.seated.side.right",
+    "price": 5.94,
+    "billing": "perDay",
+    "details": "Driver-assist features like parking support and Bluetooth connectivity help you maneuver more safely and easily. This reduces driving pressure and creates a smoother, more relaxed ride."
+  }
+]
