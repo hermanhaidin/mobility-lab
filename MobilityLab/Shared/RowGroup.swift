@@ -1,8 +1,8 @@
 import SwiftUI
 
 /// Rows on a rounded gray background with a line between them, like a section of an inset-grouped list, for a scroll
-/// view: the booking overview on the protection screen. Rows bring their own padding, 16 points from the sides like
-/// Figma.
+/// view: the booking overview on the protection and add-ons screens. Rows bring their own padding, 16 points from the
+/// sides like Figma.
 struct RowGroup<Content: View>: View {
     @ViewBuilder let content: Content
 
